@@ -5,7 +5,7 @@ class AvanceeMission(object):
   """
    
 
-  :version:
+  
   :author:
   """
 
