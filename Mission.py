@@ -19,7 +19,7 @@ class Mission(object):
 
   def afficheDuree(self):
     pass
-wx
+
   def afficheNombreBalises(self):
     pass
 
@@ -30,16 +30,16 @@ wx
     pass
 
   def setJour(self, jour):
-    pass
+    self.jour = jour
 
   def setHeure(self, heure):
-    pass
+    self.heure = heure
 
   def setPlanification(self, planification = 0):
-    pass
+    self.planification = planification
 
   def setModePhoto(self, mode_photo = 0):
-    pass
+    self.mode_photo = mode_photo
 
   def execution(self):
     pass

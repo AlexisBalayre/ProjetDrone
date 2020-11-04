@@ -34,43 +34,43 @@ class Utilisateur(object):
     pass
 
   def setNom(self, nom):
-    pass
+    self.nom = nom
 
   def setPrenom(self, prenom):
-    pass
+    self.prenom = prenom
 
   def setEmail(self, email):
-    pass
+    self.email = email
 
   def setVitesse(self, vitesse = 0):
-    pass
+    self.vitesse = vitesse
 
   def setLatitudeBase(self, latitude_base):
-    pass
+    self.latitude_base = latitude_base
 
   def setLongitudeBase(self, longitude_base):
-    pass
+    self.longitude_base = longitude_base
 
   def setModeCamera(self, mode_camera = 0):
-    pass
+    self.mode_camera = mode_camera
 
   def setSuivieMail(self, suivie_mail = 0):
-    pass
+    self.suivie_mail = suivie_mail
 
   def setMailCoord(self, mail_coord = 0):
-    pass
+    self.mail_coord = mail_coord
 
   def setMailAlt(self, mail_alt = 0):
-    pass
+    self.mail_alt = mail_alt
 
   def setMailVitesse(self, mail_vitesse = 0):
-    pass
+    self.mail_vitesse = mail_vitesse
 
   def setMailBatterie(self, mail_batterie = 0):
-    pass
+    self.mail_batterie = mail_batterie
 
   def setMailPhoto(self, mail_photo = 0):
-    pass
+    self.mail_photo = mail_photo
 
 
 
