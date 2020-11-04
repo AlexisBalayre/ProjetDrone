@@ -1,96 +1,25 @@
-# coding=System
-
 class AvanceeMission(object):
-
-  """
-   
-
-  
-  :author:
-  """
-
-  """ ATTRIBUTES
-
-   
-
-  longitude  (private)
-
-   
-
-  latitude  (private)
-
-   
-
-  altitude  (private)
-
-   
-
-  vitesse  (private)
-
-   
-
-  batterie  (private)
-
-  """
-
   def __init__(self, longitude, latitude, altitude = 0, vitesse = 0, batterie = 0):
-    """
-     
-
-    @param float longitude : 
-    @param float latitude : 
-    @param float altitude : 
-    @param float vitesse : 
-    @param float batterie : 
-    @return  :
-    @author
-    """
-    pass
+    self.longitude = longitude 
+    self.latitude = latitude
+    self.altitude = altitude
+    self.vitesse = vitesse 
+    self.batterie = batterie  
 
   def getLongitude(self):
-    """
-     
-
-    @return string :
-    @author
-    """
-    pass
+    print("Longitude : %s" % self.getLongitude)
 
   def getLatitude(self):
-    """
-     
-
-    @return string :
-    @author
-    """
-    pass
+    print("Latitude : %s" % self.latitude)
 
   def getAltitude(self):
-    """
-     
-
-    @return string :
-    @author
-    """
-    pass
+    print("Altitude : %s" % self.altitude)
 
   def getVitesse(self):
-    """
-     
-
-    @return string :
-    @author
-    """
-    pass
+    print("Vitesse : %s" % self.vitesse)
 
   def getBatterie(self):
-    """
-     
-
-    @return string :
-    @author
-    """
-    pass
+    print("Batterie : %s" % self.batterie)
 
 
 
