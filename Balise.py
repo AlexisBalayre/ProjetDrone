@@ -9,22 +9,22 @@ class Balise(object):
     self.photo = photo 
 
   def setLatitude(self, latitude):
-    pass
+    self.latitude = latitude
 
   def setLongitude(self, longitude):
-    pass
+    self.longitude = longitude
 
   def setAltitude(self, altitude = 0):
-    pass
+    self.altitude = altitude
 
   def setVitesse(self, vitesse = 0):
-    pass
+    self.vitesse = vitesse
 
   def setPause(self, pause = 0):
-    pass
+    self.pause = pause
 
   def setPhoto(self, photo = 0):
-    pass
+    self.photo = photo
 
 
 
