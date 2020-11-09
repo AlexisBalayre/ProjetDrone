@@ -45,7 +45,7 @@ class Utilisateur(object):
     def setEmail(self, email):
         self.email = email
 
-    def setVitesse(self, vitesse=0):
+    def setVitesse(self, vitesse):
         self.vitesse = vitesse
 
     def setLatitudeBase(self, latitude_base):
@@ -54,23 +54,23 @@ class Utilisateur(object):
     def setLongitudeBase(self, longitude_base):
         self.longitude_base = longitude_base
 
-    def setModeCamera(self, mode_camera=0):
+    def setModeCamera(self, mode_camera):
         self.mode_camera = mode_camera
 
-    def setSuivieMail(self, suivie_mail=0):
+    def setSuivieMail(self, suivie_mail):
         self.suivie_mail = suivie_mail
 
-    def setMailCoord(self, mail_coord=0):
+    def setMailCoord(self, mail_coord):
         self.mail_coord = mail_coord
 
-    def setMailAlt(self, mail_alt=0):
+    def setMailAlt(self, mail_alt):
         self.mail_alt = mail_alt
 
-    def setMailVitesse(self, mail_vitesse=0):
+    def setMailVitesse(self, mail_vitesse):
         self.mail_vitesse = mail_vitesse
 
-    def setMailBatterie(self, mail_batterie=0):
+    def setMailBatterie(self, mail_batterie):
         self.mail_batterie = mail_batterie
 
-    def setMailPhoto(self, mail_photo=0):
+    def setMailPhoto(self, mail_photo):
         self.mail_photo = mail_photo

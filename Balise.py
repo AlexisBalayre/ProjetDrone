@@ -14,14 +14,14 @@ class Balise(object):
     def setLongitude(self, longitude):
         self.longitude = longitude
 
-    def setAltitude(self, altitude=0):
+    def setAltitude(self, altitude):
         self.altitude = altitude
 
-    def setVitesse(self, vitesse=0):
+    def setVitesse(self, vitesse):
         self.vitesse = vitesse
 
-    def setPause(self, pause=0):
+    def setPause(self, pause):
         self.pause = pause
 
-    def setPhoto(self, photo=0):
+    def setPhoto(self, photo):
         self.photo = photo

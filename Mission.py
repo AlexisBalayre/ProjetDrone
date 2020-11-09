@@ -20,13 +20,13 @@ class Mission(object):
         self.balises.remove[id_balise]
 
     def afficheDuree(self):
-        pass
+        print("Durée : ")
 
     def afficheNombreBalises(self):
         print("Nombre balises : %s" % len(self.balises))
 
     def afficheModePhoto(self):
-        pass
+        print("Mode Photo : ")
 
     def affichePlanification(self):
         pass
