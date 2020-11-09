@@ -26,10 +26,16 @@ class Mission(object):
         print("Nombre balises : %s" % len(self.balises))
 
     def afficheModePhoto(self):
-        print("Mode Photo : ")
+        if self.mode_photo == 0:
+            print("Mode Photo : Désactivé")
+        else:
+            print("Mode Photo : Activé")
 
     def affichePlanification(self):
-        pass
+        if self.planification == 0:
+            print("Mission Planifiée : NON")
+        else:
+            print("Mission Planifiée : OUI")
 
     def setJour(self, jour):
         self.jour = jour

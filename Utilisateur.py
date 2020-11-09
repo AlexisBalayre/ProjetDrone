@@ -32,7 +32,7 @@ class Utilisateur(object):
 
     def executionMission(self, id_mission):
         pass
-
+    
     def afficherInformationsMission(self, avanceeMission):
         pass
 
