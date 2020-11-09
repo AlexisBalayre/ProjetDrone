@@ -7,21 +7,22 @@ class Mission(object):
     self.mode_photo = mode_photo
     self.jour = jour
     self.heure = heure
+    self.balises = []
 
   def ajouterBalise(self, balise):
-    pass
+    self.balises.append(balise)
 
   def getBalise(self, id_balise):
-    pass
+    return balises[id_balise]
 
   def supprimerBalise(self, id_balise):
-    pass
+    self.balises.remove[id_balise]
 
   def afficheDuree(self):
     pass
 
   def afficheNombreBalises(self):
-    pass
+    print("Nombre balises : %s" % len(self.balises))
 
   def afficheModePhoto(self):
     pass

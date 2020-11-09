@@ -2,7 +2,7 @@ from Utilisateur import *
 
 class Utilisateurs(object):
   def __init__(self):
-    pass
+    self.utilisateurs = []
 
   def ajouterUtilisateur(self, utilisateur):
     pass

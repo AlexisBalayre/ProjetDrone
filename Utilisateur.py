@@ -17,6 +17,7 @@ class Utilisateur(object):
     self.mail_vitesse = mail_vitesse
     self.mail_batterie = mail_batterie
     self.mail_photo = mail_photo
+    self.missions = []
 
   def ajouterMission(self, mission):
     pass
