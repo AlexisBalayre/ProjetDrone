@@ -6,10 +6,10 @@ class Utilisateurs(object):
         self.utilisateurs = []
 
     def ajouterUtilisateur(self, utilisateur):
-        pass
+        self.utilisateurs.append(utilisateur)
 
     def getUtilisateur(self, id_utilisateur):
-        pass
+        return self.utilisateurs[id_utilisateur]
 
     def supprimerUtilisateur(self, id_utilisateur):
-        pass
+        self.utilisateurs.remove(id_utilisateur)
