@@ -22,13 +22,13 @@ class Utilisateur(object):
         self.missions = []
 
     def ajouterMission(self, mission):
-        pass
+        self.missions.append(mission)
 
     def getMission(self, id_mission):
-        pass
+        return self.missions[id_mission]
 
     def supprimerMission(self, id_mission):
-        pass
+        self.missions.remove[id_mission]
 
     def executionMission(self, id_mission):
         pass
