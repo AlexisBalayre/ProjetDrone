@@ -18,6 +18,5 @@ utilisateur2.ajouterMission(mission1)
 utilisateur2.ajouterMission(mission2)
 
 
-utilisateurs = Utilisateurs
+utilisateurs = Utilisateurs()
 utilisateurs.ajouterUtilisateur(utilisateur1)
-utilisateurs.ajouterUtilisateur(utilisateur2)
