@@ -29,12 +29,17 @@ utilisateur1.ajouterMission(mission1)
 utilisateur1.ajouterMission(mission2)
 utilisateur2.ajouterMission(mission2)
 
+# Avancée 1 
+avancee1 = AvanceeMission(8.78074845187753, 1.7698891842542932, 10, 15, 100)
+
 # Test 1 utilisateur Id 0
 utilisateur = utilisateurs.getUtilisateur(0)
 print(utilisateur.nom)
 utilisateur.setNom('Douchet')
 print(utilisateur.nom)
-utilisateur.executionMission(1) # Id 1
+utilisateur.executionMission(1) # Exécution Mission Id 1
+avance1 = utilisateur.afficherInformationsMission(avancee1)
+print(avance1.getLatitude())
 mission = utilisateur.getMission(1) # Id 1
 print(mission.jour)
 mission.setJour('15/12/2020')

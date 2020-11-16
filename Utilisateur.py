@@ -40,11 +40,7 @@ class Utilisateur(object):
                 x.execution()
     
     def afficherInformationsMission(self, avanceeMission):
-        AvanceeMission.getLongitude(self, avanceeMission)
-        AvanceeMission.getLatitude(self, avanceeMission)
-        AvanceeMission.getAltitude(self, avanceeMission)
-        AvanceeMission.getVitesse(self, avanceeMission)
-        AvanceeMission.getBatterie(self, avanceeMission)
+        return avanceeMission
 
     def setNom(self, nom):
         self.nom = nom
