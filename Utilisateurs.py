@@ -17,3 +17,4 @@ class Utilisateurs(object):
         for x in self.utilisateurs:
             if x.id_utilisateur == id_utilisateur:
                 self.utilisateurs.remove(x)
+ 
