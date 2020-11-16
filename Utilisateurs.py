@@ -9,7 +9,11 @@ class Utilisateurs(object):
         self.utilisateurs.append(utilisateur)
 
     def getUtilisateur(self, id_utilisateur):
-        return self.utilisateurs[id_utilisateur]
+        for x in self.utilisateurs:
+            if x.id_utilisateur == id_utilisateur:
+                return x
 
     def supprimerUtilisateur(self, id_utilisateur):
-        self.utilisateurs.remove(id_utilisateur)
+        for x in self.utilisateurs:
+            if x.id_utilisateur == id_utilisateur:
+                self.utilisateurs.remove(x)

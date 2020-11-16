@@ -7,16 +7,16 @@ class AvanceeMission(object):
         self.batterie = batterie
 
     def getLongitude(self):
-        print("Longitude : %s" % self.longitude)
+        return("Longitude : %s" % self.longitude)
 
     def getLatitude(self):
-        print("Latitude : %s" % self.latitude)
+        return("Latitude : %s" % self.latitude)
 
     def getAltitude(self):
-        print("Altitude : %s" % self.altitude)
+        return("Altitude : %s" % self.altitude)
 
     def getVitesse(self):
-        print("Vitesse : %s" % self.vitesse)
+        return("Vitesse : %s" % self.vitesse)
 
     def getBatterie(self):
-        print("Batterie : %s" % self.batterie)
+        return("Batterie : %s" % self.batterie)

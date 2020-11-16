@@ -25,16 +25,26 @@ class Utilisateur(object):
         self.missions.append(mission)
 
     def getMission(self, id_mission):
-        return self.missions[id_mission]
+        for x in self.missions:
+            if x.id_mission == id_mission:
+                return x
 
     def supprimerMission(self, id_mission):
-        self.missions.remove[id_mission]
+        for x in self.missions:
+            if x.id_mission == id_mission:
+                self.missions.remove(x)
 
     def executionMission(self, id_mission):
-        pass
+        for x in self.missions:
+            if x.id_mission == id_mission:
+                x.execution()
     
     def afficherInformationsMission(self, avanceeMission):
-        pass
+        AvanceeMission.getLongitude(self, avanceeMission)
+        AvanceeMission.getLatitude(self, avanceeMission)
+        AvanceeMission.getAltitude(self, avanceeMission)
+        AvanceeMission.getVitesse(self, avanceeMission)
+        AvanceeMission.getBatterie(self, avanceeMission)
 
     def setNom(self, nom):
         self.nom = nom
