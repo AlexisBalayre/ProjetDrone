@@ -1,171 +1,53 @@
-# coding=System
 from Balise import *
 
+
 class Mission(object):
+    def __init__(self, id_mission, jour, heure, planification=0, mode_photo=0):
+        self.id_mission = id_mission
+        self.planification = planification
+        self.mode_photo = mode_photo
+        self.jour = jour
+        self.heure = heure
+        self.balises = {}
 
-  """
-   
+    def ajouterBalise(self, balise):
+        self.balises[balise.id_balise] = balise
 
-  :version:
-  :author:
-  """
+    def getBalise(self, id_balise):
+        return self.balises[id_balise]
 
-  """ ATTRIBUTES
+    def supprimerBalise(self, id_balise):
+         del self.balises[id_balise]
 
-   
+    def afficheDuree(self):
+        return("Durée : ")
 
-  id_mission  (private)
+    def afficheNombreBalises(self):
+        return("Nombre balises : %s" % len(self.balises))
 
-   
+    def afficheModePhoto(self):
+        if self.mode_photo == 0:
+            return("Mode Photo : Désactivé")
+        else:
+            return("Mode Photo : Activé")
 
-  planification  (private)
+    def affichePlanification(self):
+        if self.planification == 0:
+            return("Mission Planifiée : NON")
+        else:
+            return("Mission Planifiée : OUI")
 
-   
+    def setJour(self, jour):
+        self.jour = jour
 
-  mode_photo  (private)
+    def setHeure(self, heure):
+        self.heure = heure
 
-   
+    def setPlanification(self, planification):
+        self.planification = planification
 
-  jour  (private)
+    def setModePhoto(self, mode_photo):
+        self.mode_photo = mode_photo
 
-   
-
-  heure  (private)
-
-   
-
-  balises  (private)
-
-  """
-
-  def __init__(self, id_mission, planification = 0, mode_photo = 0, jour, heure):
-    """
-     
-
-    @param int id_mission : 
-    @param bool planification : 
-    @param bool mode_photo : 
-    @param string jour : 
-    @param string heure : 
-    @return  :
-    @author
-    """
-    pass
-
-  def ajouterBalise(self, balise):
-    """
-     
-
-    @param Balise balise : 
-    @return  :
-    @author
-    """
-    pass
-
-  def getBalise(self, id_balise):
-    """
-     
-
-    @param int id_balise : 
-    @return Balise :
-    @author
-    """
-    pass
-
-  def supprimerBalise(self, id_balise):
-    """
-     
-
-    @param int id_balise : 
-    @return  :
-    @author
-    """
-    pass
-
-  def afficheDuree(self):
-    """
-     
-
-    @return string :
-    @author
-    """
-    pass
-
-  def afficheNombreBalises(self):
-    """
-     
-
-    @return string :
-    @author
-    """
-    pass
-
-  def afficheModePhoto(self):
-    """
-     
-
-    @return string :
-    @author
-    """
-    pass
-
-  def affichePlanification(self):
-    """
-     
-
-    @return string :
-    @author
-    """
-    pass
-
-  def setJour(self, jour):
-    """
-     
-
-    @param string jour : 
-    @return  :
-    @author
-    """
-    pass
-
-  def setHeure(self, heure):
-    """
-     
-
-    @param string heure : 
-    @return  :
-    @author
-    """
-    pass
-
-  def setPlanification(self, planification = 0):
-    """
-     
-
-    @param bool planification : 
-    @return  :
-    @author
-    """
-    pass
-
-  def setModePhoto(self, mode_photo = 0):
-    """
-     
-
-    @param bool mode_photo : 
-    @return  :
-    @author
-    """
-    pass
-
-  def execution(self):
-    """
-     
-
-    @return bool :
-    @author
-    """
-    pass
-
-
-
+    def execution(self):
+        return 0

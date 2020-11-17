@@ -1,61 +1,18 @@
-# coding=System
 from Utilisateur import *
 
+
 class Utilisateurs(object):
+    def __init__(self):
+        self.utilisateurs = {}
+        
+    def ajouterUtilisateur(self, utilisateur):
+        self.utilisateurs[utilisateur.id_utilisateur] = utilisateur
 
-  """
-   
+    def getUtilisateur(self, id_utilisateur):
+        return self.utilisateurs[id_utilisateur]
 
-  :version:
-  :author:
-  """
-
-  """ ATTRIBUTES
-
-   
-
-  utilisateurs  (private)
-
-  """
-
-  def __init__(self):
-    """
-     
-
-    @return  :
-    @author
-    """
-    pass
-
-  def ajouterUtilisateur(self, utilisateur):
-    """
-     
-
-    @param Utilisateur utilisateur : 
-    @return  :
-    @author
-    """
-    pass
-
-  def getUtilisateur(self, id_utilisateur):
-    """
-     
-
-    @param int id_utilisateur : 
-    @return Utilisateur :
-    @author
-    """
-    pass
-
-  def supprimerUtilisateur(self, id_utilisateur):
-    """
-     
-
-    @param int id_utilisateur : 
-    @return  :
-    @author
-    """
-    pass
-
+    def supprimerUtilisateur(self, id_utilisateur):
+        del self.utilisateurs[id_utilisateur]
+ 
 
 
