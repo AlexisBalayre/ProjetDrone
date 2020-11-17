@@ -8,20 +8,16 @@ class Mission(object):
         self.mode_photo = mode_photo
         self.jour = jour
         self.heure = heure
-        self.balises = []
+        self.balises = {}
 
     def ajouterBalise(self, balise):
-        self.balises.append(balise)
+        self.balises[balise.id_balise] = balise
 
     def getBalise(self, id_balise):
-        for x in self.balises:
-            if x.id_balise == id_balise:
-                return x
+        return self.balises[id_balise]
 
     def supprimerBalise(self, id_balise):
-         for x in self.balises:
-            if x.id_balise == id_balise:
-                self.balises.remove(x)
+         del self.balises[id_balise]
 
     def afficheDuree(self):
         return("Durée : ")
@@ -31,7 +27,7 @@ class Mission(object):
 
     def afficheModePhoto(self):
         if self.mode_photo == 0:
-           return("Mode Photo : Désactivé")
+            return("Mode Photo : Désactivé")
         else:
             return("Mode Photo : Activé")
 
@@ -47,11 +43,11 @@ class Mission(object):
     def setHeure(self, heure):
         self.heure = heure
 
-    def setPlanification(self, planification=0):
+    def setPlanification(self, planification):
         self.planification = planification
 
-    def setModePhoto(self, mode_photo=0):
+    def setModePhoto(self, mode_photo):
         self.mode_photo = mode_photo
 
     def execution(self):
-        pass
+        return 0

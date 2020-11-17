@@ -19,25 +19,16 @@ class Utilisateur(object):
         self.mail_vitesse = mail_vitesse
         self.mail_batterie = mail_batterie
         self.mail_photo = mail_photo
-        self.missions = []
+        self.missions = {}
 
     def ajouterMission(self, mission):
-        self.missions.append(mission)
+        self.missions[mission.id_mission] = mission
 
     def getMission(self, id_mission):
-        for x in self.missions:
-            if x.id_mission == id_mission:
-                return x
+        return self.missions[id_mission]
 
     def supprimerMission(self, id_mission):
-        for x in self.missions:
-            if x.id_mission == id_mission:
-                self.missions.remove(x)
-
-    def executionMission(self, id_mission):
-        for x in self.missions:
-            if x.id_mission == id_mission:
-                x.execution()
+        del self.missions[id_mission]
     
     def afficherInformationsMission(self, avanceeMission):
         return avanceeMission

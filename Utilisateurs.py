@@ -3,18 +3,16 @@ from Utilisateur import *
 
 class Utilisateurs(object):
     def __init__(self):
-        self.utilisateurs = []
-
+        self.utilisateurs = {}
+        
     def ajouterUtilisateur(self, utilisateur):
-        self.utilisateurs.append(utilisateur)
+        self.utilisateurs[utilisateur.id_utilisateur] = utilisateur
 
     def getUtilisateur(self, id_utilisateur):
-        for x in self.utilisateurs:
-            if x.id_utilisateur == id_utilisateur:
-                return x
+        return self.utilisateurs[id_utilisateur]
 
     def supprimerUtilisateur(self, id_utilisateur):
-        for x in self.utilisateurs:
-            if x.id_utilisateur == id_utilisateur:
-                self.utilisateurs.remove(x)
+        del self.utilisateurs[id_utilisateur]
  
+
+
