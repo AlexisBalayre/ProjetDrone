@@ -1,4 +1,6 @@
 from Utilisateurs import *
+import json
+
 
 # Créations objets Balise 1 et Balise 2
 balise1 = Balise(0, 48.78074845187753, 1.7698891842542932, 5, 10, 0, 0)
@@ -16,45 +18,23 @@ utilisateur2 = Utilisateur(0, 'Tom', 'Dupont', 'Tom.dupont@gmail.com', 9.7807484
 utilisateurs = Utilisateurs()
 
 # Ajout des utilisateurs 1 et 2 aux utilisateurs
-utilisateurs.ajouterUtilisateur(utilisateur1)
-utilisateurs.ajouterUtilisateur(utilisateur2)
+utilisateurs.ajouterUtilisateur(utilisateur1.__dict__)
+utilisateurs.ajouterUtilisateur(utilisateur2.__dict__)
 
 # Ajout des balises aux missions 
-mission1.ajouterBalise(balise1)
-mission2.ajouterBalise(balise1)
-mission2.ajouterBalise(balise2)
+mission1.ajouterBalise(balise1.__dict__)
+mission2.ajouterBalise(balise1.__dict__)
+mission2.ajouterBalise(balise2.__dict__)
 
 # Ajout des missions aux utilisateurs 
-utilisateur1.ajouterMission(mission1)
-utilisateur1.ajouterMission(mission2)
-utilisateur2.ajouterMission(mission2)
+utilisateur1.ajouterMission(mission1.__dict__)
+utilisateur1.ajouterMission(mission2.__dict__)
+utilisateur2.ajouterMission(mission2.__dict__)
 
-print(utilisateurs.__dict__)
-
-# Test 1 utilisateur Id 0
-utilisateur = utilisateurs.getUtilisateur(0)
-
-print(utilisateur.nom)
-utilisateur.setNom('Douchet') # Modification du nom de utilisateur Id 0
-print(utilisateur.nom)
-
-mission = utilisateur.getMission(1) # Id 1
-print(mission.jour)
-mission.setJour('15/12/2020') # Modification du jour d'exécution
-print(mission.jour)
-exec = mission.execution() # Exécution de la mission
-print(exec) 
-avancee1 = AvanceeMission(8.78074845187753, 1.7698891842542932, 10, 15, 100) # Objet Avancée 1 
-avance1 = utilisateur.afficherInformationsMission(avancee1) 
-print(avance1.getLatitude())  # Afficher Latitude du drone
-
-balise = mission.getBalise(0) # Id 0 
-print(balise.vitesse)
-balise.setVitesse(13) # Modification de la vitesse 
-print(balise.vitesse)
+# Sauvegarde 
+utilisateurs_json = json.dumps(utilisateurs.__dict__, indent=4) # convert into JSON
+f = open("../Data/Utilisateurs.json", "w")
+f.write(utilisateurs_json)
+f.close()
 
 
-# Test 2
-print(utilisateurs.__dict__)
-utilisateur = utilisateurs.supprimerUtilisateur(0) # Supprimer Utilisateur Id 0
-print(utilisateurs.__dict__)
