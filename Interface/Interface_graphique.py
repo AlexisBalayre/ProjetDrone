@@ -10,7 +10,6 @@ class Interface(tk.Tk):
         self.Etape1_Vols() #appel la première fenetre à s'afficher
 
     def Menu(self): #Methode de la barre de menu
-
         self.label_frame1 = LabelFrame(self, text="menu", width=200, height=110)  # label_frame pour encadrer les bouton menu en haut à gauche
         self.label_frame1.place(relx=0.01, rely=0.02)
 
@@ -46,7 +45,6 @@ class Interface(tk.Tk):
 
 
     def bouttonvol(self): #Methode présente pour supprimer les widgets de Etape2_parametre  et afficher ceux de Etape1_Vols
-
         self.param_label_frame.destroy()
 
         self.mission_listeutilisateur.destroy()
@@ -57,7 +55,6 @@ class Interface(tk.Tk):
         self.Etape1_Vols()
 
     def bouttonmission(self):
-
         self.param_label_frame.destroy()
 
         self.vols_text_label.destroy()
@@ -66,7 +63,6 @@ class Interface(tk.Tk):
         self.Etape3_Mission()
 
     def Etape1_Vols(self): #Methode comprenant les widgets de la première fenetre
-
         self.vols_text_label = Label(self, text="Pas de mission en cours", fg="black", font=("Arial_black", 16), bg="#dbdadb", relief=SUNKEN, width = 55, height = 2) #Label "pas de mission en cours"
         self.vols_text_label.place(relx= 0.3, rely=0.02)
 
@@ -75,7 +71,6 @@ class Interface(tk.Tk):
 
 
     def bouttonparam(self): #Methode présente pour supprimer les widgets de Etape1_Vols et afficher ceux de Etape2_parametre
-
         self.vols_text_label.destroy()
         self.vols_label_frame2.destroy()
 
@@ -83,7 +78,6 @@ class Interface(tk.Tk):
 
 
     def Etape2_parametre(self): #Methode comprenant les widgets de l'étape 2 du doc spe fonctionelles
-
         self.param_label_frame = LabelFrame(self, text = "Réglages", font=("Arial_black", 12), width = 1070, height=800, borderwidth=3)
         self.param_label_frame.place(relx= 0.2, rely= 0.1)
 
@@ -97,7 +91,6 @@ class Interface(tk.Tk):
         self.param_label_frame3.place(relx= 0.3, rely= 0.55)
 
     def BouttonAjouterUtilisateur(self): #Methode présente pour supprimer les widgets de Etape2_parametre et afficher ceux de ParamAjouterUtilisateur
-
         self.param_label_frame.destroy()
         self.param_label_frame2.destroy()
         self.param_boutton_utilisateur.destroy()
@@ -106,13 +99,11 @@ class Interface(tk.Tk):
         self.ParamAjouterUtilisateur()
 
     def BouttonEnregistrerInfo(self):
-
         self.pau_label_frame.destroy()
 
         self.Etape2_parametre()
 
     def ParamAjouterUtilisateur(self): # Mehtode comprenant les widgets de l'etape 2 du doc spe fonctionnelles si la personne clique sur "Ajouter un utilisateur"
-
         self.pau_label_frame = LabelFrame(self, text = "Utilisateur n°", font=("Arial_black", 12), width = 1070, height=800, borderwidth=3)
         self.pau_label_frame.place(relx=0.2, rely=0.1)
 
