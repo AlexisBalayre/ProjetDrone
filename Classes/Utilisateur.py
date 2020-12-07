@@ -1,5 +1,5 @@
-from Mission import *
-from AvanceeMission import *
+from Classes.Mission import *
+from Classes.AvanceeMission import *
 
 
 class Utilisateur(object):
