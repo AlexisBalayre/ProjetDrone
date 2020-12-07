@@ -1,4 +1,4 @@
-from Balise import *
+from Classes.Balise import *
 
 
 class Mission(object):

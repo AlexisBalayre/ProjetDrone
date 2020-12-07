@@ -1,5 +1,5 @@
-from Utilisateurs import *
 import json
+from Classes.Utilisateurs import *
 
 
 # Créations objets Balise 1 et Balise 2
@@ -33,8 +33,9 @@ utilisateur2.ajouterMission(mission2.__dict__)
 
 # Sauvegarde 
 utilisateurs_json = json.dumps(utilisateurs.__dict__, indent=4) # convert into JSON
-f = open("../Data/Utilisateurs.json", "w")
+f = open("Data/Utilisateurs.json", "w")
 f.write(utilisateurs_json)
 f.close()
+
 
 

@@ -1,4 +1,4 @@
-from Utilisateur import *
+from Classes.Utilisateur import *
 
 
 class Utilisateurs(object):
