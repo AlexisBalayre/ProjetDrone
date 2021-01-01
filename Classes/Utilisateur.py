@@ -22,9 +22,9 @@ class Utilisateur(object):
         self.missions = {}
 
     def ajouterMission(self, mission):
-        self.missions[mission["id_mission"]] = mission
+        self.missions[mission.__dict__["id_mission"]] = mission
 
-    def getMission(self, id_mission):
+    def getMission(self, id_mission): 
         return self.missions[id_mission]
 
     def supprimerMission(self, id_mission):

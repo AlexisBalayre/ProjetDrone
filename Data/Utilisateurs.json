@@ -1,71 +1,8 @@
 {
     "utilisateurs": {
-        "1": {
-            "id_utilisateur": 1,
-            "prenom": "Alexis",
-            "nom": "Balayre",
-            "email": "Alexis.balayre@gmail.com",
-            "vitesse": 10,
-            "latitude_base": 8.78074845187753,
-            "longitude_base": 1.7698891842542932,
-            "mode_camera": 0,
-            "suivie_mail": 0,
-            "mail_coord": 0,
-            "mail_alt": 0,
-            "mail_vitesse": 0,
-            "mail_batterie": 0,
-            "mail_photo": 0,
-            "missions": {
-                "0": {
-                    "id_mission": 0,
-                    "planification": 1,
-                    "mode_photo": 1,
-                    "jour": "11/10/2020",
-                    "heure": "15h 31min 00sec",
-                    "balises": {
-                        "0": {
-                            "id_balise": 0,
-                            "latitude": 48.78074845187753,
-                            "longitude": 1.7698891842542932,
-                            "altitude": 5,
-                            "vitesse": 10,
-                            "pause": 0,
-                            "photo": 0
-                        }
-                    }
-                },
-                "1": {
-                    "id_mission": 1,
-                    "planification": 1,
-                    "mode_photo": 1,
-                    "jour": "13/10/2020",
-                    "heure": "16h 31min 00sec",
-                    "balises": {
-                        "0": {
-                            "id_balise": 0,
-                            "latitude": 48.78074845187753,
-                            "longitude": 1.7698891842542932,
-                            "altitude": 5,
-                            "vitesse": 10,
-                            "pause": 0,
-                            "photo": 0
-                        },
-                        "1": {
-                            "id_balise": 1,
-                            "latitude": 49.78074845187753,
-                            "longitude": 1.8698891842542933,
-                            "altitude": 8,
-                            "vitesse": 15,
-                            "pause": 3,
-                            "photo": 1
-                        }
-                    }
-                }
-            }
-        },
         "0": {
             "id_utilisateur": 0,
-            "prenom": "Tom",
+            "prenom": "Jules",
             "nom": "Dupont",
             "email": "Tom.dupont@gmail.com",
             "vitesse": 16,
@@ -81,32 +18,75 @@
             "missions": {
                 "1": {
                     "id_mission": 1,
-                    "planification": 1,
-                    "mode_photo": 1,
-                    "jour": "13/10/2020",
+                    "planification": 0,
+                    "mode_photo": 0,
+                    "jour": "15/04/2021",
                     "heure": "16h 31min 00sec",
                     "balises": {
                         "0": {
                             "id_balise": 0,
-                            "latitude": 48.78074845187753,
-                            "longitude": 1.7698891842542932,
-                            "altitude": 5,
-                            "vitesse": 10,
-                            "pause": 0,
-                            "photo": 0
-                        },
-                        "1": {
-                            "id_balise": 1,
-                            "latitude": 49.78074845187753,
+                            "latitude": 50.78074845187753,
                             "longitude": 1.8698891842542933,
                             "altitude": 8,
                             "vitesse": 15,
                             "pause": 3,
                             "photo": 1
+                        },
+                        "2": {
+                            "id_balise": 2,
+                            "latitude": 58.78074845187753,
+                            "longitude": 2.8698891842542933,
+                            "altitude": 20,
+                            "vitesse": 30,
+                            "pause": 4,
+                            "photo": 0
                         }
                     }
                 }
             }
+        },
+        "1": {
+            "id_utilisateur": 1,
+            "prenom": "Alexis",
+            "nom": "Dupont",
+            "email": "Tom.dupont@gmail.com",
+            "vitesse": 16,
+            "latitude_base": 9.78074845187753,
+            "longitude_base": 0.7698891842542932,
+            "mode_camera": 0,
+            "suivie_mail": 1,
+            "mail_coord": 1,
+            "mail_alt": 1,
+            "mail_vitesse": 0,
+            "mail_batterie": 0,
+            "mail_photo": 0,
+            "missions": {
+                "0": {
+                    "id_mission": 0,
+                    "planification": 1,
+                    "mode_photo": 1,
+                    "jour": "11/10/2020",
+                    "heure": "15h 31min 00sec",
+                    "balises": {}
+                }
+            }
+        },
+        "3": {
+            "id_utilisateur": 3,
+            "prenom": "tom",
+            "nom": "Dupont",
+            "email": "Tom.dupont@gmail.com",
+            "vitesse": 16,
+            "latitude_base": 9.78074845187753,
+            "longitude_base": 0.7698891842542932,
+            "mode_camera": 0,
+            "suivie_mail": 1,
+            "mail_coord": 1,
+            "mail_alt": 1,
+            "mail_vitesse": 1,
+            "mail_batterie": 1,
+            "mail_photo": 1,
+            "missions": {}
         }
     }
 }

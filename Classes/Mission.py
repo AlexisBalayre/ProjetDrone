@@ -11,7 +11,7 @@ class Mission(object):
         self.balises = {}
 
     def ajouterBalise(self, balise):
-        self.balises[balise["id_balise"]] = balise
+        self.balises[balise.__dict__["id_balise"]] = balise
 
     def getBalise(self, id_balise):
         return self.balises[id_balise]
