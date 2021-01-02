@@ -1,6 +1,6 @@
 import asyncio
 import os
-import time 
+import time
 
 from mavsdk import System
 from mavsdk.mission import MissionItem, MissionPlan
@@ -38,19 +38,19 @@ async def run(balises):
         else:
             mode = MissionItem.CameraAction.TAKE_PHOTO
         mission_items.append(
-        MissionItem(
-            balise.__dict__['latitude'],
-            balise.__dict__['longitude'],
-            balise.__dict__['altitude'],
-            balise.__dict__['vitesse'],
-            True,
-            float("nan"),
-            float("nan"),
-            mode,
-            balise.__dict__['pause'],
-            float("nan")
+            MissionItem(
+                balise.__dict__["latitude"],
+                balise.__dict__["longitude"],
+                balise.__dict__["altitude"],
+                balise.__dict__["vitesse"],
+                True,
+                float("nan"),
+                float("nan"),
+                mode,
+                balise.__dict__["pause"],
+                float("nan"),
+            )
         )
-    )
     mission_plan = MissionPlan(mission_items)
 
     # Réglage fin de mission
@@ -102,7 +102,7 @@ async def print_vitesse(drone):
         print("Vitesse : ", vitesse.airspeed_m_s)
 
 
-# Fonction arrêt de la mission 
+# Fonction arrêt de la mission
 async def observe_is_in_air(drone, running_tasks):
     """ Monitors whether the drone is flying or not and
     returns after landing """
@@ -125,13 +125,12 @@ async def observe_is_in_air(drone, running_tasks):
             return
 
 
-def ExecutionDrone(balises):  
+def ExecutionDrone(balises):
     # Lancement de l'interface graphique JVAMSim
-    os.system("chmod +x Simulateur/JMAVSim.sh\nopen Simulateur/JMAVSim.sh") # Exécution du shell JMAVSim.sh
-    time.sleep(50) # Attente de l'ouverture de l'interface
+    os.system(
+        "chmod +x Simulateur/JMAVSim.sh\nopen Simulateur/JMAVSim.sh"
+    )  # Exécution du shell JMAVSim.sh
+    time.sleep(50)  # Attente de l'ouverture de l'interface
     # Lancement de la mission
     loop = asyncio.get_event_loop()
-    loop.run_until_complete(run(balises)) # Lancement du thread
-
-
-
+    loop.run_until_complete(run(balises))  # Lancement du thread

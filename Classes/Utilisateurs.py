@@ -4,7 +4,7 @@ from Classes.Utilisateur import *
 class Utilisateurs(object):
     def __init__(self):
         self.utilisateurs = {}
-        
+
     def ajouterUtilisateur(self, utilisateur):
         self.utilisateurs[utilisateur.__dict__["id_utilisateur"]] = utilisateur
 
@@ -13,6 +13,3 @@ class Utilisateurs(object):
 
     def supprimerUtilisateur(self, id_utilisateur):
         del self.utilisateurs[id_utilisateur]
- 
-
-

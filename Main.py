@@ -2,7 +2,6 @@ import json
 from Classes.Utilisateurs import *
 
 
-
 # Sauvegarde des modifications
 def Sauvegarde():
     utilisateurs_json = json.dumps(
@@ -239,18 +238,27 @@ def SuppressionBalise(id_utilisateur, id_mission, id_balise):
     Sauvegarde()
 
 
-# Exécution d'une mission 
+# Exécution d'une mission
 def ExecutionMission(id_utilisateur, id_mission):
     utilisateur = utilisateurs.getUtilisateur(id_utilisateur)
     mission = utilisateur.getMission(id_mission)
     mission.execution()
 
 
-# Coordonnnnées de la Base 
+# Coordonnnnées de la Base
 def CoordonneesBase(id_utilisateur):
     utilisateur = utilisateurs.getUtilisateur(id_utilisateur)
+    path = "/Users/alexisbalayre/Desktop/Projet_Drone/ProjetDrone/Simulateur/PX4-Autopilot"  # A modifier selon la configuration
     f = open("Simulateur/JMAVSim.sh", "w")
-    f. write("#!/bin/bash\ncd Simulateur/PX4-Autopilot\nexport PX4_HOME_LAT=%s\nexport PX4_HOME_LON=%s\nmake px4_sitl_default jmavsim" % (utilisateur.__dict__['latitude_base'], utilisateur.__dict__['longitude_base']))
+    # Modification du script Shell JMAVSim.sh
+    f.write(
+        "#!/bin/bash\ncd %s\nexport PX4_HOME_LAT=%s\nexport PX4_HOME_LON=%s\nmake px4_sitl_default jmavsim"
+        % (
+            path,
+            utilisateur.__dict__["latitude_base"],
+            utilisateur.__dict__["longitude_base"],
+        )
+    )
     f.close
 
 
@@ -266,8 +274,6 @@ def CoordonneesBase(id_utilisateur):
 # SuppressionMission(0, 0)
 # SuppressionBalise(0, 1, 1)
 
-ExecutionMission(0, 1)
+# ExecutionMission(0, 1)
 
 #CoordonneesBase(0)
-
-

@@ -18,25 +18,25 @@ class Mission(object):
         return self.balises[id_balise]
 
     def supprimerBalise(self, id_balise):
-         del self.balises[id_balise]
+        del self.balises[id_balise]
 
     def afficheDuree(self):
-        return("Durée : ")
+        return "Durée : "
 
     def afficheNombreBalises(self):
-        return("Nombre balises : %s" % len(self.balises))
+        return "Nombre balises : %s" % len(self.balises)
 
     def afficheModePhoto(self):
         if self.mode_photo == 0:
-            return("Mode Photo : Désactivé")
+            return "Mode Photo : Désactivé"
         else:
-            return("Mode Photo : Activé")
+            return "Mode Photo : Activé"
 
     def affichePlanification(self):
         if self.planification == 0:
-            return("Mission Planifiée : NON")
+            return "Mission Planifiée : NON"
         else:
-            return("Mission Planifiée : OUI")
+            return "Mission Planifiée : OUI"
 
     def setJour(self, jour):
         self.jour = jour

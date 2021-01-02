@@ -1,5 +1,7 @@
 class Balise(object):
-    def __init__(self, id_balise, latitude, longitude, altitude=0, vitesse=0, pause=0, photo=0):
+    def __init__(
+        self, id_balise, latitude, longitude, altitude=0, vitesse=0, pause=0, photo=0
+    ):
         self.id_balise = id_balise
         self.latitude = latitude
         self.longitude = longitude
