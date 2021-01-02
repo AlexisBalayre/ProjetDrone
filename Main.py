@@ -246,6 +246,14 @@ def ExecutionMission(id_utilisateur, id_mission):
     mission.execution()
 
 
+# Coordonnnnées de la Base 
+def CoordonneesBase(id_utilisateur):
+    utilisateur = utilisateurs.getUtilisateur(id_utilisateur)
+    f = open("Simulateur/JMAVSim.sh", "w")
+    f. write("#!/bin/bash\ncd /Users/alexisbalayre/PX4-Autopilot\nexport PX4_HOME_LAT=48.824785\nexport PX4_HOME_LON=2.279653\nmake px4_sitl_default jmavsim")
+
+
+
 # CreationUtilisateur('tom', 'Dupont', 'Tom.dupont@gmail.com', 9.78074845187753, 0.7698891842542932, 16, 0, 1, 1, 1, 1, 1, 1)
 # CreationMission(0, '13/10/2020', '15h 31min 00sec', 1, 1)
 # CreationBalise(0, 1, 53.78074845187753, 1.8698891842542932, 8, 15, 3, 1)
@@ -258,4 +266,4 @@ def ExecutionMission(id_utilisateur, id_mission):
 # SuppressionMission(0, 0)
 # SuppressionBalise(0, 1, 1)
 
-ExecutionMission(0, 1)
+#ExecutionMission(0, 1)

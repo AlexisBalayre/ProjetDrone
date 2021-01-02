@@ -28,7 +28,7 @@
                             "latitude": 48.82555,
                             "longitude": 2.278478,
                             "altitude": 25,
-                            "vitesse": 10,
+                            "vitesse": 20,
                             "pause": 0,
                             "photo": 0
                         },
@@ -37,7 +37,7 @@
                             "latitude": 48.825013,
                             "longitude": 2.278285,
                             "altitude": 25,
-                            "vitesse": 10,
+                            "vitesse": 20,
                             "pause": 0,
                             "photo": 0
                         },
@@ -46,7 +46,7 @@
                             "latitude": 48.824646,
                             "longitude": 2.278028,
                             "altitude": 25,
-                            "vitesse": 10,
+                            "vitesse": 20,
                             "pause": 0,
                             "photo": 0
                         },
@@ -55,7 +55,7 @@
                             "latitude": 48.824391,
                             "longitude": 2.279288,
                             "altitude": 25,
-                            "vitesse": 10,
+                            "vitesse": 20,
                             "pause": 0,
                             "photo": 0
                         },
@@ -64,7 +64,7 @@
                             "latitude": 48.824141,
                             "longitude": 2.280777,
                             "altitude": 25,
-                            "vitesse": 10,
+                            "vitesse": 20,
                             "pause": 0,
                             "photo": 0
                         },
@@ -73,7 +73,7 @@
                             "latitude": 48.824716,
                             "longitude": 2.280627,
                             "altitude": 25,
-                            "vitesse": 10,
+                            "vitesse": 20,
                             "pause": 0,
                             "photo": 0
                         },
@@ -82,7 +82,7 @@
                             "latitude": 48.825331,
                             "longitude": 2.27957,
                             "altitude": 25,
-                            "vitesse": 10,
+                            "vitesse": 20,
                             "pause": 0,
                             "photo": 0
                         }
