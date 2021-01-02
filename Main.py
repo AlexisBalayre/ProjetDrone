@@ -266,6 +266,8 @@ def CoordonneesBase(id_utilisateur):
 # SuppressionMission(0, 0)
 # SuppressionBalise(0, 1, 1)
 
-#ExecutionMission(0, 1)
+ExecutionMission(0, 1)
 
-CoordonneesBase(0)
+#CoordonneesBase(0)
+
+
