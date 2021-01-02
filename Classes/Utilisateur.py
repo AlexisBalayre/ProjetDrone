@@ -3,8 +3,23 @@ from Classes.AvanceeMission import *
 
 
 class Utilisateur(object):
-    def __init__(self, id_utilisateur, prenom, nom, email, latitude_base, longitude_base, vitesse=0, mode_camera=0,
-                 suivie_mail=0, mail_coord=0, mail_alt=0, mail_vitesse=0, mail_batterie=0, mail_photo=0):
+    def __init__(
+        self,
+        id_utilisateur,
+        prenom,
+        nom,
+        email,
+        latitude_base,
+        longitude_base,
+        vitesse=0,
+        mode_camera=0,
+        suivie_mail=0,
+        mail_coord=0,
+        mail_alt=0,
+        mail_vitesse=0,
+        mail_batterie=0,
+        mail_photo=0,
+    ):
         self.id_utilisateur = id_utilisateur
         self.prenom = prenom
         self.nom = nom
@@ -24,12 +39,12 @@ class Utilisateur(object):
     def ajouterMission(self, mission):
         self.missions[mission.__dict__["id_mission"]] = mission
 
-    def getMission(self, id_mission): 
+    def getMission(self, id_mission):
         return self.missions[id_mission]
 
     def supprimerMission(self, id_mission):
         del self.missions[id_mission]
-    
+
     def afficherInformationsMission(self, avanceeMission):
         return avanceeMission
 

@@ -238,6 +238,29 @@ def SuppressionBalise(id_utilisateur, id_mission, id_balise):
     Sauvegarde()
 
 
+# Exécution d'une mission
+def ExecutionMission(id_utilisateur, id_mission):
+    utilisateur = utilisateurs.getUtilisateur(id_utilisateur)
+    mission = utilisateur.getMission(id_mission)
+    mission.execution()
+
+
+# Coordonnnnées de la Base
+def CoordonneesBase(id_utilisateur):
+    utilisateur = utilisateurs.getUtilisateur(id_utilisateur)
+    path = "/Users/alexisbalayre/Desktop/Projet_Drone/ProjetDrone/Simulateur/Firmware"  # A modifier selon la configuration
+    f = open("Simulateur/JMAVSim.sh", "w")
+    # Modification du script Shell JMAVSim.sh
+    f.write(
+        "#!/bin/bash\ncd %s\nexport PX4_HOME_LAT=%s\nexport PX4_HOME_LON=%s\nmake px4_sitl_default jmavsim"
+        % (
+            path,
+            utilisateur.__dict__["latitude_base"],
+            utilisateur.__dict__["longitude_base"],
+        )
+    )
+    f.close
+
 # CreationUtilisateur('tom', 'Dupont', 'Tom.dupont@gmail.com', 9.78074845187753, 0.7698891842542932, 16, 0, 1, 1, 1, 1, 1, 1)
 # CreationMission(0, '13/10/2020', '15h 31min 00sec', 1, 1)
 # CreationBalise(0, 1, 53.78074845187753, 1.8698891842542932, 8, 15, 3, 1)
@@ -249,3 +272,7 @@ def SuppressionBalise(id_utilisateur, id_mission, id_balise):
 # SuppressionUtilisateur(2)
 # SuppressionMission(0, 0)
 # SuppressionBalise(0, 1, 1)
+
+ExecutionMission(0, 1)
+
+#CoordonneesBase(0)
