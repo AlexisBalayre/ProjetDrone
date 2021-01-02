@@ -149,10 +149,12 @@ async def observe_is_in_air(drone, running_tasks):
 
 def ExecutionDrone():  
     # Lancement de l'interface graphique JVAMSim
-    os.system("open Test.sh")
+    test = os.system("open Test.sh")
+    while True: 
+        print(test)
     # Lancement de la mission
-    loop = asyncio.get_event_loop()
-    loop.run_until_complete(run()) # Lancement du thread
+   # loop = asyncio.get_event_loop()
+    #loop.run_until_complete(run()) # Lancement du thread
 
 
 ExecutionDrone()
