@@ -2,6 +2,7 @@ import json
 from Classes.Utilisateurs import *
 
 
+
 # Sauvegarde des modifications
 def Sauvegarde():
     utilisateurs_json = json.dumps(
@@ -238,6 +239,13 @@ def SuppressionBalise(id_utilisateur, id_mission, id_balise):
     Sauvegarde()
 
 
+# Exécution d'une mission 
+def ExecutionMission(id_utilisateur, id_mission):
+    utilisateur = utilisateurs.getUtilisateur(id_utilisateur)
+    mission = utilisateur.getMission(id_mission)
+    mission.execution()
+
+
 # CreationUtilisateur('tom', 'Dupont', 'Tom.dupont@gmail.com', 9.78074845187753, 0.7698891842542932, 16, 0, 1, 1, 1, 1, 1, 1)
 # CreationMission(0, '13/10/2020', '15h 31min 00sec', 1, 1)
 # CreationBalise(0, 1, 53.78074845187753, 1.8698891842542932, 8, 15, 3, 1)
@@ -249,3 +257,5 @@ def SuppressionBalise(id_utilisateur, id_mission, id_balise):
 # SuppressionUtilisateur(2)
 # SuppressionMission(0, 0)
 # SuppressionBalise(0, 1, 1)
+
+ExecutionMission(0, 1)

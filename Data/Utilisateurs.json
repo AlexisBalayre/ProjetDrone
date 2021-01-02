@@ -25,20 +25,29 @@
                     "balises": {
                         "0": {
                             "id_balise": 0,
-                            "latitude": 50.78074845187753,
-                            "longitude": 1.8698891842542933,
-                            "altitude": 8,
+                            "latitude": 47.398036222362471,
+                            "longitude": 8.5450146439425509,
+                            "altitude": 25,
                             "vitesse": 15,
-                            "pause": 3,
-                            "photo": 1
+                            "pause": 0,
+                            "photo": 0
                         },
                         "2": {
                             "id_balise": 2,
-                            "latitude": 58.78074845187753,
-                            "longitude": 2.8698891842542933,
-                            "altitude": 20,
+                            "latitude": 47.398036222362800,
+                            "longitude": 8.5450146439430000,
+                            "altitude": 30,
+                            "vitesse": 25,
+                            "pause": 0,
+                            "photo": 0
+                        },
+                        "3": {
+                            "id_balise": 3,
+                            "latitude": 47.398036222363800,
+                            "longitude": 8.5450146439440000,
+                            "altitude": 35,
                             "vitesse": 30,
-                            "pause": 4,
+                            "pause": 0,
                             "photo": 0
                         }
                     }

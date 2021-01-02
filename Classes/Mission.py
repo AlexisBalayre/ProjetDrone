@@ -1,4 +1,5 @@
 from Classes.Balise import *
+from Simulateur.ExecutionDrone import *
 
 
 class Mission(object):
@@ -50,4 +51,4 @@ class Mission(object):
         self.mode_photo = mode_photo
 
     def execution(self):
-        return 0
+        ExecutionDrone(self.balises)

@@ -6,7 +6,7 @@ from mavsdk import System
 from mavsdk.mission import MissionItem, MissionPlan
 
 
-async def run():
+async def run(balises):
     # Connexion au drone
     drone = System()
     await drone.connect(system_address="udp://:14540")
@@ -31,45 +31,23 @@ async def run():
 
     # Caractéristiques Mission
     mission_items = []
-    mission_items.append(
+    for x in balises:
+        balise = balises[x]
+        if balise["photo"] == 0:
+            mode = MissionItem.CameraAction.NONE
+        else:
+            mode = MissionItem.CameraAction.TAKE_PHOTO
+        mission_items.append(
         MissionItem(
-            47.398039859999997,
-            8.5455725400000002,
-            25,
-            10,
+            balise['latitude'],
+            balise['longitude'],
+            balise['altitude'],
+            balise['vitesse'],
             True,
             float("nan"),
             float("nan"),
-            MissionItem.CameraAction.NONE,
-            float("nan"),
-            float("nan"),
-        )
-    )
-    mission_items.append(
-        MissionItem(
-            47.398036222362471,
-            8.5450146439425509,
-            25,
-            10,
-            True,
-            float("nan"),
-            float("nan"),
-            MissionItem.CameraAction.NONE,
-            float("nan"),
-            float("nan"),
-        )
-    )
-    mission_items.append(
-        MissionItem(
-            47.397825620791885,
-            8.5450092830163271,
-            25,
-            10,
-            True,
-            float("nan"),
-            float("nan"),
-            MissionItem.CameraAction.NONE,
-            float("nan"),
+            mode,
+            balise['pause']
             float("nan"),
         )
     )
@@ -147,14 +125,12 @@ async def observe_is_in_air(drone, running_tasks):
             return
 
 
-def ExecutionDrone():  
+def ExecutionDrone(balises):  
     # Lancement de l'interface graphique JVAMSim
-    test = os.system("open Test.sh")
-    while True: 
-        print(test)
+    os.system("chmod +x JMAVSim.sh\nopen JMAVSim.sh") # Exécution du shell JMAVSim.sh
+    time.sleep(30) # Attente de l'ouverture de l'interface
     # Lancement de la mission
-   # loop = asyncio.get_event_loop()
-    #loop.run_until_complete(run()) # Lancement du thread
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(run(balises)) # Lancement du thread
 
 
-ExecutionDrone()
