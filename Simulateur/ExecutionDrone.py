@@ -33,22 +33,22 @@ async def run(balises):
     mission_items = []
     for x in balises:
         balise = balises[x]
-        if balise["photo"] == 0:
+        if balise.__dict__["photo"] == 0:
             mode = MissionItem.CameraAction.NONE
         else:
             mode = MissionItem.CameraAction.TAKE_PHOTO
         mission_items.append(
         MissionItem(
-            balise['latitude'],
-            balise['longitude'],
-            balise['altitude'],
-            balise['vitesse'],
+            balise.__dict__['latitude'],
+            balise.__dict__['longitude'],
+            balise.__dict__['altitude'],
+            balise.__dict__['vitesse'],
             True,
             float("nan"),
             float("nan"),
             mode,
-            balise['pause']
-            float("nan"),
+            balise.__dict__['pause'],
+            float("nan")
         )
     )
     mission_plan = MissionPlan(mission_items)
@@ -127,10 +127,11 @@ async def observe_is_in_air(drone, running_tasks):
 
 def ExecutionDrone(balises):  
     # Lancement de l'interface graphique JVAMSim
-    os.system("chmod +x JMAVSim.sh\nopen JMAVSim.sh") # Exécution du shell JMAVSim.sh
-    time.sleep(30) # Attente de l'ouverture de l'interface
+    os.system("chmod +x Simulateur/JMAVSim.sh\nopen Simulateur/JMAVSim.sh") # Exécution du shell JMAVSim.sh
+    time.sleep(50) # Attente de l'ouverture de l'interface
     # Lancement de la mission
     loop = asyncio.get_event_loop()
     loop.run_until_complete(run(balises)) # Lancement du thread
+
 
 
