@@ -261,6 +261,8 @@ def CoordonneesBase(id_utilisateur):
     )
     f.close
 
+
+
 # CreationUtilisateur('tom', 'Dupont', 'Tom.dupont@gmail.com', 9.78074845187753, 0.7698891842542932, 16, 0, 1, 1, 1, 1, 1, 1)
 # CreationMission(0, '13/10/2020', '15h 31min 00sec', 1, 1)
 # CreationBalise(0, 1, 53.78074845187753, 1.8698891842542932, 8, 15, 3, 1)
@@ -273,6 +275,6 @@ def CoordonneesBase(id_utilisateur):
 # SuppressionMission(0, 0)
 # SuppressionBalise(0, 1, 1)
 
-ExecutionMission(0, 1)
+# ExecutionMission(0, 1)
 
-#CoordonneesBase(0)
+# CoordonneesBase(0)
