@@ -248,7 +248,7 @@ def ExecutionMission(id_utilisateur, id_mission):
 # Coordonnnnées de la Base
 def CoordonneesBase(id_utilisateur):
     utilisateur = utilisateurs.getUtilisateur(id_utilisateur)
-    path = "/Users/alexisbalayre/Desktop/Projet_Drone/ProjetDrone/Simulateur/PX4-Autopilot"  # A modifier selon la configuration
+    path = "/Users/alexisbalayre/Desktop/Projet_Drone/ProjetDrone/Simulateur/Firmware"  # A modifier selon la configuration
     f = open("Simulateur/JMAVSim.sh", "w")
     # Modification du script Shell JMAVSim.sh
     f.write(
@@ -260,7 +260,6 @@ def CoordonneesBase(id_utilisateur):
         )
     )
     f.close
-
 
 # CreationUtilisateur('tom', 'Dupont', 'Tom.dupont@gmail.com', 9.78074845187753, 0.7698891842542932, 16, 0, 1, 1, 1, 1, 1, 1)
 # CreationMission(0, '13/10/2020', '15h 31min 00sec', 1, 1)
@@ -274,6 +273,6 @@ def CoordonneesBase(id_utilisateur):
 # SuppressionMission(0, 0)
 # SuppressionBalise(0, 1, 1)
 
-# ExecutionMission(0, 1)
+ExecutionMission(0, 1)
 
 #CoordonneesBase(0)
