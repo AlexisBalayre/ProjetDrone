@@ -1,11 +1,13 @@
 import asyncio
+import os
+import time 
 
 from mavsdk import System
-from mavsdk.mission import (MissionItem, MissionPlan)
+from mavsdk.mission import MissionItem, MissionPlan
 
 
 async def run():
-    # Connexion au drone 
+    # Connexion au drone
     drone = System()
     await drone.connect(system_address="udp://:14540")
     print("Waiting for drone to connect...")
@@ -14,56 +16,73 @@ async def run():
             print(f"Drone discovered with UUID: {state.uuid}")
             break
 
-    # Suivie de vol 
+    # Suivie de vol
     print_mission_progress_task = asyncio.ensure_future(print_mission_progress(drone))
     print_battery_task = asyncio.ensure_future(print_battery(drone))
     print_position_task = asyncio.ensure_future(print_position(drone))
     print_vitesse_task = asyncio.ensure_future(print_vitesse(drone))
-    running_tasks = [print_mission_progress_task, print_battery_task, print_position_task, print_vitesse_task]
+    running_tasks = [
+        print_mission_progress_task,
+        print_battery_task,
+        print_position_task,
+        print_vitesse_task,
+    ]
     termination_task = asyncio.ensure_future(observe_is_in_air(drone, running_tasks))
 
-    # Caractéristiques Mission 
+    # Caractéristiques Mission
     mission_items = []
-    mission_items.append(MissionItem(47.398039859999997,
-                                     8.5455725400000002,
-                                     25,
-                                     10,
-                                     True,
-                                     float('nan'),
-                                     float('nan'),
-                                     MissionItem.CameraAction.NONE,
-                                     float('nan'),
-                                     float('nan')))
-    mission_items.append(MissionItem(47.398036222362471,
-                                     8.5450146439425509,
-                                     25,
-                                     10,
-                                     True,
-                                     float('nan'),
-                                     float('nan'),
-                                     MissionItem.CameraAction.NONE,
-                                     float('nan'),
-                                     float('nan')))
-    mission_items.append(MissionItem(47.397825620791885,
-                                     8.5450092830163271,
-                                     25,
-                                     10,
-                                     True,
-                                     float('nan'),
-                                     float('nan'),
-                                     MissionItem.CameraAction.NONE,
-                                     float('nan'),
-                                     float('nan')))
+    mission_items.append(
+        MissionItem(
+            47.398039859999997,
+            8.5455725400000002,
+            25,
+            10,
+            True,
+            float("nan"),
+            float("nan"),
+            MissionItem.CameraAction.NONE,
+            float("nan"),
+            float("nan"),
+        )
+    )
+    mission_items.append(
+        MissionItem(
+            47.398036222362471,
+            8.5450146439425509,
+            25,
+            10,
+            True,
+            float("nan"),
+            float("nan"),
+            MissionItem.CameraAction.NONE,
+            float("nan"),
+            float("nan"),
+        )
+    )
+    mission_items.append(
+        MissionItem(
+            47.397825620791885,
+            8.5450092830163271,
+            25,
+            10,
+            True,
+            float("nan"),
+            float("nan"),
+            MissionItem.CameraAction.NONE,
+            float("nan"),
+            float("nan"),
+        )
+    )
     mission_plan = MissionPlan(mission_items)
 
-    # Réglage fin de mission 
+    # Réglage fin de mission
     await drone.mission.set_return_to_launch_after_mission(True)
 
     # Chargement de la mission dans le plan de vol
     print("-- Uploading mission")
     await drone.mission.upload_mission(mission_plan)
 
-    # Armement des moteurs 
+    # Armement des moteurs
     print("-- Arming")
     await drone.action.arm()
 
@@ -71,16 +90,18 @@ async def run():
     print("-- Starting mission")
     await drone.mission.start_mission()
 
-    # Fin de mission - Atterissage 
+    # Fin de mission - Atterissage
     await termination_task
 
 
-# Avancée Mission 
+# Avancée Mission
 async def print_mission_progress(drone):
     async for mission_progress in drone.mission.mission_progress():
-        print(f"Mission progress: "
-              f"{mission_progress.current}/"
-              f"{mission_progress.total}")
+        print(
+            f"Mission progress: "
+            f"{mission_progress.current}/"
+            f"{mission_progress.total}"
+        )
 
 
 # Charge Batterie
@@ -89,7 +110,7 @@ async def print_battery(drone):
         print(f"Batterie : {battery.remaining_percent}")
 
 
-# Coordonnées GPS et Altitude 
+# Coordonnées GPS et Altitude
 async def print_position(drone):
     async for position in drone.telemetry.position():
         print("Latitude : ", position.latitude_deg)
@@ -97,12 +118,13 @@ async def print_position(drone):
         print("Altitude : ", position.relative_altitude_m)
 
 
-# Vitesse 
+# Vitesse
 async def print_vitesse(drone):
-    async for vitesse in drone.telemetry.fixedwing_metrics() :
+    async for vitesse in drone.telemetry.fixedwing_metrics():
         print("Vitesse : ", vitesse.airspeed_m_s)
 
 
+# Fonction arrêt de la mission 
 async def observe_is_in_air(drone, running_tasks):
     """ Monitors whether the drone is flying or not and
     returns after landing """
@@ -125,6 +147,12 @@ async def observe_is_in_air(drone, running_tasks):
             return
 
 
-if __name__ == "__main__":
+def ExecutionDrone():  
+    # Lancement de l'interface graphique JVAMSim
+    os.system("open Test.sh")
+    # Lancement de la mission
     loop = asyncio.get_event_loop()
-    loop.run_until_complete(run())
+    loop.run_until_complete(run()) # Lancement du thread
+
+
+ExecutionDrone()
