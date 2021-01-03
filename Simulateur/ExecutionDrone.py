@@ -7,7 +7,8 @@ from mavsdk.mission import MissionItem, MissionPlan
 from Classes.AvanceeMission import *
 
 
-avancee = AvanceeMission(0, 0, 0, 0, 0) # Création de l'instance avancee
+avancee = AvanceeMission(0, 0, 0, 0, 0)  # Création de l'instance avancee
+
 
 async def run(balises):
     # Connexion au drone
@@ -78,7 +79,7 @@ async def run(balises):
 # Etapes Mission
 async def return_mission_progress(drone):
     async for mission_progress in drone.mission.mission_progress():
-        return(
+        return (
             f"Mission progress: "
             f"{mission_progress.current}/"
             f"{mission_progress.total}"
@@ -88,20 +89,21 @@ async def return_mission_progress(drone):
 # Charge Batterie
 async def return_battery(drone):
     async for battery in drone.telemetry.battery():
-        avancee.setBatterie(battery.remaining_percent) # Batterie
+        avancee.setBatterie(battery.remaining_percent)  # Batterie
 
 
 # Coordonnées GPS et Altitude
 async def return_position(drone):
     async for position in drone.telemetry.position():
-        avancee.setLatitude(position.latitude_deg) # Latitude 
-        avancee.setLongitude(position.longitude_deg) # Longitude
-        avancee.setAltitude(position.relative_altitude_m) # Altitude
+        avancee.setLatitude(position.latitude_deg)  # Latitude
+        avancee.setLongitude(position.longitude_deg)  # Longitude
+        avancee.setAltitude(position.relative_altitude_m)  # Altitude
+
 
 # Vitesse
 async def return_vitesse(drone):
     async for vitesse in drone.telemetry.fixedwing_metrics():
-        avancee.setVitesse(vitesse.airspeed_m_s) # Vitesse
+        avancee.setVitesse(vitesse.airspeed_m_s)  # Vitesse
 
 
 # Fonction arrêt de la mission

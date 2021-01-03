@@ -274,12 +274,16 @@ def NombreBalises(id_utilisateur, id_mission):
 def DureeMission(id_utilisateur, id_mission):
     utilisateur = utilisateurs.getUtilisateur(id_utilisateur)
     mission = utilisateur.getMission(id_mission)
-    home = [utilisateur.__dict__['latitude_base'], utilisateur.__dict__['longitude_base'], utilisateur.__dict__['vitesse']]
+    home = [
+        utilisateur.__dict__["latitude_base"],
+        utilisateur.__dict__["longitude_base"],
+        utilisateur.__dict__["vitesse"],
+    ]
     duree = mission.afficheDuree(home)
     return duree
 
 
-# Retourne avancée d'une mission 
+# Retourne avancée d'une mission
 def ReturnAvanceeMission(avanceemission):
     latitude = avanceemission.getLatitude()
     longitude = avanceemission.getLongitude()
@@ -288,7 +292,6 @@ def ReturnAvanceeMission(avanceemission):
     batterie = avanceemission.getBatterie()
     avancee = [latitude, longitude, altitude, vitesse, batterie]
     return avancee
-
 
 
 # CreationUtilisateur('tom', 'Dupont', 'Tom.dupont@gmail.com', 9.78074845187753, 0.7698891842542932, 16, 0, 1, 1, 1, 1, 1, 1)
