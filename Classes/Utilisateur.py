@@ -45,9 +45,6 @@ class Utilisateur(object):
     def supprimerMission(self, id_mission):
         del self.missions[id_mission]
 
-    def afficherInformationsMission(self, avanceeMission):
-        return avanceeMission
-
     def setNom(self, nom):
         self.nom = nom
 

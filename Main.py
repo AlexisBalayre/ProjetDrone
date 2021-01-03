@@ -261,6 +261,39 @@ def CoordonneesBase(id_utilisateur):
     )
     f.close
 
+
+# Retourne nombre balises d'une mission
+def NombreBalises(id_utilisateur, id_mission):
+    utilisateur = utilisateurs.getUtilisateur(id_utilisateur)
+    mission = utilisateur.getMission(id_mission)
+    nombre_balises = mission.afficheNombreBalises()
+    return nombre_balises
+
+
+# Retourne durée d'une mission
+def DureeMission(id_utilisateur, id_mission):
+    utilisateur = utilisateurs.getUtilisateur(id_utilisateur)
+    mission = utilisateur.getMission(id_mission)
+    home = [
+        utilisateur.__dict__["latitude_base"],
+        utilisateur.__dict__["longitude_base"],
+        utilisateur.__dict__["vitesse"],
+    ]
+    duree = mission.afficheDuree(home)
+    return duree
+
+
+# Retourne avancée d'une mission
+def ReturnAvanceeMission(avanceemission):
+    latitude = avanceemission.getLatitude()
+    longitude = avanceemission.getLongitude()
+    altitude = avanceemission.getAltitude()
+    vitesse = avanceemission.getVitesse()
+    batterie = avanceemission.getBatterie()
+    avancee = [latitude, longitude, altitude, vitesse, batterie]
+    return avancee
+
+
 # CreationUtilisateur('tom', 'Dupont', 'Tom.dupont@gmail.com', 9.78074845187753, 0.7698891842542932, 16, 0, 1, 1, 1, 1, 1, 1)
 # CreationMission(0, '13/10/2020', '15h 31min 00sec', 1, 1)
 # CreationBalise(0, 1, 53.78074845187753, 1.8698891842542932, 8, 15, 3, 1)
@@ -273,6 +306,7 @@ def CoordonneesBase(id_utilisateur):
 # SuppressionMission(0, 0)
 # SuppressionBalise(0, 1, 1)
 
-ExecutionMission(0, 1)
-
-#CoordonneesBase(0)
+# ExecutionMission(0, 1)
+# CoordonneesBase(0)
+# NombreBalises(0, 1)
+# DureeMission(0, 1)
