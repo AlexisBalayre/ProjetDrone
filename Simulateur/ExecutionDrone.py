@@ -4,7 +4,10 @@ import time
 
 from mavsdk import System
 from mavsdk.mission import MissionItem, MissionPlan
+from Classes.AvanceeMission import *
 
+
+avancee = AvanceeMission(0, 0, 0, 0, 0) # Création de l'instance avancee
 
 async def run(balises):
     # Connexion au drone
@@ -17,15 +20,15 @@ async def run(balises):
             break
 
     # Suivie de vol
-    print_mission_progress_task = asyncio.ensure_future(print_mission_progress(drone))
-    print_battery_task = asyncio.ensure_future(print_battery(drone))
-    print_position_task = asyncio.ensure_future(print_position(drone))
-    print_vitesse_task = asyncio.ensure_future(print_vitesse(drone))
+    return_mission_progress_task = asyncio.create_task(return_mission_progress(drone))
+    return_vitesse_task = asyncio.create_task(return_vitesse(drone))
+    return_battery_task = asyncio.create_task(return_battery(drone))
+    return_position_task = asyncio.create_task(return_position(drone))
     running_tasks = [
-        print_mission_progress_task,
-        print_battery_task,
-        print_position_task,
-        print_vitesse_task,
+        return_mission_progress_task,
+        return_vitesse_task,
+        return_battery_task,
+        return_position_task,
     ]
     termination_task = asyncio.ensure_future(observe_is_in_air(drone, running_tasks))
 
@@ -72,10 +75,10 @@ async def run(balises):
     await termination_task
 
 
-# Avancée Mission
-async def print_mission_progress(drone):
+# Etapes Mission
+async def return_mission_progress(drone):
     async for mission_progress in drone.mission.mission_progress():
-        print(
+        return(
             f"Mission progress: "
             f"{mission_progress.current}/"
             f"{mission_progress.total}"
@@ -83,23 +86,22 @@ async def print_mission_progress(drone):
 
 
 # Charge Batterie
-async def print_battery(drone):
+async def return_battery(drone):
     async for battery in drone.telemetry.battery():
-        print(f"Batterie : {battery.remaining_percent}")
+        avancee.setBatterie(battery.remaining_percent) # Batterie
 
 
 # Coordonnées GPS et Altitude
-async def print_position(drone):
+async def return_position(drone):
     async for position in drone.telemetry.position():
-        print("Latitude : ", position.latitude_deg)
-        print("Longitude : ", position.longitude_deg)
-        print("Altitude : ", position.relative_altitude_m)
-
+        avancee.setLatitude(position.latitude_deg) # Latitude 
+        avancee.setLongitude(position.longitude_deg) # Longitude
+        avancee.setAltitude(position.relative_altitude_m) # Altitude
 
 # Vitesse
-async def print_vitesse(drone):
+async def return_vitesse(drone):
     async for vitesse in drone.telemetry.fixedwing_metrics():
-        print("Vitesse : ", vitesse.airspeed_m_s)
+        avancee.setVitesse(vitesse.airspeed_m_s) # Vitesse
 
 
 # Fonction arrêt de la mission
@@ -112,6 +114,7 @@ async def observe_is_in_air(drone, running_tasks):
     async for is_in_air in drone.telemetry.in_air():
         if is_in_air:
             was_in_air = is_in_air
+            return avancee
 
         if was_in_air and not is_in_air:
             for task in running_tasks:

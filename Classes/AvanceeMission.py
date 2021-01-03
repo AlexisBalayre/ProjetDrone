@@ -5,6 +5,21 @@ class AvanceeMission(object):
         self.altitude = altitude
         self.vitesse = vitesse
         self.batterie = batterie
+    
+    def setLongitude(self, longitude):
+        self.longitude = longitude
+
+    def setLatitude(self, latitude):
+        self.latitude = latitude
+
+    def setAltitude(self, altitude):
+        self.altitude = altitude
+
+    def setVitesse(self, vitesse):
+        self.vitesse = vitesse
+
+    def setBatterie(self, batterie):
+        self.batterie = batterie
 
     def getLongitude(self):
         return "Longitude : %s" % self.longitude

@@ -276,10 +276,18 @@ def DureeMission(id_utilisateur, id_mission):
     mission = utilisateur.getMission(id_mission)
     home = [utilisateur.__dict__['latitude_base'], utilisateur.__dict__['longitude_base'], utilisateur.__dict__['vitesse']]
     duree = mission.afficheDuree(home)
-    print(duree)
+    return duree
 
 
-
+# Retourne avancée d'une mission 
+def ReturnAvanceeMission(avanceemission):
+    latitude = avanceemission.getLatitude()
+    longitude = avanceemission.getLongitude()
+    altitude = avanceemission.getAltitude()
+    vitesse = avanceemission.getVitesse()
+    batterie = avanceemission.getBatterie()
+    avancee = [latitude, longitude, altitude, vitesse, batterie]
+    return avancee
 
 
 
@@ -298,4 +306,4 @@ def DureeMission(id_utilisateur, id_mission):
 # ExecutionMission(0, 1)
 # CoordonneesBase(0)
 # NombreBalises(0, 1)
-DureeMission(0, 1)
+# DureeMission(0, 1)
