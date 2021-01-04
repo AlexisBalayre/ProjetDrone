@@ -189,13 +189,13 @@ class Interface(tk.Tk):
         )
         self.pau_label_frame2.place(relx=0.05, rely=0.08)
 
-        self.pau_text_prénom = Label(
+        self.pau_text_prenom = Label(
             self.pau_label_frame2,
-            text="Prénom",
+            text="prenom",
             font=("Arail", 14, "bold"),
             bg="#a4a1a3",
         )
-        self.pau_text_prénom.place(relx=0.1, rely=0.1)
+        self.pau_text_prenom.place(relx=0.1, rely=0.1)
         self.pau_text_nom = Label(
             self.pau_label_frame2, text="Nom", font=("Arail", 14, "bold"), bg="#a4a1a3"
         )
@@ -208,10 +208,12 @@ class Interface(tk.Tk):
         )
         self.pau_text_mail.place(relx=0.1, rely=0.75)
 
-        self.pau_entry_prénom = Entry(self.pau_label_frame2, width=30)
-        self.pau_entry_prénom.place(relx=0.35, rely=0.12)
+        self.pau_entry_prenom = Entry(self.pau_label_frame2, width=30)
+        self.pau_entry_prenom.place(relx=0.35, rely=0.12)
+        prenom = self.pau_entry_prenom.get()
         self.pau_entry_nom = Entry(self.pau_label_frame2, width=30)
         self.pau_entry_nom.place(relx=0.35, rely=0.42)
+        nom = self.pau_entry_nom.get()
         self.pau_entry_mail = Entry(self.pau_label_frame2, width=30)
         self.pau_entry_mail.place(relx=0.35, rely=0.77)
 
