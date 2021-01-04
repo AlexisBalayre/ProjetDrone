@@ -1,6 +1,6 @@
 from tkinter import *
 import tkinter as tk
-import Packages.packages
+from Packages.packages import *
 
 
 class Interface(tk.Tk):
@@ -325,6 +325,8 @@ class Interface(tk.Tk):
         pauvitesse = self.pau_entry_vitesse.get()
         paulatitude = self.pau_entry_latitudebase.get()
         paulongitude = self.pau_entry_longitude.get()
+        # Création de l'objet utilisateur
+        CreationUtilisateur(prenom, nom, mail, paulatitude, paulongitude, pauvitesse, 0, 0, 0, 0, 0, 0, 0) 
 
     def BouttonEnregistrerInfo(self):
         for i in self.winfo_children():

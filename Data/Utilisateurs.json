@@ -132,6 +132,23 @@
             "mail_batterie": 1,
             "mail_photo": 1,
             "missions": {}
+        },
+        "4": {
+            "id_utilisateur": 4,
+            "prenom": "clement",
+            "nom": "mabite",
+            "email": "clement.mabite@gmail.com",
+            "vitesse": "10",
+            "latitude_base": "82.2020",
+            "longitude_base": "13.5252",
+            "mode_camera": 0,
+            "suivie_mail": 0,
+            "mail_coord": 0,
+            "mail_alt": 0,
+            "mail_vitesse": 0,
+            "mail_batterie": 0,
+            "mail_photo": 0,
+            "missions": {}
         }
     }
 }
