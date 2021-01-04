@@ -1,4 +1,3 @@
-from Packages.packages import * 
 from tkinter import *
 import tkinter as tk
 
@@ -21,7 +20,7 @@ class Interface(tk.Tk):
         self.frame2 = Frame(self.label_frame1)
         self.frame2.place(relx=0, rely=0.77, width=175)
 
-        self.photo = PhotoImage(file='Ressources/icon_reglage.gif')  # boutton reglage avec icone contenu dans le label_frame menu
+        self.photo = PhotoImage(file='icon_reglage.gif')  # boutton reglage avec icone contenu dans le label_frame menu
         self.boutton_reglage = Button(self.frame1, image=self.photo, command= self.bouttonparam)
         self.boutton_reglage.photo = self.photo
         self.boutton_reglage.pack(side=LEFT)
@@ -29,7 +28,7 @@ class Interface(tk.Tk):
         self.text_reglage = Label(self.frame2, text="Réglages")  # texte en dessous du bouton reglage avec écrit réglage
         self.text_reglage.pack(side=LEFT)
 
-        self.photo3 = PhotoImage(file='Ressources/icon_vols.gif')  # boutton vols avec icone contenu dans le label_frame menu
+        self.photo3 = PhotoImage(file='icon_vols.gif')  # boutton vols avec icone contenu dans le label_frame menu
         self.boutton_vols = Button(self.frame1, image=self.photo3, command= self.bouttonvol)
         self.boutton_vols.photo = self.photo3
         self.boutton_vols.pack(side=RIGHT)
@@ -37,7 +36,7 @@ class Interface(tk.Tk):
         self.text_vols = Label(self.frame2, text="Vols")  # texte en dessous du bouton vols avec écrit vols
         self.text_vols.pack(side=RIGHT)
 
-        self.photo2 = PhotoImage(file='Ressources/icon_mission.gif')  # boutton mission avec icone contenu dans le label_frame menu
+        self.photo2 = PhotoImage(file='icon_mission.gif')  # boutton mission avec icone contenu dans le label_frame menu
         self.boutton_mission = Button(self.frame1, image=self.photo2, command= self.bouttonmission)
         self.boutton_mission.photo = self.photo2
         self.boutton_mission.pack()
@@ -169,8 +168,7 @@ class Interface(tk.Tk):
         pauvitesse = self.pau_entry_vitesse.get()
         paulatitude = self.pau_entry_latitudebase.get()
         paulongitude = self.pau_entry_longitude.get()
-        print(prenom)
-        print(nom)
+        
 
     def BouttonEnregistrerInfo(self):
         for i in self.winfo_children():
@@ -208,13 +206,6 @@ class Interface(tk.Tk):
 
         self.Menu()
         self.CreerUneMission()
-
-    def BouttonEnregistrerInfo2(self):
-        for i in self.winfo_children():
-            i.destroy()
-
-        self.Menu()
-        self.Etape3_Mission()
 
     def CreerUneMission(self):
         self.cumission_labelframe = LabelFrame(self, text="Mission n°", font=("Arial_black", 12), width=870, height=500, borderwidth=3)
@@ -266,15 +257,44 @@ class Interface(tk.Tk):
         self.cumission_checkbutton_photo_non = Checkbutton(self.cumission_labelframe2, text="Non", font=("Arail", 12))
         self.cumission_checkbutton_photo_non.place(relx=0.75, rely=0.83)
 
-        self.cumission_boutton_enregistrer = Button(self.cumission_labelframe, text="Enregistrer les informations", font=("Arial", 12), bg="#ffffff", width=30, height=2, command=self.BouttonEnregistrerInfo2)
+        self.cumission_boutton_enregistrer = Button(self.cumission_labelframe, text="Enregistrer les informations", font=("Arial", 12), bg="#ffffff", width=30, height=2, command=lambda:[self.GetCreerUneMission(), self.GetBalise2(), self.GetBalise3(), self.GetBalise4(), self.BouttonEnregistrerInfo2()])
         self.cumission_boutton_enregistrer.place(relx=0.575, rely=0.85)
 
-    def GetCréerUneMission(self):
-        cumlatitude = self.cumission_entry_latitude.get()
-        cumlongitude = self.cumission_entry_longitude.get()
-        cumaltitude = self.cumission_entry_altitude.get()
-        cumvitesse = self.cumission_entry_vitesse.get()
-        cumpause = self.cumission_entry_pause.get()
+    def GetCreerUneMission(self):
+        balise1latitude = self.cumission_entry_latitude.get()
+        balise1longitude = self.cumission_entry_longitude.get()
+        balise1altitude = self.cumission_entry_altitude.get()
+        balise1vitesse = self.cumission_entry_vitesse.get()
+        balise1pause = self.cumission_entry_pause.get()
+
+
+    def GetBalise2(self):
+        balise2latitude = self.balise2_entry_latitude.get()
+        balise2longitude = self.balise2_entry_longitude.get()
+        balise2altitude = self.balise2_entry_altitude.get()
+        balise2vitesse = self.balise2_entry_vitesse.get()
+        balise2pause = self.balise2_entry_pause.get()
+
+    def GetBalise3(self):
+        balise3latitude = self.balise3_entry_latitude.get()
+        balise3longitude = self.balise3_entry_longitude.get()
+        balise3altitude = self.balise3_entry_altitude.get()
+        balise3vitesse = self.balise3_entry_vitesse.get()
+        balise3pause = self.balise3_entry_pause.get()
+
+    def GetBalise4(self):
+        balise4latitude = self.balise4_entry_latitude.get()
+        balise4longitude = self.balise4_entry_longitude.get()
+        balise4altitude = self.balise4_entry_altitude.get()
+        balise4vitesse = self.balise4_entry_vitesse.get()
+        balise4pause = self.balise4_entry_pause.get()
+
+    def BouttonEnregistrerInfo2(self):
+        for i in self.winfo_children():
+            i.destroy()
+
+        self.Menu()
+        self.Etape3_Mission()
 
     def BouttonBalise2(self):
         self.boutton_nouvelle_etape_2 = Button(self.cumission_labelframe1, text="Balise 2", font=("Arial", 12), width=20, height=2)
@@ -282,7 +302,6 @@ class Interface(tk.Tk):
 
         self.cumission_boutton_etape.destroy()
         self.cumission_babel3.destroy()
-        self.cumission_labelframe2.destroy()
 
         self.cumission_boutton_etape_2 = Button(self.cumission_labelframe, text="+", font=("Arial", 16, "bold"), width=10, bg="#a4a1a3", command=self.BouttonBalise3)
         self.cumission_boutton_etape_2.place(relx=0.1, rely=0.89)
@@ -318,20 +337,12 @@ class Interface(tk.Tk):
         self.balise2_checkbutton_photo_non = Checkbutton(self.balise2_labelframe2, text="Non", font=("Arail", 12))
         self.balise2_checkbutton_photo_non.place(relx=0.75, rely=0.83)
 
-    def GetBalise2(self):
-        cumlatitude = self.balise2_entry_latitude.get()
-        cumlongitude = self.balise2_entry_longitude.get()
-        cumaltitude = self.balise2_entry_altitude.get()
-        cumvitesse = self.balise2_entry_vitesse.get()
-        cumpause = self.balise2_entry_pause.get()
-
     def BouttonBalise3(self):
         self.boutton_nouvelle_etape_3 = Button(self.cumission_labelframe1, text="Balise 3", font=("Arial", 12), width=20, height=2)
         self.boutton_nouvelle_etape_3.place(relx=0.1, rely=0.53)
 
         self.cumission_boutton_etape_2.destroy()
         self.balise2_babel3.destroy()
-        self.balise2_labelframe2.destroy()
 
         self.cumission_boutton_etape_3 = Button(self.cumission_labelframe, text="+", font=("Arial", 16, "bold"), width=10, bg="#a4a1a3", command=self.BouttonBalise4)
         self.cumission_boutton_etape_3.place(relx=0.1, rely=0.89)
@@ -367,20 +378,12 @@ class Interface(tk.Tk):
         self.balise3_checkbutton_photo_non = Checkbutton(self.balise3_labelframe2, text="Non", font=("Arail", 12))
         self.balise3_checkbutton_photo_non.place(relx=0.75, rely=0.83)
 
-    def GetBalise3(self):
-        cumlatitude = self.balise3_entry_latitude.get()
-        cumlongitude = self.balise3_entry_longitude.get()
-        cumaltitude = self.balise3_entry_altitude.get()
-        cumvitesse = self.balise3_entry_vitesse.get()
-        cumpause = self.balise3_entry_pause.get()
-
     def BouttonBalise4(self):
         self.boutton_nouvelle_etape_4 = Button(self.cumission_labelframe1, text="Balise 4", font=("Arial", 12), width=20, height=2)
         self.boutton_nouvelle_etape_4.place(relx=0.1, rely=0.70)
 
         self.cumission_boutton_etape_3.destroy()
         self.balise3_babel3.destroy()
-        self.balise3_labelframe2.destroy()
 
         self.balise4_babel3 = Label(self.cumission_labelframe, text="Balise 4", font=("Arial", 12, "bold"))
         self.balise4_babel3.place(relx=0.5, rely=0.008)
@@ -412,13 +415,6 @@ class Interface(tk.Tk):
         self.balise4_checkbutton_photo_oui.place(relx=0.75, rely=0.75)
         self.balise4_checkbutton_photo_non = Checkbutton(self.balise4_labelframe2, text="Non", font=("Arail", 12))
         self.balise4_checkbutton_photo_non.place(relx=0.75, rely=0.83)
-
-    def GetBalise4(self):
-        cumlatitude = self.balise4_entry_latitude.get()
-        cumlongitude = self.balise4_entry_longitude.get()
-        cumaltitude = self.balise4_entry_altitude.get()
-        cumvitesse = self.balise4_entry_vitesse.get()
-        cumpause = self.balise4_entry_pause.get()
 
     def VisualiserLesMissions(self):
         self.vlm_labelframe_utilisateur = LabelFrame(self, text="", font=("Arial_black", 12), width=870, height=500, borderwidth=3)
@@ -463,7 +459,7 @@ class Interface(tk.Tk):
         self.vlm_label_heure.place(relx=0.01, rely=0.45)
         self.vlm_entry_heure = Entry(self.vlm_labelframe_mission2, width=30)
         self.vlm_entry_heure.place(relx=0.25, rely=0.46)
-        self.vlm_boutton_planifiermission = Button(self.vlm_labelframe_mission2, text="Planifier la mission", font=("Arial", 12), bg="#a4a1a3", width=30, height=1)
+        self.vlm_boutton_planifiermission = Button(self.vlm_labelframe_mission2, text="Planifier la mission", font=("Arial", 12), bg="#a4a1a3", width=30, height=1, command=self.GetVisualiserLesMissions)
         self.vlm_boutton_planifiermission.place(relx=0.1, rely=0.75)
 
     def GetVisualiserLesMissions(self):
