@@ -1,6 +1,8 @@
 from tkinter import *
 import tkinter as tk
+from Packages.packages import * 
 
+ExecutionMission(0, 1)
 
 class Interface(tk.Tk):
     def __init__(self):
@@ -22,7 +24,7 @@ class Interface(tk.Tk):
         self.frame2.place(relx=0, rely=0.77, width=175)
 
         self.photo = PhotoImage(
-            file="icon_reglage.gif"
+            file="Ressources/icon_reglage.gif"
         )  # boutton reglage avec icone contenu dans le label_frame menu
         self.boutton_reglage = Button(
             self.frame1, image=self.photo, command=self.bouttonparam
@@ -36,7 +38,7 @@ class Interface(tk.Tk):
         self.text_reglage.pack(side=LEFT)
 
         self.photo3 = PhotoImage(
-            file="icon_vols.gif"
+            file="Ressources/icon_vols.gif"
         )  # boutton vols avec icone contenu dans le label_frame menu
         self.boutton_vols = Button(
             self.frame1, image=self.photo3, command=self.bouttonvol
@@ -50,7 +52,7 @@ class Interface(tk.Tk):
         self.text_vols.pack(side=RIGHT)
 
         self.photo2 = PhotoImage(
-            file="icon_mission.gif"
+            file="Ressources/icon_mission.gif"
         )  # boutton mission avec icone contenu dans le label_frame menu
         self.boutton_mission = Button(
             self.frame1, image=self.photo2, command=self.bouttonmission
@@ -216,6 +218,7 @@ class Interface(tk.Tk):
         nom = self.pau_entry_nom.get()
         self.pau_entry_mail = Entry(self.pau_label_frame2, width=30)
         self.pau_entry_mail.place(relx=0.35, rely=0.77)
+        mail = self.pau_entry_mail.get()
 
         self.pau_text_frame3 = Label(
             self.pau_label_frame, text="Options de vols", font=("Arial_black", 12)
@@ -233,10 +236,11 @@ class Interface(tk.Tk):
             bg="#a4a1a3",
         )
         self.pau_check_suiviedevol.place(relx=0.1, rely=0.1)
-        self.pau_check_coordonnées = Checkbutton(
-            self.pau_label_frame3, text="Coordonnées", font=("Arail", 14), bg="#a4a1a3"
+        self.pau_check_coordonnees = Checkbutton(
+            self.pau_label_frame3, text="coordonnees", font=("Arail", 14), bg="#a4a1a3"
         )
-        self.pau_check_coordonnées.place(relx=0.2, rely=0.25)
+        
+        self.pau_check_coordonnees.place(relx=0.2, rely=0.25)
         self.pau_check_altitude = Checkbutton(
             self.pau_label_frame3, text="Altitude", font=("Arail", 14), bg="#a4a1a3"
         )
@@ -299,10 +303,13 @@ class Interface(tk.Tk):
 
         self.pau_entry_vitesse = Entry(self.pau_label_frame4, width=30)
         self.pau_entry_vitesse.place(relx=0.2, rely=0.12)
+        vitesse = self.pau_entry_vitesse.get()
         self.pau_entry_latitudebase = Entry(self.pau_label_frame4, width=30)
         self.pau_entry_latitudebase.place(relx=0.2, rely=0.42)
+        latitude = self.pau_entry_latitudebase.get()
         self.pau_entry_longitude = Entry(self.pau_label_frame4, width=30)
         self.pau_entry_longitude.place(relx=0.2, rely=0.72)
+        longitude = self.pau_entry_longitude.get()
         self.pau_modecam_photo_check = Checkbutton(
             self.pau_label_frame4, text="Photo", font=("Arail", 14), bg="#a4a1a3"
         )
