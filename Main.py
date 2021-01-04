@@ -536,6 +536,8 @@ class Interface(tk.Tk):
         balise1altitude = self.cumission_entry_altitude.get()
         balise1vitesse = self.cumission_entry_vitesse.get()
         balise1pause = self.cumission_entry_pause.get()
+        # Creation de l'objet mission 
+
 
     def GetBalise2(self):
         balise2latitude = self.balise2_entry_latitude.get()
