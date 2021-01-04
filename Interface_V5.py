@@ -44,6 +44,13 @@ class Interface(tk.Tk):
         self.text_mission = Label(self.frame2, text="Missions")  # texte en dessous du bouton missions avec écrit missions
         self.text_mission.pack()
 
+    def bouttonparam(self): #Methode présente pour supprimer les widgets de Etape1_Vols et afficher ceux de Etape2_parametre
+        for i in self.winfo_children():
+            i.destroy()
+
+        self.Menu()
+        self.Etape2_parametre()
+
     def bouttonvol(self): #Methode présente pour supprimer les widgets de Etape2_parametre  et afficher ceux de Etape1_Vols
         for i in self.winfo_children():
             i.destroy()
@@ -57,13 +64,6 @@ class Interface(tk.Tk):
 
         self.Menu()
         self.Etape3_Mission()
-
-    def bouttonparam(self): #Methode présente pour supprimer les widgets de Etape1_Vols et afficher ceux de Etape2_parametre
-        for i in self.winfo_children():
-            i.destroy()
-
-        self.Menu()
-        self.Etape2_parametre()
 
     def Etape1_Vols(self): #Methode comprenant les widgets de la première fenetre
         self.vols_text_label = Label(self, text="Pas de mission en cours", fg="black", font=("Arial_black", 16), bg="#dbdadb", relief=SUNKEN, width = 55, height = 2) #Label "pas de mission en cours"
@@ -92,13 +92,6 @@ class Interface(tk.Tk):
         self.Menu()
         self.ParamAjouterUtilisateur()
 
-    def BouttonEnregistrerInfo(self):
-        for i in self.winfo_children():
-            i.destroy()
-
-        self.Menu()
-        self.Etape2_parametre()
-
     def ParamAjouterUtilisateur(self): # Mehtode comprenant les widgets de l'etape 2 du doc spe fonctionnelles si la personne clique sur "Ajouter un utilisateur"
         self.pau_label_frame = LabelFrame(self, text = "Utilisateur n°", font=("Arial_black", 12), width = 870, height=600, borderwidth=3)
         self.pau_label_frame.place(relx=0.25, rely=0.2)
@@ -108,22 +101,19 @@ class Interface(tk.Tk):
         self.pau_label_frame2 = LabelFrame(self.pau_label_frame, width=350, height=200, bg="#a4a1a3",relief=SUNKEN)
         self.pau_label_frame2.place(relx=0.05, rely=0.08)
 
-        self.pau_text_prénom = Label(self.pau_label_frame2, text="Prénom", font=("Arail", 14, "bold"), bg="#a4a1a3")
-        self.pau_text_prénom.place(relx=0.1, rely=0.1)
+        self.pau_text_prenom = Label(self.pau_label_frame2, text="Prénom", font=("Arail", 14, "bold"), bg="#a4a1a3")
+        self.pau_text_prenom.place(relx=0.1, rely=0.1)
         self.pau_text_nom = Label(self.pau_label_frame2, text = "Nom", font=("Arail", 14, "bold"), bg="#a4a1a3")
         self.pau_text_nom.place(relx=0.1, rely=0.4)
         self.pau_text_mail = Label(self.pau_label_frame2, text="Email", font=("Arail", 14, "bold"), bg="#a4a1a3")
         self.pau_text_mail.place(relx=0.1, rely=0.75)
 
-        self.pau_entry_prénom = Entry(self.pau_label_frame2, width=30)
-        self.pau_entry_prénom.place(relx=0.35, rely=0.12)
-        prenom = self.pau_entry_prénom.get()
+        self.pau_entry_prenom = Entry(self.pau_label_frame2, width=30)
+        self.pau_entry_prenom.place(relx=0.35, rely=0.12)
         self.pau_entry_nom =Entry(self.pau_label_frame2, width=30)
         self.pau_entry_nom.place(relx=0.35, rely=0.42)
-        nom = self.pau_entry_nom.get()
         self.pau_entry_mail = Entry(self.pau_label_frame2, width=30)
         self.pau_entry_mail.place(relx=0.35, rely=0.77)
-        mail = self.pau_entry_mail.get()
 
         self.pau_text_frame3 = Label(self.pau_label_frame, text="Options de vols", font=("Arial_black", 12))
         self.pau_text_frame3.place(relx=0.6, rely=0.025)
@@ -157,23 +147,36 @@ class Interface(tk.Tk):
         self.pau_text_modecam = Label(self.pau_label_frame4, text="Mode caméra", font=("Arail", 14, "bold"), bg="#a4a1a3")
         self.pau_text_modecam.place(relx=0.6, rely=0.35)
 
-
         self.pau_entry_vitesse = Entry(self.pau_label_frame4, width=30)
         self.pau_entry_vitesse.place(relx=0.2, rely=0.12)
-        pauvitesse = self.pau_entry_vitesse.get()
         self.pau_entry_latitudebase = Entry(self.pau_label_frame4, width=30)
         self.pau_entry_latitudebase.place(relx=0.2, rely=0.42)
-        paulatitude = self.pau_entry_latitudebase.get()
         self.pau_entry_longitude = Entry(self.pau_label_frame4, width=30)
         self.pau_entry_longitude.place(relx=0.2, rely=0.72)
-        paulongitude = self.pau_entry_longitude.get()
         self.pau_modecam_photo_check = Checkbutton(self.pau_label_frame4, text="Photo", font=("Arail", 14), bg="#a4a1a3")
         self.pau_modecam_photo_check.place(relx=0.8, rely=0.35)
         self.pau_modecam_video_check = Checkbutton(self.pau_label_frame4, text="Vidéo", font=("Arail", 14), bg="#a4a1a3")
         self.pau_modecam_video_check.place(relx=0.8, rely=0.55)
 
-        self.pau_boutton = Button(self.pau_label_frame, text = "Enregistrer les informations", font=("Arial_black", 12), width=22, height=2, bg="#ffffff", command=self.BouttonEnregistrerInfo)
+        self.pau_boutton = Button(self.pau_label_frame, text = "Enregistrer les informations", font=("Arial_black", 12), width=22, height=2, bg="#ffffff", command=lambda:[self.GetInfoUtilisateur(), self.BouttonEnregistrerInfo()])
         self.pau_boutton.place(relx=0.4, rely=0.9)
+
+    def GetInfoUtilisateur(self):
+        prenom = self.pau_entry_prenom.get()
+        nom = self.pau_entry_nom.get()
+        mail = self.pau_entry_mail.get()
+        pauvitesse = self.pau_entry_vitesse.get()
+        paulatitude = self.pau_entry_latitudebase.get()
+        paulongitude = self.pau_entry_longitude.get()
+        print(prenom)
+        print(nom)
+
+    def BouttonEnregistrerInfo(self):
+        for i in self.winfo_children():
+            i.destroy()
+
+        self.Menu()
+        self.Etape2_parametre()
 
     def Etape3_Mission(self):
         self.mission_frame_principale = Frame(self, width=870, height=550)
@@ -190,6 +193,13 @@ class Interface(tk.Tk):
         self.mission_boutton1.place(relx=0.07, rely=0.1)
         self.mission_boutton2 = Button(self.mission_labelframe, text="Créer une mission", font=("Arial", 12, "bold"), width=42, height=2, command=self.BouttonCreerUneMission)
         self.mission_boutton2.place(relx=0.07, rely=0.6)
+
+    def BouttonVisualiserLesMissions(self):
+        for i in self.winfo_children():
+            i.destroy()
+
+        self.Menu()
+        self.VisualiserLesMissions()
 
     def BouttonCreerUneMission(self):
         for i in self.winfo_children():
@@ -221,7 +231,7 @@ class Interface(tk.Tk):
         self.cumission_label2 = Label(self.cumission_labelframe, text="Rajouter une étape", font=("Arial", 12, "bold"))
         self.cumission_label2.place(relx=0.1, rely=0.84)
 
-        self.cumission_boutton_etape = Button(self.cumission_labelframe, text="+", font=("Arial", 16, "bold"), width=10, bg="#a4a1a3", command=self.BouttonRajouterEtape2)
+        self.cumission_boutton_etape = Button(self.cumission_labelframe, text="+", font=("Arial", 16, "bold"), width=10, bg="#a4a1a3", command=self.BouttonBalise2)
         self.cumission_boutton_etape.place(relx=0.1, rely=0.89)
 
         self.cumission_babel3 = Label(self.cumission_labelframe, text="Balise 1", font=("Arial", 12, "bold"))
@@ -232,27 +242,22 @@ class Interface(tk.Tk):
         self.cumission_label_latitude.place(relx=0.1, rely=0.08)
         self.cumission_entry_latitude = Entry(self.cumission_labelframe2, width=30)
         self.cumission_entry_latitude.place(relx=0.45, rely=0.09)
-        cumlatitude = self.cumission_entry_latitude.get()
         self.cumission_label_longitude = Label(self.cumission_labelframe2, text="Longitude (en °):", font=("Arial", 12))
         self.cumission_label_longitude.place(relx=0.1, rely=0.2)
         self.cumission_entry_longitude = Entry(self.cumission_labelframe2, width=30)
         self.cumission_entry_longitude.place(relx=0.45, rely=0.21)
-        cumlongitude = self.cumission_entry_longitude.get()
         self.cumission_label_altitude = Label(self.cumission_labelframe2, text="Altitude (en m):", font=("Arial", 12))
         self.cumission_label_altitude.place(relx=0.1, rely=0.33)
         self.cumission_entry_altitude = Spinbox(self.cumission_labelframe2, from_=0, to=100, justify=CENTER, width=30)
         self.cumission_entry_altitude.place(relx=0.45, rely=0.34)
-        cumaltitude = self.cumission_entry_altitude.get()
         self.cumission_label_vitesse = Label(self.cumission_labelframe2, text="vitesse(en %):", font=("Arial", 12))
         self.cumission_label_vitesse.place(relx=0.1, rely=0.48)
         self.cumission_entry_vitesse = Spinbox(self.cumission_labelframe2, from_=0, to=100, justify=CENTER, width=30)
         self.cumission_entry_vitesse.place(relx=0.45, rely=0.49)
-        cumvitesse = self.cumission_entry_vitesse.get()
         self.cumission_label_pause = Label(self.cumission_labelframe2, text="pause(en s):", font=("Arial", 12))
         self.cumission_label_pause.place(relx=0.1, rely=0.63)
         self.cumission_entry_pause = Spinbox(self.cumission_labelframe2, from_=0, to=120, justify=CENTER, width=30)
         self.cumission_entry_pause.place(relx=0.45, rely=0.64)
-        cumpause = self.cumission_entry_pause.get()
         self.cumission_label_photo = Label(self.cumission_labelframe2, text="photo:", font=("Arial", 12))
         self.cumission_label_photo.place(relx=0.1, rely=0.79)
         self.cumission_checkbutton_photo_oui = Checkbutton(self.cumission_labelframe2, text="Oui", font=("Arail", 12))
@@ -263,36 +268,156 @@ class Interface(tk.Tk):
         self.cumission_boutton_enregistrer = Button(self.cumission_labelframe, text="Enregistrer les informations", font=("Arial", 12), bg="#ffffff", width=30, height=2, command=self.BouttonEnregistrerInfo2)
         self.cumission_boutton_enregistrer.place(relx=0.575, rely=0.85)
 
-    def BouttonRajouterEtape2(self):
+    def GetCréerUneMission(self):
+        cumlatitude = self.cumission_entry_latitude.get()
+        cumlongitude = self.cumission_entry_longitude.get()
+        cumaltitude = self.cumission_entry_altitude.get()
+        cumvitesse = self.cumission_entry_vitesse.get()
+        cumpause = self.cumission_entry_pause.get()
+
+    def BouttonBalise2(self):
         self.boutton_nouvelle_etape_2 = Button(self.cumission_labelframe1, text="Balise 2", font=("Arial", 12), width=20, height=2)
         self.boutton_nouvelle_etape_2.place(relx=0.1, rely=0.36)
 
         self.cumission_boutton_etape.destroy()
+        self.cumission_babel3.destroy()
+        self.cumission_labelframe2.destroy()
 
-        self.cumission_boutton_etape_2 = Button(self.cumission_labelframe, text="+", font=("Arial", 16, "bold"), width=10, bg="#a4a1a3", command=self.BouttonRajouterEtape3)
+        self.cumission_boutton_etape_2 = Button(self.cumission_labelframe, text="+", font=("Arial", 16, "bold"), width=10, bg="#a4a1a3", command=self.BouttonBalise3)
         self.cumission_boutton_etape_2.place(relx=0.1, rely=0.89)
 
-    def BouttonRajouterEtape3(self):
+        self.balise2_babel3 = Label(self.cumission_labelframe, text="Balise 2", font=("Arial", 12, "bold"))
+        self.balise2_babel3.place(relx=0.5, rely=0.008)
+        self.balise2_labelframe2 = LabelFrame(self.cumission_labelframe, width=400, height=370, borderwidth=3)
+        self.balise2_labelframe2.place(relx=0.5, rely=0.05)
+        self.balise2_label_latitude = Label(self.balise2_labelframe2, text="Latitude (en °):", font=("Arial", 12))
+        self.balise2_label_latitude.place(relx=0.1, rely=0.08)
+        self.balise2_entry_latitude = Entry(self.balise2_labelframe2, width=30)
+        self.balise2_entry_latitude.place(relx=0.45, rely=0.09)
+        self.balise2_label_longitude = Label(self.balise2_labelframe2, text="Longitude (en °):", font=("Arial", 12))
+        self.balise2_label_longitude.place(relx=0.1, rely=0.2)
+        self.balise2_entry_longitude = Entry(self.balise2_labelframe2, width=30)
+        self.balise2_entry_longitude.place(relx=0.45, rely=0.21)
+        self.balise2_label_altitude = Label(self.balise2_labelframe2, text="Altitude (en m):", font=("Arial", 12))
+        self.balise2_label_altitude.place(relx=0.1, rely=0.33)
+        self.balise2_entry_altitude = Spinbox(self.balise2_labelframe2, from_=0, to=100, justify=CENTER, width=30)
+        self.balise2_entry_altitude.place(relx=0.45, rely=0.34)
+        self.balise2_label_vitesse = Label(self.balise2_labelframe2, text="vitesse(en %):", font=("Arial", 12))
+        self.balise2_label_vitesse.place(relx=0.1, rely=0.48)
+        self.balise2_entry_vitesse = Spinbox(self.balise2_labelframe2, from_=0, to=100, justify=CENTER, width=30)
+        self.balise2_entry_vitesse.place(relx=0.45, rely=0.49)
+        self.balise2_label_pause = Label(self.balise2_labelframe2, text="pause(en s):", font=("Arial", 12))
+        self.balise2_label_pause.place(relx=0.1, rely=0.63)
+        self.balise2_entry_pause = Spinbox(self.balise2_labelframe2, from_=0, to=120, justify=CENTER, width=30)
+        self.balise2_entry_pause.place(relx=0.45, rely=0.64)
+        self.balise2_label_photo = Label(self.balise2_labelframe2, text="photo:", font=("Arial", 12))
+        self.balise2_label_photo.place(relx=0.1, rely=0.79)
+        self.balise2_checkbutton_photo_oui = Checkbutton(self.balise2_labelframe2, text="Oui", font=("Arail", 12))
+        self.balise2_checkbutton_photo_oui.place(relx=0.75, rely=0.75)
+        self.balise2_checkbutton_photo_non = Checkbutton(self.balise2_labelframe2, text="Non", font=("Arail", 12))
+        self.balise2_checkbutton_photo_non.place(relx=0.75, rely=0.83)
+
+    def GetBalise2(self):
+        cumlatitude = self.balise2_entry_latitude.get()
+        cumlongitude = self.balise2_entry_longitude.get()
+        cumaltitude = self.balise2_entry_altitude.get()
+        cumvitesse = self.balise2_entry_vitesse.get()
+        cumpause = self.balise2_entry_pause.get()
+
+    def BouttonBalise3(self):
         self.boutton_nouvelle_etape_3 = Button(self.cumission_labelframe1, text="Balise 3", font=("Arial", 12), width=20, height=2)
         self.boutton_nouvelle_etape_3.place(relx=0.1, rely=0.53)
 
         self.cumission_boutton_etape_2.destroy()
+        self.balise2_babel3.destroy()
+        self.balise2_labelframe2.destroy()
 
-        self.cumission_boutton_etape_3 = Button(self.cumission_labelframe, text="+", font=("Arial", 16, "bold"), width=10, bg="#a4a1a3", command=self.BouttonRajouterEtape4)
+        self.cumission_boutton_etape_3 = Button(self.cumission_labelframe, text="+", font=("Arial", 16, "bold"), width=10, bg="#a4a1a3", command=self.BouttonBalise4)
         self.cumission_boutton_etape_3.place(relx=0.1, rely=0.89)
 
-    def BouttonRajouterEtape4(self):
+        self.balise3_babel3 = Label(self.cumission_labelframe, text="Balise 3", font=("Arial", 12, "bold"))
+        self.balise3_babel3.place(relx=0.5, rely=0.008)
+        self.balise3_labelframe2 = LabelFrame(self.cumission_labelframe, width=400, height=370, borderwidth=3)
+        self.balise3_labelframe2.place(relx=0.5, rely=0.05)
+        self.balise3_label_latitude = Label(self.balise3_labelframe2, text="Latitude (en °):", font=("Arial", 12))
+        self.balise3_label_latitude.place(relx=0.1, rely=0.08)
+        self.balise3_entry_latitude = Entry(self.balise3_labelframe2, width=30)
+        self.balise3_entry_latitude.place(relx=0.45, rely=0.09)
+        self.balise3_label_longitude = Label(self.balise3_labelframe2, text="Longitude (en °):", font=("Arial", 12))
+        self.balise3_label_longitude.place(relx=0.1, rely=0.2)
+        self.balise3_entry_longitude = Entry(self.balise3_labelframe2, width=30)
+        self.balise3_entry_longitude.place(relx=0.45, rely=0.21)
+        self.balise3_label_altitude = Label(self.balise3_labelframe2, text="Altitude (en m):", font=("Arial", 12))
+        self.balise3_label_altitude.place(relx=0.1, rely=0.33)
+        self.balise3_entry_altitude = Spinbox(self.balise3_labelframe2, from_=0, to=100, justify=CENTER, width=30)
+        self.balise3_entry_altitude.place(relx=0.45, rely=0.34)
+        self.balise3_label_vitesse = Label(self.balise3_labelframe2, text="vitesse(en %):", font=("Arial", 12))
+        self.balise3_label_vitesse.place(relx=0.1, rely=0.48)
+        self.balise3_entry_vitesse = Spinbox(self.balise3_labelframe2, from_=0, to=100, justify=CENTER, width=30)
+        self.balise3_entry_vitesse.place(relx=0.45, rely=0.49)
+        self.balise3_label_pause = Label(self.balise3_labelframe2, text="pause(en s):", font=("Arial", 12))
+        self.balise3_label_pause.place(relx=0.1, rely=0.63)
+        self.balise3_entry_pause = Spinbox(self.balise3_labelframe2, from_=0, to=120, justify=CENTER, width=30)
+        self.balise3_entry_pause.place(relx=0.45, rely=0.64)
+        self.balise3_label_photo = Label(self.balise3_labelframe2, text="photo:", font=("Arial", 12))
+        self.balise3_label_photo.place(relx=0.1, rely=0.79)
+        self.balise3_checkbutton_photo_oui = Checkbutton(self.balise3_labelframe2, text="Oui", font=("Arail", 12))
+        self.balise3_checkbutton_photo_oui.place(relx=0.75, rely=0.75)
+        self.balise3_checkbutton_photo_non = Checkbutton(self.balise3_labelframe2, text="Non", font=("Arail", 12))
+        self.balise3_checkbutton_photo_non.place(relx=0.75, rely=0.83)
+
+    def GetBalise3(self):
+        cumlatitude = self.balise3_entry_latitude.get()
+        cumlongitude = self.balise3_entry_longitude.get()
+        cumaltitude = self.balise3_entry_altitude.get()
+        cumvitesse = self.balise3_entry_vitesse.get()
+        cumpause = self.balise3_entry_pause.get()
+
+    def BouttonBalise4(self):
         self.boutton_nouvelle_etape_4 = Button(self.cumission_labelframe1, text="Balise 4", font=("Arial", 12), width=20, height=2)
         self.boutton_nouvelle_etape_4.place(relx=0.1, rely=0.70)
 
         self.cumission_boutton_etape_3.destroy()
+        self.balise3_babel3.destroy()
+        self.balise3_labelframe2.destroy()
 
-    def BouttonVisualiserLesMissions(self):
-        for i in self.winfo_children():
-            i.destroy()
+        self.balise4_babel3 = Label(self.cumission_labelframe, text="Balise 4", font=("Arial", 12, "bold"))
+        self.balise4_babel3.place(relx=0.5, rely=0.008)
+        self.balise4_labelframe2 = LabelFrame(self.cumission_labelframe, width=400, height=370, borderwidth=3)
+        self.balise4_labelframe2.place(relx=0.5, rely=0.05)
+        self.balise4_label_latitude = Label(self.balise4_labelframe2, text="Latitude (en °):", font=("Arial", 12))
+        self.balise4_label_latitude.place(relx=0.1, rely=0.08)
+        self.balise4_entry_latitude = Entry(self.balise4_labelframe2, width=30)
+        self.balise4_entry_latitude.place(relx=0.45, rely=0.09)
+        self.balise4_label_longitude = Label(self.balise4_labelframe2, text="Longitude (en °):", font=("Arial", 12))
+        self.balise4_label_longitude.place(relx=0.1, rely=0.2)
+        self.balise4_entry_longitude = Entry(self.balise4_labelframe2, width=30)
+        self.balise4_entry_longitude.place(relx=0.45, rely=0.21)
+        self.balise4_label_altitude = Label(self.balise4_labelframe2, text="Altitude (en m):", font=("Arial", 12))
+        self.balise4_label_altitude.place(relx=0.1, rely=0.33)
+        self.balise4_entry_altitude = Spinbox(self.balise4_labelframe2, from_=0, to=100, justify=CENTER, width=30)
+        self.balise4_entry_altitude.place(relx=0.45, rely=0.34)
+        self.balise4_label_vitesse = Label(self.balise4_labelframe2, text="vitesse(en %):", font=("Arial", 12))
+        self.balise4_label_vitesse.place(relx=0.1, rely=0.48)
+        self.balise4_entry_vitesse = Spinbox(self.balise4_labelframe2, from_=0, to=100, justify=CENTER, width=30)
+        self.balise4_entry_vitesse.place(relx=0.45, rely=0.49)
+        self.balise4_label_pause = Label(self.balise4_labelframe2, text="pause(en s):", font=("Arial", 12))
+        self.balise4_label_pause.place(relx=0.1, rely=0.63)
+        self.balise4_entry_pause = Spinbox(self.balise4_labelframe2, from_=0, to=120, justify=CENTER, width=30)
+        self.balise4_entry_pause.place(relx=0.45, rely=0.64)
+        self.balise4_label_photo = Label(self.balise4_labelframe2, text="photo:", font=("Arial", 12))
+        self.balise4_label_photo.place(relx=0.1, rely=0.79)
+        self.balise4_checkbutton_photo_oui = Checkbutton(self.balise4_labelframe2, text="Oui", font=("Arail", 12))
+        self.balise4_checkbutton_photo_oui.place(relx=0.75, rely=0.75)
+        self.balise4_checkbutton_photo_non = Checkbutton(self.balise4_labelframe2, text="Non", font=("Arail", 12))
+        self.balise4_checkbutton_photo_non.place(relx=0.75, rely=0.83)
 
-        self.Menu()
-        self.VisualiserLesMissions()
+    def GetBalise4(self):
+        cumlatitude = self.balise4_entry_latitude.get()
+        cumlongitude = self.balise4_entry_longitude.get()
+        cumaltitude = self.balise4_entry_altitude.get()
+        cumvitesse = self.balise4_entry_vitesse.get()
+        cumpause = self.balise4_entry_pause.get()
 
     def VisualiserLesMissions(self):
         self.vlm_labelframe_utilisateur = LabelFrame(self, text="", font=("Arial_black", 12), width=870, height=500, borderwidth=3)
@@ -333,14 +458,16 @@ class Interface(tk.Tk):
         self.vlm_label_jour.place(relx=0.01, rely=0.18)
         self.vlm_entry_jour = Entry(self.vlm_labelframe_mission2, width=30)
         self.vlm_entry_jour.place(relx=0.25, rely=0.19)
-        vlmjour = self.vlm_entry_jour.get()
         self.vlm_label_heure = Label(self.vlm_labelframe_mission2, text="Heure:", font=("Arial", 12))
         self.vlm_label_heure.place(relx=0.01, rely=0.45)
         self.vlm_entry_heure = Entry(self.vlm_labelframe_mission2, width=30)
         self.vlm_entry_heure.place(relx=0.25, rely=0.46)
-        vlmheure = self.vlm_entry_heure.get()
         self.vlm_boutton_planifiermission = Button(self.vlm_labelframe_mission2, text="Planifier la mission", font=("Arial", 12), bg="#a4a1a3", width=30, height=1)
         self.vlm_boutton_planifiermission.place(relx=0.1, rely=0.75)
+
+    def GetVisualiserLesMissions(self):
+        vlmjour = self.vlm_entry_jour.get()
+        vlmheure = self.vlm_entry_heure.get()
 
     def BouttonLancerMission(self):
         for i in self.winfo_children():
@@ -351,7 +478,7 @@ class Interface(tk.Tk):
 
     def ExecutionMission(self):
 
-        self.execmission_frame_principale = LabelFrame(self, width=870, height=500)
+        self.execmission_frame_principale = Frame(self, width=870, height=500)
         self.execmission_frame_principale.place(relx=0.25, rely=0.25)
         self.execmission_labelframe_retourvideo = LabelFrame(self.execmission_frame_principale, text="Retour Vidéo", font=("Arial", 14, "bold"), width= 500, height=300, borderwidth=3)
         self.execmission_labelframe_retourvideo.place(relx=0.05, rely=0.05)
