@@ -2,7 +2,6 @@ from tkinter import *
 import tkinter as tk
 from Packages.packages import * 
 
-ExecutionMission(0, 1)
 
 class Interface(tk.Tk):
     def __init__(self):
