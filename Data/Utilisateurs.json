@@ -2,8 +2,8 @@
     "utilisateurs": {
         "0": {
             "id_utilisateur": 0,
-            "prenom": "test1",
-            "nom": "",
+            "prenom": "Alexis",
+            "nom": "Balayre",
             "email": "",
             "vitesse": "",
             "latitude_base": "",
@@ -20,24 +20,7 @@
         "1": {
             "id_utilisateur": 1,
             "prenom": "test2",
-            "nom": "",
-            "email": "",
-            "vitesse": "",
-            "latitude_base": "",
-            "longitude_base": "",
-            "mode_camera": 0,
-            "suivie_mail": 0,
-            "mail_coord": 0,
-            "mail_alt": 0,
-            "mail_vitesse": 0,
-            "mail_batterie": 0,
-            "mail_photo": 0,
-            "missions": {}
-        },
-        "2": {
-            "id_utilisateur": 2,
-            "prenom": "test3",
-            "nom": "",
+            "nom": "mabiute",
             "email": "",
             "vitesse": "",
             "latitude_base": "",

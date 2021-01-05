@@ -112,6 +112,7 @@ class Interface(tk.Tk):
     def Etape2_parametre(
         self,
     ):  # Methode comprenant les widgets de l'étape 2 du doc spe fonctionelles
+        
         self.param_label_frame = LabelFrame(
             self,
             text="Réglages",
@@ -139,89 +140,81 @@ class Interface(tk.Tk):
         self.id = donnees[1]
         self.utilisateurs = donnees[0]
         self.nombre_utilisateurs = len(self.utilisateurs.__dict__['utilisateurs'])
-       
+    
 
         # Bouton utilisateur 1 
         if self.nombre_utilisateurs != 0:
             state1 = 'normal'
-            name = self.utilisateurs.__dict__['utilisateurs'][0].__dict__['prenom']
-            cmd = self.BoutonSelectionne(name)
+            name_1 = self.utilisateurs.__dict__['utilisateurs'][0].__dict__['prenom']
         else: 
             state1 = 'disabled'
-            name = 'Utilisateur 1'
-            cmd = None
+            name_1 = 'Utilisateur 1'
         self.param_boutton_utilisateur1 = Button(
             self.param_label_frame2,
-            text=name,
+            text=name_1,
             font=("Arial_black", 16),
             bg="#ffffff",
             width=14,
             height=2,
             state = state1, 
-            command = cmd
+            command = lambda:self.BoutonSelectionne(name_1)
         )
         self.param_boutton_utilisateur1.place(relx=0.05, rely=0.2)
 
         # Bouton utilisateur 2
         if self.nombre_utilisateurs > 1:
             state2 = 'normal'
-            name = self.utilisateurs.__dict__['utilisateurs'][1].__dict__['prenom']
-            cmd = self.BoutonSelectionne(name)
+            name_2 = self.utilisateurs.__dict__['utilisateurs'][1].__dict__['prenom']
         else: 
             state2 = 'disabled'
-            name = 'Utilisateur 2'
-            cmd = None
+            name_2 = 'Utilisateur 2'
         self.param_boutton_utilisateur2 = Button(
             self.param_label_frame2,
-            text=name,
+            text=name_2,
             font=("Arial_black", 16),
             bg="#ffffff",
             width=14,
             height=2,
             state = state2,
-            command = cmd
+            command = lambda:self.BoutonSelectionne(name_2)
         )
         self.param_boutton_utilisateur2.place(relx=0.5, rely=0.2)
 
         # Bouton utilisateur 3
         if self.nombre_utilisateurs > 2:
             state3 = 'normal'
-            name = self.utilisateurs.__dict__['utilisateurs'][2].__dict__['prenom']
-            cmd = self.BoutonSelectionne(name)
+            name_3 = self.utilisateurs.__dict__['utilisateurs'][2].__dict__['prenom']
         else: 
             state3 = 'disabled'
-            name = 'Utilisateur 3'
-            cmd = None
+            name_3 = 'Utilisateur 3'
         self.param_boutton_utilisateur3 = Button(
             self.param_label_frame2,
-            text=name,
+            text=name_3,
             font=("Arial_black", 16),
             bg="#ffffff",
             width=14,
             height=2,
             state = state3,
-            command = cmd
+            command = lambda:self.BoutonSelectionne(name_3)
         )
         self.param_boutton_utilisateur3.place(relx=0.05, rely=0.6)
 
         # Bouton utilisateur 4
         if self.nombre_utilisateurs > 3:
             state4 = 'normal'
-            name = self.utilisateurs.__dict__['utilisateurs'][3].__dict__['prenom']
-            cmd = self.BoutonSelectionne(name)
+            name_4 = self.utilisateurs.__dict__['utilisateurs'][3].__dict__['prenom']
         else: 
             state4 = 'disabled'
-            name = 'Utilisateur 4'
-            cmd = None
+            name_4 = 'Utilisateur 4'
         self.param_boutton_utilisateur4 = Button(
             self.param_label_frame2,
-            text=name,
+            text=name_4,
             font=("Arial_black", 16),
             bg="#ffffff",
             width=14,
             height=2,
             state = state4,
-            command = cmd
+            command = lambda:self.BoutonSelectionne(name_4)
         )
         self.param_boutton_utilisateur4.place(relx=0.5, rely=0.6)
 
@@ -240,7 +233,7 @@ class Interface(tk.Tk):
         # Frame Utilisateur sélectionné 
         self.param_label_frame3 = LabelFrame(
             self.param_label_frame,
-            text="Utilisateur selectionné: %s" % self.id_bouton_selec,
+            text="Aucun utilisateur sélectionné",
             font=("Arial_black", 12),
             width=500,
             height=200,
@@ -277,8 +270,8 @@ class Interface(tk.Tk):
         self,
         name
     ):
-        self.id_bouton_selec = name
-        print(name)
+        self.param_label_frame3.configure(text = "Utilisateur sélectionné : %s" % name) 
+
 
     def BouttonAjouterUtilisateur(
         self,
@@ -294,7 +287,7 @@ class Interface(tk.Tk):
         for i in self.winfo_children():
             i.destroy()
         self.Menu()
-        self.ParamAjouterUtilisateur()
+        self.ParamModifierUtilisateur()
     
     def BouttonSupprimerUtilisateur(
         self,
@@ -351,6 +344,180 @@ class Interface(tk.Tk):
         self.pau_entry_nom = Entry(self.pau_label_frame2, width=30)
         self.pau_entry_nom.place(relx=0.35, rely=0.42)
         self.pau_entry_mail = Entry(self.pau_label_frame2, width=30)
+        self.pau_entry_mail.place(relx=0.35, rely=0.77)
+
+        self.pau_text_frame3 = Label(
+            self.pau_label_frame, text="Options de vols", font=("Arial_black", 12)
+        )
+        self.pau_text_frame3.place(relx=0.6, rely=0.025)
+        self.pau_label_frame3 = LabelFrame(
+            self.pau_label_frame, width=300, height=200, bg="#a4a1a3", relief=SUNKEN
+        )
+        self.pau_label_frame3.place(relx=0.6, rely=0.08)
+
+        self.pau_check_suiviedevol = Checkbutton(
+            self.pau_label_frame3,
+            text="Suivie de vol par mail",
+            font=("Arail", 14, "bold"),
+            bg="#a4a1a3",
+        )
+        self.pau_check_suiviedevol.place(relx=0.1, rely=0.1)
+        self.pau_check_coordonnées = Checkbutton(
+            self.pau_label_frame3, text="Coordonnées", font=("Arail", 14), bg="#a4a1a3"
+        )
+        self.pau_check_coordonnées.place(relx=0.2, rely=0.25)
+        self.pau_check_altitude = Checkbutton(
+            self.pau_label_frame3, text="Altitude", font=("Arail", 14), bg="#a4a1a3"
+        )
+        self.pau_check_altitude.place(relx=0.2, rely=0.4)
+        self.pau_check_vitesse = Checkbutton(
+            self.pau_label_frame3, text="Vitesse", font=("Arail", 14), bg="#a4a1a3"
+        )
+        self.pau_check_vitesse.place(relx=0.2, rely=0.55)
+        self.pau_check_batterie = Checkbutton(
+            self.pau_label_frame3,
+            text="Charge batterie",
+            font=("Arail", 14),
+            bg="#a4a1a3",
+        )
+        self.pau_check_batterie.place(relx=0.2, rely=0.7)
+        self.pau_check_photo = Checkbutton(
+            self.pau_label_frame3, text="Photos", font=("Arail", 14), bg="#a4a1a3"
+        )
+        self.pau_check_photo.place(relx=0.2, rely=0.85)
+
+        self.pau_text_frame4 = Label(
+            self.pau_label_frame,
+            text="Paramètres de vol favoris",
+            font=("Arial_black", 12),
+        )
+        self.pau_text_frame4.place(relx=0.1, rely=0.48)
+        self.pau_label_frame4 = LabelFrame(
+            self.pau_label_frame, width=700, height=200, bg="#a4a1a3", relief=SUNKEN
+        )
+        self.pau_label_frame4.place(relx=0.1, rely=0.53)
+
+        self.pau_text_vitesse = Label(
+            self.pau_label_frame4,
+            text="Vitesse",
+            font=("Arail", 14, "bold"),
+            bg="#a4a1a3",
+        )
+        self.pau_text_vitesse.place(relx=0.05, rely=0.1)
+        self.pau_text_latitudebase = Label(
+            self.pau_label_frame4,
+            text="Latitude \n base",
+            font=("Arail", 14, "bold"),
+            bg="#a4a1a3",
+        )
+        self.pau_text_latitudebase.place(relx=0.05, rely=0.35)
+        self.pau_text_longitudebase = Label(
+            self.pau_label_frame4,
+            text="Longitude \n base",
+            font=("Arail", 14, "bold"),
+            bg="#a4a1a3",
+        )
+        self.pau_text_longitudebase.place(relx=0.04, rely=0.65)
+        self.pau_text_modecam = Label(
+            self.pau_label_frame4,
+            text="Mode caméra",
+            font=("Arail", 14, "bold"),
+            bg="#a4a1a3",
+        )
+        self.pau_text_modecam.place(relx=0.6, rely=0.35)
+
+        self.pau_entry_vitesse = Entry(self.pau_label_frame4, width=30)
+        self.pau_entry_vitesse.place(relx=0.2, rely=0.12)
+        self.pau_entry_latitudebase = Entry(self.pau_label_frame4, width=30)
+        self.pau_entry_latitudebase.place(relx=0.2, rely=0.42)
+        self.pau_entry_longitude = Entry(self.pau_label_frame4, width=30)
+        self.pau_entry_longitude.place(relx=0.2, rely=0.72)
+        self.pau_modecam_photo_check = Checkbutton(
+            self.pau_label_frame4, text="Photo", font=("Arail", 14), bg="#a4a1a3"
+        )
+        self.pau_modecam_photo_check.place(relx=0.8, rely=0.35)
+        self.pau_modecam_video_check = Checkbutton(
+            self.pau_label_frame4, text="Vidéo", font=("Arail", 14), bg="#a4a1a3"
+        )
+        self.pau_modecam_video_check.place(relx=0.8, rely=0.55)
+
+        self.pau_boutton = Button(
+            self.pau_label_frame,
+            text="Enregistrer les informations",
+            font=("Arial_black", 12),
+            width=22,
+            height=2,
+            bg="#ffffff",
+            command=lambda: [self.GetInfoUtilisateur(), self.BouttonEnregistrerInfo()],
+        )
+        self.pau_boutton.place(relx=0.4, rely=0.9)
+    
+
+    def ParamModifierUtilisateur(
+        self,
+        prenom,
+        nom,
+        email,
+        latitude_base,
+        longitude_base,
+        vitesse,
+        mode_camera,
+        suivie_mail,
+        mail_coord,
+        mail_alt,
+        mail_vitesse,
+        mail_batterie,
+        mail_photo,
+
+    ):  # Mehtode comprenant les widgets de l'etape 2 du doc spe fonctionnelles si la personne clique sur "Ajouter un utilisateur"
+        self.pau_label_frame = LabelFrame(
+            self,
+            text="Utilisateur : %s" % self.prenom,
+            font=("Arial_black", 12),
+            width=870,
+            height=600,
+            borderwidth=3,
+        )
+        self.pau_label_frame.place(relx=0.25, rely=0.2)
+
+        self.pau_text_frame2 = Label(
+            self.pau_label_frame,
+            text="Informations personnelles",
+            font=("Arial_black", 12),
+        )
+        self.pau_text_frame2.place(relx=0.05, rely=0.025)
+        self.pau_label_frame2 = LabelFrame(
+            self.pau_label_frame, width=350, height=200, bg="#a4a1a3", relief=SUNKEN
+        )
+        self.pau_label_frame2.place(relx=0.05, rely=0.08)
+
+        self.pau_text_prenom = Label(
+            self.pau_label_frame2,
+            text="Prénom",
+            font=("Arail", 14, "bold"),
+            bg="#a4a1a3",
+        )
+        self.pau_text_prenom.place(relx=0.1, rely=0.1)
+        self.pau_text_nom = Label(
+            self.pau_label_frame2, text="Nom", font=("Arail", 14, "bold"), bg="#a4a1a3"
+        )
+        self.pau_text_nom.place(relx=0.1, rely=0.4)
+        self.pau_text_mail = Label(
+            self.pau_label_frame2,
+            text="Email",
+            font=("Arail", 14, "bold"),
+            bg="#a4a1a3",
+        )
+        self.pau_text_mail.place(relx=0.1, rely=0.75)
+
+        self.pau_entry_prenom = Entry(self.pau_label_frame2, width=30)
+        self.pau_entry_prenom.insert(0, self.prenom)
+        self.pau_entry_prenom.place(relx=0.35, rely=0.12)
+        self.pau_entry_nom = Entry(self.pau_label_frame2, width=30)
+        self.pau_entry_prenom.insert(0, self.nom)
+        self.pau_entry_nom.place(relx=0.35, rely=0.42)
+        self.pau_entry_mail = Entry(self.pau_label_frame2, width=30)
+        self.pau_entry_prenom.insert(0, self.mail)
         self.pau_entry_mail.place(relx=0.35, rely=0.77)
 
         self.pau_text_frame3 = Label(
