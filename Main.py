@@ -139,70 +139,89 @@ class Interface(tk.Tk):
         self.id = donnees[1]
         self.utilisateurs = donnees[0]
         self.nombre_utilisateurs = len(self.utilisateurs.__dict__['utilisateurs'])
-        print(self.nombre_utilisateurs)
        
 
         # Bouton utilisateur 1 
         if self.nombre_utilisateurs != 0:
             state1 = 'normal'
+            name = self.utilisateurs.__dict__['utilisateurs'][0].__dict__['prenom']
+            cmd = self.BoutonSelectionne(name)
         else: 
             state1 = 'disabled'
+            name = 'Utilisateur 1'
+            cmd = None
         self.param_boutton_utilisateur1 = Button(
             self.param_label_frame2,
-            text="Utilisateur 1",
+            text=name,
             font=("Arial_black", 16),
             bg="#ffffff",
             width=14,
             height=2,
-            state = state1
+            state = state1, 
+            command = cmd
         )
         self.param_boutton_utilisateur1.place(relx=0.05, rely=0.2)
 
         # Bouton utilisateur 2
         if self.nombre_utilisateurs > 1:
             state2 = 'normal'
+            name = self.utilisateurs.__dict__['utilisateurs'][1].__dict__['prenom']
+            cmd = self.BoutonSelectionne(name)
         else: 
             state2 = 'disabled'
+            name = 'Utilisateur 2'
+            cmd = None
         self.param_boutton_utilisateur2 = Button(
             self.param_label_frame2,
-            text="Utilisateur 2",
+            text=name,
             font=("Arial_black", 16),
             bg="#ffffff",
             width=14,
             height=2,
             state = state2,
+            command = cmd
         )
         self.param_boutton_utilisateur2.place(relx=0.5, rely=0.2)
 
         # Bouton utilisateur 3
         if self.nombre_utilisateurs > 2:
             state3 = 'normal'
+            name = self.utilisateurs.__dict__['utilisateurs'][2].__dict__['prenom']
+            cmd = self.BoutonSelectionne(name)
         else: 
             state3 = 'disabled'
+            name = 'Utilisateur 3'
+            cmd = None
         self.param_boutton_utilisateur3 = Button(
             self.param_label_frame2,
-            text="Utilisateur 3",
+            text=name,
             font=("Arial_black", 16),
             bg="#ffffff",
             width=14,
             height=2,
-            state = state3
+            state = state3,
+            command = cmd
         )
         self.param_boutton_utilisateur3.place(relx=0.05, rely=0.6)
 
         # Bouton utilisateur 4
         if self.nombre_utilisateurs > 3:
             state4 = 'normal'
+            name = self.utilisateurs.__dict__['utilisateurs'][3].__dict__['prenom']
+            cmd = self.BoutonSelectionne(name)
         else: 
             state4 = 'disabled'
+            name = 'Utilisateur 4'
+            cmd = None
         self.param_boutton_utilisateur4 = Button(
             self.param_label_frame2,
-            text="Utilisateur 4",
+            text=name,
             font=("Arial_black", 16),
             bg="#ffffff",
             width=14,
             height=2,
-            state = state4
+            state = state4,
+            command = cmd
         )
         self.param_boutton_utilisateur4.place(relx=0.5, rely=0.6)
 
@@ -218,15 +237,48 @@ class Interface(tk.Tk):
         )
         self.param_boutton_utilisateur.place(relx=0.6, rely=0.25)
 
+        # Frame Utilisateur sélectionné 
         self.param_label_frame3 = LabelFrame(
             self.param_label_frame,
-            text="Utilisateur selectionné:",
+            text="Utilisateur selectionné: %s" % self.id_bouton_selec,
             font=("Arial_black", 12),
             width=500,
             height=200,
             borderwidth=3,
         )
         self.param_label_frame3.place(relx=0.23, rely=0.53)
+
+        # Bouton Modifier l'utilisateur 
+        self.param_boutton_modif_utilisateur = Button(
+            self.param_label_frame3,
+            text="Modifier l'utilisateur",
+            font=("Arial_black", 16),
+            bg="#ffffff",
+            width=40,
+            height=2,
+            command=self.BouttonModifierUtilisateur,
+        )
+        self.param_boutton_modif_utilisateur.place(relx=0.09, rely=0.15)
+
+         # Bouton Supprimer l'utilisateur 
+        self.param_boutton_sup_utilisateur = Button(
+            self.param_label_frame3,
+            text="Supprimer l'utilisateur",
+            font=("Arial_black", 16),
+            bg="#ffffff",
+            width=40,
+            height=2,
+            command=self.BouttonSupprimerUtilisateur,
+        )
+        self.param_boutton_sup_utilisateur.place(relx=0.09, rely=0.6)
+    
+    # Retourne id de l'utilisateur sélectionné 
+    def BoutonSelectionne(
+        self,
+        name
+    ):
+        self.id_bouton_selec = name
+        print(name)
 
     def BouttonAjouterUtilisateur(
         self,
@@ -235,6 +287,21 @@ class Interface(tk.Tk):
             i.destroy()
         self.Menu()
         self.ParamAjouterUtilisateur()
+    
+    def BouttonModifierUtilisateur(
+        self,
+    ):  # Methode présente pour supprimer les widgets de Etape2_parametre et afficher ceux de ParamAjouterUtilisateur
+        for i in self.winfo_children():
+            i.destroy()
+        self.Menu()
+        self.ParamAjouterUtilisateur()
+    
+    def BouttonSupprimerUtilisateur(
+        self,
+        id_bouton
+    ):
+        self.Menu()
+        self.param_boutton_utilisateur4.destroy()
 
     def ParamAjouterUtilisateur(
         self,
