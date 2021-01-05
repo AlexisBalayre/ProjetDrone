@@ -126,12 +126,60 @@ class Interface(tk.Tk):
             text="Liste des utilisateurs",
             font=("Arial_black", 12),
             bg="#a4a1a3",
-            width=350,
+            width=340,
             height=200,
             borderwidth=3,
         )
         self.param_label_frame2.place(relx=0.05, rely=0.08)
 
+        # Bouton utilisateur 1 
+        self.param_boutton_utilisateur1 = Button(
+            self.param_label_frame2,
+            text="Utilisateur 1",
+            font=("Arial_black", 16),
+            bg="#ffffff",
+            width=14,
+            height=2,
+        )
+        self.param_boutton_utilisateur1.place(relx=0.05, rely=0.2)
+
+        # Bouton utilisateur 2
+        self.param_boutton_utilisateur2 = Button(
+            self.param_label_frame2,
+            text="Utilisateur 2",
+            font=("Arial_black", 16),
+            bg="#ffffff",
+            state="disabled",
+            width=14,
+            height=2,
+        )
+        self.param_boutton_utilisateur2.place(relx=0.5, rely=0.2)
+
+        # Bouton utilisateur 3
+        self.param_boutton_utilisateur3 = Button(
+            self.param_label_frame2,
+            text="Utilisateur 3",
+            font=("Arial_black", 16),
+            bg="#ffffff",
+            width=14,
+            height=2,
+            state="disabled",
+        )
+        self.param_boutton_utilisateur3.place(relx=0.05, rely=0.6)
+
+        # Bouton utilisateur 4
+        self.param_boutton_utilisateur4 = Button(
+            self.param_label_frame2,
+            text="Utilisateur 4",
+            font=("Arial_black", 16),
+            bg="#ffffff",
+            width=14,
+            height=2,
+            state="disabled",
+        )
+        self.param_boutton_utilisateur4.place(relx=0.5, rely=0.6)
+
+        # Bouton ajouter utilisateur 
         self.param_boutton_utilisateur = Button(
             self.param_label_frame,
             text="Ajouter un utilisateur",
@@ -158,7 +206,6 @@ class Interface(tk.Tk):
     ):  # Methode présente pour supprimer les widgets de Etape2_parametre et afficher ceux de ParamAjouterUtilisateur
         for i in self.winfo_children():
             i.destroy()
-
         self.Menu()
         self.ParamAjouterUtilisateur()
 
