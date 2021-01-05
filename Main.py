@@ -11,12 +11,13 @@ class Interface(tk.Tk):
         self.geometry("%dx%d" % (w, h))  # Redimensionne la fenetre
         self.Etape1_Vols()  # appel la première fenetre à s'afficher
 
+
     def Menu(self):  # Methode de la barre de menu
         self.label_frame1 = LabelFrame(
             self, text="menu", width=200, height=110
         )  # label_frame pour encadrer les bouton menu en haut à gauche
         self.label_frame1.place(relx=0.01, rely=0.02)
-
+        
         self.frame1 = Frame(self.label_frame1)
         self.frame1.place(relx=0, rely=0)
 
@@ -132,7 +133,20 @@ class Interface(tk.Tk):
         )
         self.param_label_frame2.place(relx=0.05, rely=0.08)
 
+        # Récupération des utilisateurs 
+        donnees = Initialisation()
+        self.Donnees = donnees[2]
+        self.id = donnees[1]
+        self.utilisateurs = donnees[0]
+        self.nombre_utilisateurs = len(self.utilisateurs.__dict__['utilisateurs'])
+        print(self.nombre_utilisateurs)
+       
+
         # Bouton utilisateur 1 
+        if self.nombre_utilisateurs != 0:
+            state1 = 'normal'
+        else: 
+            state1 = 'disabled'
         self.param_boutton_utilisateur1 = Button(
             self.param_label_frame2,
             text="Utilisateur 1",
@@ -140,22 +154,31 @@ class Interface(tk.Tk):
             bg="#ffffff",
             width=14,
             height=2,
+            state = state1
         )
         self.param_boutton_utilisateur1.place(relx=0.05, rely=0.2)
 
         # Bouton utilisateur 2
+        if self.nombre_utilisateurs > 1:
+            state2 = 'normal'
+        else: 
+            state2 = 'disabled'
         self.param_boutton_utilisateur2 = Button(
             self.param_label_frame2,
             text="Utilisateur 2",
             font=("Arial_black", 16),
             bg="#ffffff",
-            state="disabled",
             width=14,
             height=2,
+            state = state2,
         )
         self.param_boutton_utilisateur2.place(relx=0.5, rely=0.2)
 
         # Bouton utilisateur 3
+        if self.nombre_utilisateurs > 2:
+            state3 = 'normal'
+        else: 
+            state3 = 'disabled'
         self.param_boutton_utilisateur3 = Button(
             self.param_label_frame2,
             text="Utilisateur 3",
@@ -163,11 +186,15 @@ class Interface(tk.Tk):
             bg="#ffffff",
             width=14,
             height=2,
-            state="disabled",
+            state = state3
         )
         self.param_boutton_utilisateur3.place(relx=0.05, rely=0.6)
 
         # Bouton utilisateur 4
+        if self.nombre_utilisateurs > 3:
+            state4 = 'normal'
+        else: 
+            state4 = 'disabled'
         self.param_boutton_utilisateur4 = Button(
             self.param_label_frame2,
             text="Utilisateur 4",
@@ -175,7 +202,7 @@ class Interface(tk.Tk):
             bg="#ffffff",
             width=14,
             height=2,
-            state="disabled",
+            state = state4
         )
         self.param_boutton_utilisateur4.place(relx=0.5, rely=0.6)
 
@@ -373,7 +400,7 @@ class Interface(tk.Tk):
         paulatitude = self.pau_entry_latitudebase.get()
         paulongitude = self.pau_entry_longitude.get()
         # Création de l'objet utilisateur
-        CreationUtilisateur(prenom, nom, mail, paulatitude, paulongitude, pauvitesse, 0, 0, 0, 0, 0, 0, 0) 
+        CreationUtilisateur(self.Donnees, self.id, self.utilisateurs, prenom, nom, mail, paulatitude, paulongitude, pauvitesse, 0, 0, 0, 0, 0, 0, 0) 
 
     def BouttonEnregistrerInfo(self):
         for i in self.winfo_children():

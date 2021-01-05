@@ -13,71 +13,80 @@ def Sauvegarde():
     f.close()
 
 
-# Chargement des données
-f = open("Data/Utilisateurs.json", "r")
-Json_Utilisateur = f.read()
-Dict_Utilisateurs = json.loads(Json_Utilisateur)
-if Dict_Utilisateurs == {}:
-    Donnees = 0  # Fichier vide
-else:
-    Donnees = 1
-f.close()
-
-
 # Objet Utilisateurs
 utilisateurs = Utilisateurs()
 
+# Initialisation des données
+def Initialisation():
+    # Chargement des données 
+    f = open("Data/Utilisateurs.json", "r")
+    Json_Utilisateur = f.read()
+    Dict_Utilisateurs = json.loads(Json_Utilisateur)
+    if Dict_Utilisateurs == {}:
+        Donnees = 0  # Fichier vide
+    else:
+        Donnees = 1
+    f.close()
 
-# Création des objets Utilisateur
-if Donnees == 1:
-    for x in Dict_Utilisateurs["utilisateurs"]:
-        u = Dict_Utilisateurs["utilisateurs"][x]
-        utilisateur = Utilisateur(
-            u["id_utilisateur"],
-            u["prenom"],
-            u["nom"],
-            u["email"],
-            u["latitude_base"],
-            u["longitude_base"],
-            u["vitesse"],
-            u["mode_camera"],
-            u["suivie_mail"],
-            u["mail_coord"],
-            u["mail_alt"],
-            u["mail_vitesse"],
-            u["mail_batterie"],
-            u["mail_photo"],
-        )
-        # Création des objets Mission
-        for y in u["missions"]:
-            v = u["missions"][y]
-            mission = Mission(
-                v["id_mission"],
-                v["jour"],
-                v["heure"],
-                v["planification"],
-                v["mode_photo"],
+
+    # Création des objets Utilisateur
+    if Donnees == 1:
+        for x in Dict_Utilisateurs["utilisateurs"]:
+            u = Dict_Utilisateurs["utilisateurs"][x]
+            utilisateur = Utilisateur(
+                u["id_utilisateur"],
+                u["prenom"],
+                u["nom"],
+                u["email"],
+                u["latitude_base"],
+                u["longitude_base"],
+                u["vitesse"],
+                u["mode_camera"],
+                u["suivie_mail"],
+                u["mail_coord"],
+                u["mail_alt"],
+                u["mail_vitesse"],
+                u["mail_batterie"],
+                u["mail_photo"],
             )
-            # Création des objets Balise
-            for z in v["balises"]:
-                w = v["balises"][z]
-                balise = Balise(
-                    w["id_balise"],
-                    w["latitude"],
-                    w["longitude"],
-                    w["altitude"],
-                    w["vitesse"],
-                    w["pause"],
-                    w["photo"],
+            # Création des objets Mission
+            for y in u["missions"]:
+                v = u["missions"][y]
+                mission = Mission(
+                    v["id_mission"],
+                    v["jour"],
+                    v["heure"],
+                    v["planification"],
+                    v["mode_photo"],
                 )
-                mission.ajouterBalise(balise)
-            utilisateur.ajouterMission(mission)
-        utilisateurs.ajouterUtilisateur(utilisateur)
-        id = x  # Id du dernier objet présent dans le dictionnaire
+                # Création des objets Balise
+                for z in v["balises"]:
+                    w = v["balises"][z]
+                    balise = Balise(
+                        w["id_balise"],
+                        w["latitude"],
+                        w["longitude"],
+                        w["altitude"],
+                        w["vitesse"],
+                        w["pause"],
+                        w["photo"],
+                    )
+                    mission.ajouterBalise(balise)
+                utilisateur.ajouterMission(mission)
+            utilisateurs.ajouterUtilisateur(utilisateur)
+            id = x  # Id du dernier objet présent dans le dictionnaire
+        return [utilisateurs, id,  Donnees]
+    
+    else:
+        return[utilisateurs, None, Donnees]
+
 
 
 # Création d'un utilisateur
 def CreationUtilisateur(
+    Donnees,
+    id,
+    utilisateurs,
     prenom,
     nom,
     email,
@@ -310,3 +319,4 @@ def ReturnAvanceeMission(avanceemission):
 # CoordonneesBase(0)
 # NombreBalises(0, 1)
 # DureeMission(0, 1)
+
