@@ -161,12 +161,12 @@ class Interface(tk.Tk):
             text=name_1,
             font=("Arial_black", 16),
             bg="#ffffff",
-            width=14,
+            width=10,
             height=2,
             state = state1, 
             command = lambda:self.BoutonSelectionne(name_1, self.liste_id[0], 0)
         )
-        self.param_boutton_utilisateur1.place(relx=0.05, rely=0.2)
+        self.param_boutton_utilisateur1.place(relx=0.05, rely=0.13)
 
         # Bouton utilisateur 2
         if self.nombre_utilisateurs > 1:
@@ -180,12 +180,12 @@ class Interface(tk.Tk):
             text=name_2,
             font=("Arial_black", 16),
             bg="#ffffff",
-            width=14,
+            width=10,
             height=2,
             state = state2,
             command = lambda:self.BoutonSelectionne(name_2, self.liste_id[1], 1)
         )
-        self.param_boutton_utilisateur2.place(relx=0.5, rely=0.2)
+        self.param_boutton_utilisateur2.place(relx=0.56, rely=0.13)
 
         # Bouton utilisateur 3
         if self.nombre_utilisateurs > 2:
@@ -199,12 +199,12 @@ class Interface(tk.Tk):
             text=name_3,
             font=("Arial_black", 16),
             bg="#ffffff",
-            width=14,
+            width=10,
             height=2,
             state = state3,
             command = lambda:self.BoutonSelectionne(name_3, self.liste_id[2], 2)
         )
-        self.param_boutton_utilisateur3.place(relx=0.05, rely=0.6)
+        self.param_boutton_utilisateur3.place(relx=0.05, rely=0.57)
 
         # Bouton utilisateur 4
         if self.nombre_utilisateurs > 3:
@@ -218,12 +218,12 @@ class Interface(tk.Tk):
             text=name_4,
             font=("Arial_black", 16),
             bg="#ffffff",
-            width=14,
+            width=10,
             height=2,
             state = state4,
             command = lambda:self.BoutonSelectionne(name_4, self.liste_id[3], 3)
         )
-        self.param_boutton_utilisateur4.place(relx=0.5, rely=0.6)
+        self.param_boutton_utilisateur4.place(relx=0.56, rely=0.57)
 
         # Bouton ajouter utilisateur 
         self.param_boutton_utilisateur = Button(
@@ -256,11 +256,11 @@ class Interface(tk.Tk):
             text="Modifier l'utilisateur",
             font=("Arial_black", 16),
             bg="#ffffff",
-            width=40,
+            width=30,
             height=2,
             command=lambda:self.BouttonModifierUtilisateur()
         )
-        self.param_boutton_modif_utilisateur.place(relx=0.09, rely=0.15)
+        self.param_boutton_modif_utilisateur.place(relx=0.12, rely=0.12)
 
          # Bouton Supprimer l'utilisateur 
         self.param_boutton_sup_utilisateur = Button(
@@ -268,11 +268,11 @@ class Interface(tk.Tk):
             text="Supprimer l'utilisateur",
             font=("Arial_black", 16),
             bg="#ffffff",
-            width=40,
+            width=30,
             height=2,
             command=self.BouttonSupprimerUtilisateur,
         )
-        self.param_boutton_sup_utilisateur.place(relx=0.09, rely=0.6)
+        self.param_boutton_sup_utilisateur.place(relx=0.12, rely=0.56)
     
 
     # Retourne id de l'utilisateur sélectionné 
@@ -325,7 +325,7 @@ class Interface(tk.Tk):
             if self.id_bouton == 3:
                 SuppressionUtilisateur(self.utilisateurs, self.id_select)
                 self.param_boutton_utilisateur4.destroy()
-
+            self.Etape2_parametre()
 
     def ParamAjouterUtilisateur(
         self,
@@ -733,12 +733,12 @@ class Interface(tk.Tk):
             text=name_1,
             font=("Arial_black", 16),
             bg="#ffffff",
-            width=20,
+            width=15,
             height=2,
             state = state1, 
             command = lambda:self.BoutonSelectionne2(name_1, self.liste_id[0], 0)
         )
-        self.param_boutton_utilisateur1.place(relx=0.05, rely=0.2)
+        self.param_boutton_utilisateur1.place(relx=0.08, rely=0.2)
 
         # Bouton utilisateur 2
         if self.nombre_utilisateurs > 1:
@@ -752,12 +752,12 @@ class Interface(tk.Tk):
             text=name_2,
             font=("Arial_black", 16),
             bg="#ffffff",
-            width=20,
+            width=15,
             height=2,
             state = state2,
             command = lambda:self.BoutonSelectionne2(name_2, self.liste_id[1], 1)
         )
-        self.param_boutton_utilisateur2.place(relx=0.5, rely=0.2)
+        self.param_boutton_utilisateur2.place(relx=0.55, rely=0.2)
 
         # Bouton utilisateur 3
         if self.nombre_utilisateurs > 2:
@@ -771,12 +771,12 @@ class Interface(tk.Tk):
             text=name_3,
             font=("Arial_black", 16),
             bg="#ffffff",
-            width=20,
+            width=15,
             height=2,
             state = state3,
             command = lambda:self.BoutonSelectionne2(name_3, self.liste_id[2], 2)
         )
-        self.param_boutton_utilisateur3.place(relx=0.05, rely=0.6)
+        self.param_boutton_utilisateur3.place(relx=0.08, rely=0.6)
 
         # Bouton utilisateur 4
         if self.nombre_utilisateurs > 3:
@@ -790,12 +790,12 @@ class Interface(tk.Tk):
             text=name_4,
             font=("Arial_black", 16),
             bg="#ffffff",
-            width=20,
+            width=15,
             height=2,
             state = state4,
             command = lambda:self.BoutonSelectionne2(name_4, self.liste_id[3], 3)
         )
-        self.param_boutton_utilisateur4.place(relx=0.5, rely=0.6)
+        self.param_boutton_utilisateur4.place(relx=0.55, rely=0.6)
 
         # Utilisateur sélectionné 
         self.mission_utilisateurselectionne = Label(
@@ -812,20 +812,20 @@ class Interface(tk.Tk):
             self.mission_labelframe,
             text="Visualiser les missions",
             font=("Arial", 12, "bold"),
-            width=42,
+            width=30,
             height=2,
             command=self.BouttonVisualiserLesMissions,
         )
-        self.mission_boutton1.place(relx=0.1, rely=0.3)
+        self.mission_boutton1.place(relx=0.12, rely=0.18)
         self.mission_boutton2 = Button(
             self.mission_labelframe,
             text="Créer une mission",
             font=("Arial", 12, "bold"),
-            width=42,
+            width=30,
             height=2,
             command=self.BouttonCreerUneMission,
         )
-        self.mission_boutton2.place(relx=0.1, rely=0.6)
+        self.mission_boutton2.place(relx=0.12, rely=0.58)
     
     # Retourne id de l'utilisateur sélectionné 
     def BoutonSelectionne2(
@@ -1033,6 +1033,8 @@ class Interface(tk.Tk):
     def BouttonBalise2(self):
         self.boutton_nouvelle_etape_2 = Button(
             self.cumission_labelframe1,
+            state = 'normal',
+
             text="Balise 2",
             font=("Arial", 12),
             width=20,
