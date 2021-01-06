@@ -1033,8 +1033,6 @@ class Interface(tk.Tk):
     def BouttonBalise2(self):
         self.boutton_nouvelle_etape_2 = Button(
             self.cumission_labelframe1,
-            state = 'normal',
-
             text="Balise 2",
             font=("Arial", 12),
             width=20,
