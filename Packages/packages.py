@@ -158,6 +158,7 @@ def CreationBalise(
 
 # Modification d'un utilisateur
 def ModificationUtilisateur(
+    utilisateurs,
     id_utilisateur,
     prenom,
     nom,

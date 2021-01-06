@@ -617,7 +617,7 @@ class Interface(tk.Tk):
             width=22,
             height=2,
             bg="#ffffff",
-            command=lambda: [self.GetInfoUtilisateur(), self.BouttonEnregistrerInfo()],
+            command=lambda: [self.GetInfoModifUtilisateur(), self.BouttonEnregistrerInfo()],
         )
         self.pau_boutton.place(relx=0.4, rely=0.9)
 
@@ -631,10 +631,19 @@ class Interface(tk.Tk):
         # Création de l'objet utilisateur
         CreationUtilisateur(self.Donnees, self.id, self.utilisateurs, prenom, nom, mail, paulatitude, paulongitude, pauvitesse, 0, 0, 0, 0, 0, 0, 0) 
 
+    def GetInfoModifUtilisateur(self):
+        prenom = self.pau_entry_prenom.get()
+        nom = self.pau_entry_nom.get()
+        mail = self.pau_entry_mail.get()
+        pauvitesse = self.pau_entry_vitesse.get()
+        paulatitude = self.pau_entry_latitudebase.get()
+        paulongitude = self.pau_entry_longitude.get()
+        # Modification de l'objet utilisateur
+        ModificationUtilisateur(self.utilisateurs, self.id_select, prenom, nom, mail, paulatitude, paulongitude, pauvitesse, 0, 0, 0, 0, 0, 0, 0) 
+
     def BouttonEnregistrerInfo(self):
         for i in self.winfo_children():
             i.destroy()
-
         self.Menu()
         self.Etape2_parametre()
 
