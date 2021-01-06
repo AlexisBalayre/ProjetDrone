@@ -109,10 +109,12 @@ class Interface(tk.Tk):
         )  # Label_frame contenant les missions programmées
         self.vols_label_frame2.place(relx=0.25, rely=0.25)
 
+
     def Etape2_parametre(
         self,
     ):  # Methode comprenant les widgets de l'étape 2 du doc spe fonctionelles
-        
+        self.id_select = None
+
         self.param_label_frame = LabelFrame(
             self,
             text="Réglages",
@@ -157,7 +159,7 @@ class Interface(tk.Tk):
             width=14,
             height=2,
             state = state1, 
-            command = lambda:self.BoutonSelectionne(name_1)
+            command = lambda:self.BoutonSelectionne(name_1, 0)
         )
         self.param_boutton_utilisateur1.place(relx=0.05, rely=0.2)
 
@@ -176,7 +178,7 @@ class Interface(tk.Tk):
             width=14,
             height=2,
             state = state2,
-            command = lambda:self.BoutonSelectionne(name_2)
+            command = lambda:self.BoutonSelectionne(name_2, 1)
         )
         self.param_boutton_utilisateur2.place(relx=0.5, rely=0.2)
 
@@ -195,7 +197,7 @@ class Interface(tk.Tk):
             width=14,
             height=2,
             state = state3,
-            command = lambda:self.BoutonSelectionne(name_3)
+            command = lambda:self.BoutonSelectionne(name_3, 2)
         )
         self.param_boutton_utilisateur3.place(relx=0.05, rely=0.6)
 
@@ -214,7 +216,7 @@ class Interface(tk.Tk):
             width=14,
             height=2,
             state = state4,
-            command = lambda:self.BoutonSelectionne(name_4)
+            command = lambda:self.BoutonSelectionne(name_4, 3)
         )
         self.param_boutton_utilisateur4.place(relx=0.5, rely=0.6)
 
@@ -241,6 +243,10 @@ class Interface(tk.Tk):
         )
         self.param_label_frame3.place(relx=0.23, rely=0.53)
 
+        if self.id_select != None: 
+            u = utilisateurs.__dict__["utilisateurs"][self.id_select]
+            print(u)
+        
         # Bouton Modifier l'utilisateur 
         self.param_boutton_modif_utilisateur = Button(
             self.param_label_frame3,
@@ -249,7 +255,7 @@ class Interface(tk.Tk):
             bg="#ffffff",
             width=40,
             height=2,
-            command=self.BouttonModifierUtilisateur,
+            command=lambda:self.BouttonModifierUtilisateur()
         )
         self.param_boutton_modif_utilisateur.place(relx=0.09, rely=0.15)
 
@@ -264,14 +270,15 @@ class Interface(tk.Tk):
             command=self.BouttonSupprimerUtilisateur,
         )
         self.param_boutton_sup_utilisateur.place(relx=0.09, rely=0.6)
-    
+
     # Retourne id de l'utilisateur sélectionné 
     def BoutonSelectionne(
         self,
-        name
+        name,
+        id
     ):
         self.param_label_frame3.configure(text = "Utilisateur sélectionné : %s" % name) 
-
+        self.id_select = id
 
     def BouttonAjouterUtilisateur(
         self,
@@ -295,6 +302,7 @@ class Interface(tk.Tk):
     ):
         self.Menu()
         self.param_boutton_utilisateur4.destroy()
+
 
     def ParamAjouterUtilisateur(
         self,
@@ -514,10 +522,10 @@ class Interface(tk.Tk):
         self.pau_entry_prenom.insert(0, self.prenom)
         self.pau_entry_prenom.place(relx=0.35, rely=0.12)
         self.pau_entry_nom = Entry(self.pau_label_frame2, width=30)
-        self.pau_entry_prenom.insert(0, self.nom)
+        self.pau_entry_nom.insert(0, self.nom)
         self.pau_entry_nom.place(relx=0.35, rely=0.42)
         self.pau_entry_mail = Entry(self.pau_label_frame2, width=30)
-        self.pau_entry_prenom.insert(0, self.mail)
+        self.pau_entry_mail.insert(0, self.mail)
         self.pau_entry_mail.place(relx=0.35, rely=0.77)
 
         self.pau_text_frame3 = Label(
@@ -601,10 +609,13 @@ class Interface(tk.Tk):
         self.pau_text_modecam.place(relx=0.6, rely=0.35)
 
         self.pau_entry_vitesse = Entry(self.pau_label_frame4, width=30)
+        self.pau_entry_vitesse.insert(0, self.vitesse)
         self.pau_entry_vitesse.place(relx=0.2, rely=0.12)
         self.pau_entry_latitudebase = Entry(self.pau_label_frame4, width=30)
+        self.pau_entry_latitudebase.insert(0, self.latitude)
         self.pau_entry_latitudebase.place(relx=0.2, rely=0.42)
         self.pau_entry_longitude = Entry(self.pau_label_frame4, width=30)
+        self.pau_entry_longitude.insert(0, self.longitude)
         self.pau_entry_longitude.place(relx=0.2, rely=0.72)
         self.pau_modecam_photo_check = Checkbutton(
             self.pau_label_frame4, text="Photo", font=("Arail", 14), bg="#a4a1a3"
