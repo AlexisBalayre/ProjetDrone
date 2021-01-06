@@ -282,6 +282,7 @@ class Interface(tk.Tk):
         self.param_label_frame3.configure(text = "Utilisateur sélectionné : %s" % name) 
         self.id_select = id
         self.id_bouton = id_bouton
+        print(id_bouton)
    
 
     def BouttonAjouterUtilisateur(
@@ -486,7 +487,7 @@ class Interface(tk.Tk):
     ):  # Mehtode comprenant les widgets de l'etape 2 du doc spe fonctionnelles si la personne clique sur "Ajouter un utilisateur"
         self.pau_label_frame = LabelFrame(
             self,
-            text="Utilisateur : ",
+            text="Utilisateur : %s" % self.utilisateurs.__dict__["utilisateurs"][self.id_select].__dict__['prenom'],
             font=("Arial_black", 12),
             width=870,
             height=600,
@@ -689,8 +690,21 @@ class Interface(tk.Tk):
         self.Etape2_parametre()
 
     def Etape3_Mission(self):
+         # Récupération des utilisateurs 
+        donnees = Initialisation()
+        self.Donnees = donnees[2]
+        self.id = donnees[1]
+        self.utilisateurs = donnees[0]
+        self.nombre_utilisateurs = len(self.utilisateurs.__dict__['utilisateurs'])
+        self.liste_id = []
+        for x in self.utilisateurs.__dict__['utilisateurs']:
+            self.liste_id.append( self.utilisateurs.__dict__['utilisateurs'][x].__dict__['id_utilisateur'])
+        
+        # Création de la fenêtre 
         self.mission_frame_principale = Frame(self, width=870, height=550)
         self.mission_frame_principale.place(relx=0.25, rely=0.25)
+
+        # Liste des utilisateurs 
         self.mission_listeutilisateur = Label(
             self.mission_frame_principale,
             text="Liste Utilisateurs",
@@ -698,17 +712,95 @@ class Interface(tk.Tk):
         )
         self.mission_listeutilisateur.place(relx=0.15, rely=0.01)
         self.mission_frame1 = Frame(
-            self.mission_frame_principale, width=600, height=250, bg="#a4a1a3"
+            self.mission_frame_principale, width=500, height=250, bg="#a4a1a3"
         )
         self.mission_frame1.place(relx=0.15, rely=0.06)
-        self.mission_utilisateurselectionné = Label(
+
+        # Bouton utilisateur 1 
+        if self.nombre_utilisateurs != 0:
+            state1 = 'normal'
+            name_1 = self.utilisateurs.__dict__['utilisateurs'][self.liste_id[0]].__dict__['prenom']
+        else: 
+            state1 = 'disabled'
+            name_1 = 'Utilisateur 1'
+        self.param_boutton_utilisateur1 = Button(
+            self.mission_frame1,
+            text=name_1,
+            font=("Arial_black", 16),
+            bg="#ffffff",
+            width=20,
+            height=2,
+            state = state1, 
+            command = lambda:self.BoutonSelectionne2(name_1, self.liste_id[0], 0)
+        )
+        self.param_boutton_utilisateur1.place(relx=0.05, rely=0.2)
+
+        # Bouton utilisateur 2
+        if self.nombre_utilisateurs > 1:
+            state2 = 'normal'
+            name_2 = self.utilisateurs.__dict__['utilisateurs'][self.liste_id[1]].__dict__['prenom']
+        else: 
+            state2 = 'disabled'
+            name_2 = 'Utilisateur 2'
+        self.param_boutton_utilisateur2 = Button(
+            self.mission_frame1,
+            text=name_2,
+            font=("Arial_black", 16),
+            bg="#ffffff",
+            width=20,
+            height=2,
+            state = state2,
+            command = lambda:self.BoutonSelectionne2(name_2, self.liste_id[1], 1)
+        )
+        self.param_boutton_utilisateur2.place(relx=0.5, rely=0.2)
+
+        # Bouton utilisateur 3
+        if self.nombre_utilisateurs > 2:
+            state3 = 'normal'
+            name_3 = self.utilisateurs.__dict__['utilisateurs'][self.liste_id[2]].__dict__['prenom']
+        else: 
+            state3 = 'disabled'
+            name_3 = 'Utilisateur 3'
+        self.param_boutton_utilisateur3 = Button(
+            self.mission_frame1,
+            text=name_3,
+            font=("Arial_black", 16),
+            bg="#ffffff",
+            width=20,
+            height=2,
+            state = state3,
+            command = lambda:self.BoutonSelectionne2(name_3, self.liste_id[2], 2)
+        )
+        self.param_boutton_utilisateur3.place(relx=0.05, rely=0.6)
+
+        # Bouton utilisateur 4
+        if self.nombre_utilisateurs > 3:
+            state4 = 'normal'
+            name_4 = self.utilisateurs.__dict__['utilisateurs'][self.liste_id[3]].__dict__['prenom']
+        else: 
+            state4 = 'disabled'
+            name_4 = 'Utilisateur 4'
+        self.param_boutton_utilisateur4 = Button(
+            self.mission_frame1,
+            text=name_4,
+            font=("Arial_black", 16),
+            bg="#ffffff",
+            width=20,
+            height=2,
+            state = state4,
+            command = lambda:self.BoutonSelectionne2(name_4, self.liste_id[3], 3)
+        )
+        self.param_boutton_utilisateur4.place(relx=0.5, rely=0.6)
+
+        # Utilisateur sélectionné 
+        self.mission_utilisateurselectionne = Label(
             self.mission_frame_principale,
-            text="Utilisateur sélectionné:",
+            text="Aucun utilisateur sélectionné",
             font=("Arial", 14, "bold"),
         )
-        self.mission_utilisateurselectionné.place(relx=0.22, rely=0.565)
+        self.mission_utilisateurselectionne.place(relx=0.22, rely=0.565)
         self.mission_labelframe = LabelFrame(
-            self.mission_frame_principale, width=500, height=200, borderwidth=3
+            self.mission_frame_principale, width=400, height=200, borderwidth=3
         )
         self.mission_labelframe.place(relx=0.22, rely=0.62)
         self.mission_boutton1 = Button(
@@ -719,7 +811,7 @@ class Interface(tk.Tk):
             height=2,
             command=self.BouttonVisualiserLesMissions,
         )
-        self.mission_boutton1.place(relx=0.07, rely=0.1)
+        self.mission_boutton1.place(relx=0.1, rely=0.3)
         self.mission_boutton2 = Button(
             self.mission_labelframe,
             text="Créer une mission",
@@ -728,7 +820,19 @@ class Interface(tk.Tk):
             height=2,
             command=self.BouttonCreerUneMission,
         )
-        self.mission_boutton2.place(relx=0.07, rely=0.6)
+        self.mission_boutton2.place(relx=0.1, rely=0.6)
+    
+    # Retourne id de l'utilisateur sélectionné 
+    def BoutonSelectionne2(
+        self,
+        name,
+        id,
+        id_bouton
+    ):
+        self.mission_utilisateurselectionne.configure(text = "Utilisateur sélectionné : %s" % name) 
+        self.id_select = id
+        self.id_bouton = id_bouton
+
 
     def BouttonVisualiserLesMissions(self):
         for i in self.winfo_children():
