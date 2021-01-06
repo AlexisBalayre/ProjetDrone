@@ -5,7 +5,7 @@
             "prenom": "Alexis",
             "nom": "Balayre",
             "email": "",
-            "vitesse": "",
+            "vitesse": "10",
             "latitude_base": "",
             "longitude_base": "",
             "mode_camera": 0,

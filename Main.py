@@ -515,15 +515,24 @@ class Interface(tk.Tk):
             bg="#a4a1a3",
         )
         self.pau_text_mail.place(relx=0.1, rely=0.75)
-
-        self.pau_entry_prenom = Entry(self.pau_label_frame2, width=30)
-        self.pau_entry_prenom.insert(0, self.utilisateurs.__dict__["utilisateurs"][self.id_select].__dict__['prenom'])
+        
+        # Champs de saisi du prénom
+        mon_entree1 = StringVar()
+        # Récupération de la valeur par défaut 
+        mon_entree1.set(self.utilisateurs.__dict__["utilisateurs"][self.id_select].__dict__['prenom']) 
+        self.pau_entry_prenom = Entry(self.pau_label_frame2, width=30, textvariable=mon_entree1)
         self.pau_entry_prenom.place(relx=0.35, rely=0.12)
-        self.pau_entry_nom = Entry(self.pau_label_frame2, width=30)
-        self.pau_entry_nom.insert(0, self.utilisateurs.__dict__["utilisateurs"][self.id_select].__dict__['nom'])
+        # Champs de saisi du nom
+        mon_entree2 = StringVar()
+        # Récupération de la valeur par défaut 
+        mon_entree2.set(self.utilisateurs.__dict__["utilisateurs"][self.id_select].__dict__['nom']) 
+        self.pau_entry_nom = Entry(self.pau_label_frame2, width=30, textvariable=mon_entree2)
         self.pau_entry_nom.place(relx=0.35, rely=0.42)
-        self.pau_entry_mail = Entry(self.pau_label_frame2, width=30)
-        self.pau_entry_mail.insert(0, self.utilisateurs.__dict__["utilisateurs"][self.id_select].__dict__['email'])
+         # Champs de saisi du mail
+        mon_entree3 = StringVar()
+        # Récupération de la valeur par défaut 
+        mon_entree3.set(self.utilisateurs.__dict__["utilisateurs"][self.id_select].__dict__['email']) 
+        self.pau_entry_mail = Entry(self.pau_label_frame2, width=30, textvariable=mon_entree3)
         self.pau_entry_mail.place(relx=0.35, rely=0.77)
 
         self.pau_text_frame3 = Label(
@@ -605,16 +614,26 @@ class Interface(tk.Tk):
             bg="#a4a1a3",
         )
         self.pau_text_modecam.place(relx=0.6, rely=0.35)
-
-        self.pau_entry_vitesse = Entry(self.pau_label_frame4, width=30)
-        self.pau_entry_vitesse.insert(0, self.utilisateurs.__dict__["utilisateurs"][self.id_select].__dict__['vitesse'])
+        
+        # Champs de saisi de la vitesse
+        mon_entree4 = StringVar()
+        # Récupération de la valeur par défaut 
+        mon_entree4.set(self.utilisateurs.__dict__["utilisateurs"][self.id_select].__dict__['vitesse']) 
+        self.pau_entry_vitesse = Entry(self.pau_label_frame4, width=30, textvariable=mon_entree4)
         self.pau_entry_vitesse.place(relx=0.2, rely=0.12)
-        self.pau_entry_latitudebase = Entry(self.pau_label_frame4, width=30)
-        self.pau_entry_latitudebase.insert(0, self.utilisateurs.__dict__["utilisateurs"][self.id_select].__dict__['latitude_base'])
+        # Champs de saisi de la latitude
+        mon_entree5 = StringVar()
+        # Récupération de la valeur par défaut 
+        mon_entree5.set(self.utilisateurs.__dict__["utilisateurs"][self.id_select].__dict__['latitude_base']) 
+        self.pau_entry_latitudebase = Entry(self.pau_label_frame4, width=30, textvariable=mon_entree5)
         self.pau_entry_latitudebase.place(relx=0.2, rely=0.42)
-        self.pau_entry_longitude = Entry(self.pau_label_frame4, width=30)
-        self.pau_entry_longitude.insert(0, self.utilisateurs.__dict__["utilisateurs"][self.id_select].__dict__['longitude_base'])
+        # Champs de saisi de la longitude
+        mon_entree6 = StringVar()
+        # Récupération de la valeur par défaut 
+        mon_entree6.set(self.utilisateurs.__dict__["utilisateurs"][self.id_select].__dict__['longitude_base']) 
+        self.pau_entry_longitude = Entry(self.pau_label_frame4, width=30, textvariable=mon_entree6)
         self.pau_entry_longitude.place(relx=0.2, rely=0.72)
+
         self.pau_modecam_photo_check = Checkbutton(
             self.pau_label_frame4, text="Photo", font=("Arail", 14), bg="#a4a1a3"
         )
