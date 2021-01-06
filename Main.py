@@ -282,7 +282,6 @@ class Interface(tk.Tk):
         self.param_label_frame3.configure(text = "Utilisateur sélectionné : %s" % name) 
         self.id_select = id
         self.id_bouton = id_bouton
-        print(id_bouton)
    
 
     def BouttonAjouterUtilisateur(
@@ -391,10 +390,10 @@ class Interface(tk.Tk):
             bg="#a4a1a3",
         )
         self.pau_check_suiviedevol.place(relx=0.1, rely=0.1)
-        self.pau_check_coordonnées = Checkbutton(
+        self.pau_check_coordonnees = Checkbutton(
             self.pau_label_frame3, text="Coordonnées", font=("Arail", 14), bg="#a4a1a3"
         )
-        self.pau_check_coordonnées.place(relx=0.2, rely=0.25)
+        self.pau_check_coordonnees.place(relx=0.2, rely=0.25)
         self.pau_check_altitude = Checkbutton(
             self.pau_label_frame3, text="Altitude", font=("Arail", 14), bg="#a4a1a3"
         )
@@ -560,10 +559,10 @@ class Interface(tk.Tk):
             bg="#a4a1a3",
         )
         self.pau_check_suiviedevol.place(relx=0.1, rely=0.1)
-        self.pau_check_coordonnées = Checkbutton(
+        self.pau_check_coordonnees = Checkbutton(
             self.pau_label_frame3, text="Coordonnées", font=("Arail", 14), bg="#a4a1a3"
         )
-        self.pau_check_coordonnées.place(relx=0.2, rely=0.25)
+        self.pau_check_coordonnees.place(relx=0.2, rely=0.25)
         self.pau_check_altitude = Checkbutton(
             self.pau_label_frame3, text="Altitude", font=("Arail", 14), bg="#a4a1a3"
         )
@@ -835,18 +834,19 @@ class Interface(tk.Tk):
 
 
     def BouttonVisualiserLesMissions(self):
-        for i in self.winfo_children():
-            i.destroy()
+        if self.id_select != None:
+            for i in self.winfo_children():
+                i.destroy()
 
-        self.Menu()
-        self.VisualiserLesMissions()
+            self.Menu()
+            self.VisualiserLesMissions()
 
     def BouttonCreerUneMission(self):
-        for i in self.winfo_children():
-            i.destroy()
-
-        self.Menu()
-        self.CreerUneMission()
+        if self.id_select != None:
+            for i in self.winfo_children():
+                i.destroy()
+            self.Menu()
+            self.CreerUneMission()
 
     def CreerUneMission(self):
         self.cumission_labelframe = LabelFrame(
@@ -1322,10 +1322,10 @@ class Interface(tk.Tk):
             font=("Arial", 12, "bold"),
         )
         self.vlm_label_recap.place(relx=0.35, rely=0.01)
-        self.vlm_label_durée = Label(
+        self.pau_check_coordonnees = Label(
             self.vlm_labelframe_mission1, text="Durée:", font=("Arial", 12)
         )
-        self.vlm_label_durée.place(relx=0.01, rely=0.15)
+        self.pau_check_coordonnees.place(relx=0.01, rely=0.15)
         self.vlm_label_nbretape = Label(
             self.vlm_labelframe_mission1, text="Nombre étapes:", font=("Arial", 12)
         )
