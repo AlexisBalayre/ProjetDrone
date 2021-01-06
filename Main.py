@@ -141,12 +141,15 @@ class Interface(tk.Tk):
         self.id = donnees[1]
         self.utilisateurs = donnees[0]
         self.nombre_utilisateurs = len(self.utilisateurs.__dict__['utilisateurs'])
+        self.liste_id = []
+        for x in self.utilisateurs.__dict__['utilisateurs']:
+            self.liste_id.append( self.utilisateurs.__dict__['utilisateurs'][x].__dict__['id_utilisateur'])
     
 
         # Bouton utilisateur 1 
         if self.nombre_utilisateurs != 0:
             state1 = 'normal'
-            name_1 = self.utilisateurs.__dict__['utilisateurs'][0].__dict__['prenom']
+            name_1 = self.utilisateurs.__dict__['utilisateurs'][self.liste_id[0]].__dict__['prenom']
         else: 
             state1 = 'disabled'
             name_1 = 'Utilisateur 1'
@@ -158,14 +161,14 @@ class Interface(tk.Tk):
             width=14,
             height=2,
             state = state1, 
-            command = lambda:self.BoutonSelectionne(name_1, 0)
+            command = lambda:self.BoutonSelectionne(name_1, self.liste_id[0], 0)
         )
         self.param_boutton_utilisateur1.place(relx=0.05, rely=0.2)
 
         # Bouton utilisateur 2
         if self.nombre_utilisateurs > 1:
             state2 = 'normal'
-            name_2 = self.utilisateurs.__dict__['utilisateurs'][1].__dict__['prenom']
+            name_2 = self.utilisateurs.__dict__['utilisateurs'][self.liste_id[1]].__dict__['prenom']
         else: 
             state2 = 'disabled'
             name_2 = 'Utilisateur 2'
@@ -177,14 +180,14 @@ class Interface(tk.Tk):
             width=14,
             height=2,
             state = state2,
-            command = lambda:self.BoutonSelectionne(name_2, 1)
+            command = lambda:self.BoutonSelectionne(name_2, self.liste_id[1], 1)
         )
         self.param_boutton_utilisateur2.place(relx=0.5, rely=0.2)
 
         # Bouton utilisateur 3
         if self.nombre_utilisateurs > 2:
             state3 = 'normal'
-            name_3 = self.utilisateurs.__dict__['utilisateurs'][2].__dict__['prenom']
+            name_3 = self.utilisateurs.__dict__['utilisateurs'][self.liste_id[2]].__dict__['prenom']
         else: 
             state3 = 'disabled'
             name_3 = 'Utilisateur 3'
@@ -196,14 +199,14 @@ class Interface(tk.Tk):
             width=14,
             height=2,
             state = state3,
-            command = lambda:self.BoutonSelectionne(name_3, 2)
+            command = lambda:self.BoutonSelectionne(name_3, self.liste_id[2], 2)
         )
         self.param_boutton_utilisateur3.place(relx=0.05, rely=0.6)
 
         # Bouton utilisateur 4
         if self.nombre_utilisateurs > 3:
             state4 = 'normal'
-            name_4 = self.utilisateurs.__dict__['utilisateurs'][3].__dict__['prenom']
+            name_4 = self.utilisateurs.__dict__['utilisateurs'][self.liste_id[3]].__dict__['prenom']
         else: 
             state4 = 'disabled'
             name_4 = 'Utilisateur 4'
@@ -215,7 +218,7 @@ class Interface(tk.Tk):
             width=14,
             height=2,
             state = state4,
-            command = lambda:self.BoutonSelectionne(name_4, 3)
+            command = lambda:self.BoutonSelectionne(name_4, self.liste_id[3], 3)
         )
         self.param_boutton_utilisateur4.place(relx=0.5, rely=0.6)
 
@@ -267,15 +270,18 @@ class Interface(tk.Tk):
             command=self.BouttonSupprimerUtilisateur,
         )
         self.param_boutton_sup_utilisateur.place(relx=0.09, rely=0.6)
+    
 
     # Retourne id de l'utilisateur sélectionné 
     def BoutonSelectionne(
         self,
         name,
-        id
+        id,
+        id_bouton
     ):
         self.param_label_frame3.configure(text = "Utilisateur sélectionné : %s" % name) 
         self.id_select = id
+        self.id_bouton = id_bouton
    
 
     def BouttonAjouterUtilisateur(
@@ -289,31 +295,33 @@ class Interface(tk.Tk):
     def BouttonModifierUtilisateur(
         self,
     ):  # Methode présente pour supprimer les widgets de Etape2_parametre et afficher ceux de ParamAjouterUtilisateur
-        for i in self.winfo_children():
-            i.destroy()
-        self.Menu()
-        self.ParamModifierUtilisateur()
+        if self.id_select != None:
+            for i in self.winfo_children():
+                i.destroy()
+            self.Menu()
+            self.ParamModifierUtilisateur()
     
     def BouttonSupprimerUtilisateur(
         self,
     ):
-        self.Menu()
-        # Suppression Utilisateur 1
-        if self.id_select == 0:
-            SuppressionUtilisateur(self.utilisateurs, 0)
-            self.param_boutton_utilisateur1.destroy() 
-        # Suppression Utilisateur 2
-        if self.id_select == 1:
-            SuppressionUtilisateur(self.utilisateurs, 1)
-            self.param_boutton_utilisateur2.destroy()
-        # Suppression Utilisateur 3
-        if self.id_select == 2:
-            SuppressionUtilisateur(self.utilisateurs,2)
-            self.param_boutton_utilisateur3.destroy()
-        # Suppression Utilisateur 4
-        if self.id_select == 3:
-            SuppressionUtilisateur(self.utilisateurs, 3)
-            self.param_boutton_utilisateur4.destroy()
+        if self.id_select != None:
+            self.Menu()
+            # Suppression Utilisateur 1
+            if self.id_bouton == 0:
+                SuppressionUtilisateur(self.utilisateurs, self.id_select)
+                self.param_boutton_utilisateur1.destroy() 
+            # Suppression Utilisateur 2
+            if self.id_bouton == 1:
+                SuppressionUtilisateur(self.utilisateurs, self.id_select)
+                self.param_boutton_utilisateur2.destroy()
+            # Suppression Utilisateur 3
+            if self.id_bouton == 2:
+                SuppressionUtilisateur(self.utilisateurs, self.id_select)
+                self.param_boutton_utilisateur3.destroy()
+            # Suppression Utilisateur 4
+            if self.id_bouton == 3:
+                SuppressionUtilisateur(self.utilisateurs, self.id_select)
+                self.param_boutton_utilisateur4.destroy()
 
 
     def ParamAjouterUtilisateur(

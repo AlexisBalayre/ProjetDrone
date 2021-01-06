@@ -31,6 +31,7 @@ def Initialisation():
 
     # Création des objets Utilisateur
     if Donnees == 1:
+        id = 0 # Initialisation de la variable id 
         for x in Dict_Utilisateurs["utilisateurs"]:
             u = Dict_Utilisateurs["utilisateurs"][x]
             utilisateur = Utilisateur(
