@@ -30,31 +30,44 @@
                     "mode_photo": 0,
                     "jour": "",
                     "heure": "",
-                    "balises": {}
-                },
-                "2": {
-                    "id_mission": 2,
-                    "planification": 0,
-                    "mode_photo": 0,
-                    "jour": "",
-                    "heure": "",
-                    "balises": {}
-                },
-                "3": {
-                    "id_mission": 3,
-                    "planification": 0,
-                    "mode_photo": 0,
-                    "jour": "",
-                    "heure": "",
-                    "balises": {}
-                },
-                "4": {
-                    "id_mission": 4,
-                    "planification": 0,
-                    "mode_photo": 0,
-                    "jour": "",
-                    "heure": "",
-                    "balises": {}
+                    "balises": {
+                        "0": {
+                            "id_balise": 0,
+                            "latitude": "",
+                            "longitude": "",
+                            "altitude": "0",
+                            "vitesse": "0",
+                            "pause": "0",
+                            "photo": 0
+                        },
+                        "1": {
+                            "id_balise": 1,
+                            "latitude": "",
+                            "longitude": "",
+                            "altitude": "0",
+                            "vitesse": "0",
+                            "pause": "0",
+                            "photo": 0
+                        },
+                        "2": {
+                            "id_balise": 2,
+                            "latitude": "",
+                            "longitude": "",
+                            "altitude": "0",
+                            "vitesse": "0",
+                            "pause": "0",
+                            "photo": 0
+                        },
+                        "3": {
+                            "id_balise": 3,
+                            "latitude": "",
+                            "longitude": "",
+                            "altitude": "0",
+                            "vitesse": "0",
+                            "pause": "0",
+                            "photo": 0
+                        }
+                    }
                 }
             }
         }

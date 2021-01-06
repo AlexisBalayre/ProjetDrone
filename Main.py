@@ -1007,22 +1007,6 @@ class Interface(tk.Tk): #définition de la classe
         )
         self.cumission_boutton_atterissage.place(relx=0.1, rely=0.87)
 
-        self.cumission_label2 = Label(
-            self.cumission_labelframe,
-            text="Rajouter une étape",
-            font=("Arial", 12, "bold"),
-        )
-        self.cumission_label2.place(relx=0.1, rely=0.84)
-        self.cumission_boutton_etape = Button(
-            self.cumission_labelframe,
-            text="+",
-            font=("Arial", 16, "bold"),
-            width=10,
-            bg="#a4a1a3",
-            command = self.AjouterBalise()
-        )   #Bouton permettant de rendre les différents boutons des balises actifs (auparavant inactifs)
-        self.cumission_boutton_etape.place(relx=0.1, rely=0.89)
-
         self.cumission_boutton_enregistrer = Button(
             self.cumission_labelframe,
             text="Enregistrer les informations",
@@ -1031,12 +1015,10 @@ class Interface(tk.Tk): #définition de la classe
             width=30,
             height=2,
             command=lambda: [
-                self.GetCreerUneMission,
                 self.BouttonEnregistrerInfo2,
             ],
         )   #Bouton permettant d'executer les méthodes GetCreerUnemission et BoutonEnregistrerInfo2
         self.cumission_boutton_enregistrer.place(relx=0.575, rely=0.85)
-
 
     def BouttonBalise1(self):
         # Bouton Balise 1: permet de rajouter une étape à la mission en entrant de nouveaux parametres(longitude, latitude, altitude, vitesse, pause)
@@ -1108,7 +1090,28 @@ class Interface(tk.Tk): #définition de la classe
         )
         self.balise1_checkbutton_photo_non.place(relx=0.75, rely=0.83)
 
+        # Rajouter une étape 
+        self.cumission_label2 = Label(
+            self.cumission_labelframe,
+            text="Rajouter une étape",
+            font=("Arial", 12, "bold"),
+        )
+        self.cumission_label2.place(relx=0.1, rely=0.84)
+        self.cumission_boutton_etape = Button(
+            self.cumission_labelframe,
+            text="+",
+            font=("Arial", 16, "bold"),
+            width=10,
+            bg="#a4a1a3",
+            command = lambda:[self.GetBalise1(), self.BouttonBalise2()]
+        )   #Bouton permettant de rendre les différents boutons des balises actifs (auparavant inactifs)
+        self.cumission_boutton_etape.place(relx=0.1, rely=0.89)
+
+
     def BouttonBalise2(self):
+        # Suppression d'instances
+        self.cumission_boutton_etape.destroy()
+        self.cumission_label2.destroy()
         # Bouton Balise 2: permet de rajouter une étape à la mission en entrant de nouveaux parametres(longitude, latitude, altitude, vitesse, pause)
         if self.nombre_balise > 1:
             state2 = "normal"   #définit l'état du bouton en actif
@@ -1182,7 +1185,27 @@ class Interface(tk.Tk): #définition de la classe
         )
         self.balise2_checkbutton_photo_non.place(relx=0.75, rely=0.83)
 
+        # Rajouter une étape 
+        self.cumission_label2_bis = Label(
+            self.cumission_labelframe,
+            text="Rajouter une étape",
+            font=("Arial", 12, "bold"),
+        )
+        self.cumission_label2_bis.place(relx=0.1, rely=0.84)
+        self.cumission_boutton_etape_bis = Button(
+            self.cumission_labelframe,
+            text="+",
+            font=("Arial", 16, "bold"),
+            width=10,
+            bg="#a4a1a3",
+            command = lambda:[self.GetBalise2(), self.BouttonBalise3()]
+        )   #Bouton permettant de rendre les différents boutons des balises actifs (auparavant inactifs)
+        self.cumission_boutton_etape.place(relx=0.1, rely=0.89)
+
     def BouttonBalise3(self):
+        # Suppression d'instances
+        self.cumission_boutton_etape_bis.destroy()
+        self.cumission_label2_bis.destroy()
         # Bouton Balise 3: permet de rajouter une étape à la mission en entrant de nouveaux parametres(longitude, latitude, altitude, vitesse, pause)
         if self.nombre_balise > 2:
             state3 = "normal"
@@ -1266,7 +1289,27 @@ class Interface(tk.Tk): #définition de la classe
         )
         self.balise3_checkbutton_photo_non.place(relx=0.75, rely=0.83)
 
+        # Rajouter une étape 
+        self.cumission_label2_bis2 = Label(
+            self.cumission_labelframe,
+            text="Rajouter une étape",
+            font=("Arial", 12, "bold"),
+        )
+        self.cumission_label2_bis2.place(relx=0.1, rely=0.84)
+        self.cumission_boutton_etape_bis2 = Button(
+            self.cumission_labelframe,
+            text="+",
+            font=("Arial", 16, "bold"),
+            width=10,
+            bg="#a4a1a3",
+            command = lambda:[self.GetBalise3(), self.BouttonBalise4()]
+        )   #Bouton permettant de rendre les différents boutons des balises actifs (auparavant inactifs)
+        self.cumission_boutton_etape.place(relx=0.1, rely=0.89)
+
     def BouttonBalise4(self):
+        # Suppression d'instances
+        self.cumission_boutton_etape_bis2.destroy()
+        self.cumission_label2_bis2.destroy()
         # Bouton Balise 4: permet de rajouter une étape à la mission en entrant de nouveaux parametres(longitude, latitude, altitude, vitesse, pause)
         if self.nombre_balise == 4:
             state4 = "normal"
@@ -1339,7 +1382,7 @@ class Interface(tk.Tk): #définition de la classe
             self.balise4_labelframe2, text="Non", font=("Arail", 12)
         )
         self.balise4_checkbutton_photo_non.place(relx=0.75, rely=0.83)
-    
+
     def GetBalise1(self):   #Methode qui permet de retourner les valeurs des entry de la balise 1 
         balise1latitude = self.balise1_entry_latitude.get()
         balise1longitude = self.balise1_entry_longitude.get()
@@ -1370,9 +1413,9 @@ class Interface(tk.Tk): #définition de la classe
         balise4altitude = self.balise4_entry_altitude.get()
         balise4vitesse = self.balise4_entry_vitesse.get()
         balise4pause = self.balise4_entry_pause.get()
-        CreationBalise(self.utilisateurs, self.id_select, self.id_missio    , balise4latitude, balise4longitude, balise4altitude, balise4vitesse, balise4pause, 0)
+        CreationBalise(self.utilisateurs, self.id_select, self.id_mission, balise4latitude, balise4longitude, balise4altitude, balise4vitesse, balise4pause, 0)
 
-    def BouttonEnregistrerInfo2(self):
+    def BouttonEnregistrerInfo2(self):  #Méhtode présente pour supprimer les widgets de la fenetre en cours d'exécution et appeler ceux de Etape3_Mission et appeler la methode GetBalise4 si id_balise_ajoute ==4
         if self.id_balise_ajoute == 4:
             self.GetBalise4()
         self.Menu()
@@ -1392,23 +1435,8 @@ class Interface(tk.Tk): #définition de la classe
             self.BouttonBalise3
         if self.id_bouton == 4:
             self.BouttonBalise4
-   
-    # Ajouter une étape à la mission
-    def AjouterBalise(self):
-        print('vu')
-        if self.nombre_balise == 0 :
-            self.GetBalise1()
-            self.BouttonBalise2()
-        if self.nombre_balise == 1:
-            self.GetBalise2()
-            self.BouttonBalise3()
-        if self.nombre_balise == 2:
-            self.GetBalise3()
-            self.BouttonBalise4()
-        if self.nombre_balise == 3:
-            pass
 
-    def VisualiserLesMissions(self):
+    def VisualiserLesMissions(self):    #Méthode qui permet de visaliser les différentes missions créées par les utilisateurs
         self.vlm_labelframe_utilisateur = LabelFrame(
             self,
             text="",
@@ -1416,13 +1444,13 @@ class Interface(tk.Tk): #définition de la classe
             width=870,
             height=500,
             borderwidth=3,
-        )
+        )   #LabelFrame qui contient tous les widgets et frames de la page Visualiser les mission
         self.vlm_labelframe_utilisateur.place(relx=0.25, rely=0.25)
         self.vlm_label_listemission = Label(
             self.vlm_labelframe_utilisateur,
             text="Liste des missions",
             font=("Arial", 12, "bold"),
-        )
+        )   
         self.vlm_label_listemission.place(relx=0.08, rely=0.03)
         self.vlm_frame_listemission = LabelFrame(
             self.vlm_labelframe_utilisateur,
@@ -1430,7 +1458,7 @@ class Interface(tk.Tk): #définition de la classe
             height=350,
             bg="#a4a1a3",
             relief=SUNKEN,
-        )
+        )   #Frame qui contient tous les boutons des différentes missions (jusqu'à 5)
         self.vlm_frame_listemission.place(relx=0.08, rely=0.08)
         self.vlm_bouton_mission1 = Button(
             self.vlm_frame_listemission,
@@ -1438,7 +1466,7 @@ class Interface(tk.Tk): #définition de la classe
             font=("Arial", 12),
             width=30,
             height=2,
-        )
+        )   #Bouton mission 1
         self.vlm_bouton_mission1.place(relx=0.08, rely=0.1)
         self.vlm_bouton_mission2 = Button(
             self.vlm_frame_listemission,
@@ -1446,7 +1474,7 @@ class Interface(tk.Tk): #définition de la classe
             font=("Arial", 12),
             width=30,
             height=2,
-        )
+        )   #Bouton mission 2
         self.vlm_bouton_mission2.place(relx=0.08, rely=0.3)
         self.vlm_bouton_mission3 = Button(
             self.vlm_frame_listemission,
@@ -1454,7 +1482,7 @@ class Interface(tk.Tk): #définition de la classe
             font=("Arial", 12),
             width=30,
             height=2,
-        )
+        )   #Bouton mission 3
         self.vlm_bouton_mission3.place(relx=0.08, rely=0.5)
         self.vlm_bouton_mission4 = Button(
             self.vlm_frame_listemission,
@@ -1462,7 +1490,7 @@ class Interface(tk.Tk): #définition de la classe
             font=("Arial", 12),
             width=30,
             height=2,
-        )
+        )   #Bouton mission 4
         self.vlm_bouton_mission4.place(relx=0.08, rely=0.7)
         self.vlm_bouton_mission5 = Button(
             self.vlm_frame_listemission,
@@ -1470,7 +1498,7 @@ class Interface(tk.Tk): #définition de la classe
             font=("Arial", 12),
             width=30,
             height=2,
-        )
+        )   #Bouton mission 5
         self.vlm_bouton_mission5.place(relx=0.08, rely=0.7)
         self.vlm_label_modifmission = Label(
             self.vlm_labelframe_utilisateur,
@@ -1484,7 +1512,7 @@ class Interface(tk.Tk): #définition de la classe
             font=("Arial", 16, "bold"),
             width=9,
             bg="#a4a1a3",
-        )
+        )   #Bouton modifier la mission
         self.vlm_boutton_modifmission.place(relx=0.03, rely=0.88)
         self.vlm_label_suppmission = Label(
             self.vlm_labelframe_utilisateur,
@@ -1498,7 +1526,7 @@ class Interface(tk.Tk): #définition de la classe
             font=("Arial", 16, "bold"),
             width=9,
             bg="#a4a1a3",
-        )
+        )   #Bouton supprimer la mission
         self.vlm_boutton_suppmission.place(relx=0.22, rely=0.88)
         self.vlm_label_mission = Label(
             self.vlm_labelframe_utilisateur,
@@ -1508,7 +1536,7 @@ class Interface(tk.Tk): #définition de la classe
         self.vlm_label_mission.place(relx=0.55, rely=0.03)
         self.vlm_labelframe_mission1 = LabelFrame(
             self.vlm_labelframe_utilisateur, width=350, height=200, borderwidth=3
-        )
+        )   #LabelFrame recapitulatif incluant le bouton lancer mission
         self.vlm_labelframe_mission1.place(relx=0.55, rely=0.08)
         self.vlm_label_recap = Label(
             self.vlm_labelframe_mission1,
