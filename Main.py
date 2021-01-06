@@ -296,10 +296,24 @@ class Interface(tk.Tk):
     
     def BouttonSupprimerUtilisateur(
         self,
-        id_bouton
     ):
         self.Menu()
-        self.param_boutton_utilisateur4.destroy()
+        # Suppression Utilisateur 1
+        if self.id_select == 0:
+            SuppressionUtilisateur(self.utilisateurs, 0)
+            self.param_boutton_utilisateur1.destroy() 
+        # Suppression Utilisateur 2
+        if self.id_select == 1:
+            SuppressionUtilisateur(self.utilisateurs, 1)
+            self.param_boutton_utilisateur2.destroy()
+        # Suppression Utilisateur 3
+        if self.id_select == 2:
+            SuppressionUtilisateur(self.utilisateurs,2)
+            self.param_boutton_utilisateur3.destroy()
+        # Suppression Utilisateur 4
+        if self.id_select == 3:
+            SuppressionUtilisateur(self.utilisateurs, 3)
+            self.param_boutton_utilisateur4.destroy()
 
 
     def ParamAjouterUtilisateur(

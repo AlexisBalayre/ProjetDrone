@@ -126,7 +126,7 @@ def CreationUtilisateur(
 
 
 # Création d'une mission
-def CreationMission(id_utilisateur, jour, heure, planification, mode_photo):
+def CreationMission(utilisateurs, id_utilisateur, jour, heure, planification, mode_photo):
     utilisateur = utilisateurs.getUtilisateur(id_utilisateur)
     if utilisateur.__dict__["missions"] == {}:
         id_mission = 0
@@ -141,7 +141,7 @@ def CreationMission(id_utilisateur, jour, heure, planification, mode_photo):
 
 # Création d'une balise
 def CreationBalise(
-    id_utilisateur, id_mission, latitude, longitude, altitude, vitesse, pause, photo
+    utilisateurs, id_utilisateur, id_mission, latitude, longitude, altitude, vitesse, pause, photo
 ):
     utilisateur = utilisateurs.getUtilisateur(id_utilisateur)
     mission = utilisateur.getMission(id_mission)
@@ -192,7 +192,13 @@ def ModificationUtilisateur(
 
 # Modification d'une mission
 def ModificationMission(
-    id_utilisateur, id_mission, jour, heure, planification, mode_photo
+    utilisateurs,
+    id_utilisateur, 
+    id_mission, 
+    jour, 
+    heure, 
+    planification, 
+    mode_photo
 ):
     utilisateur = utilisateurs.getUtilisateur(id_utilisateur)
     mission = utilisateur.getMission(id_mission)
@@ -205,6 +211,7 @@ def ModificationMission(
 
 # Modification d'une balise
 def ModificationBalise(
+    utilisateurs,
     id_utilisateur,
     id_mission,
     id_balise,
@@ -228,20 +235,20 @@ def ModificationBalise(
 
 
 # Suppression d'un utilisateur
-def SuppressionUtilisateur(id_utilisateur):
+def SuppressionUtilisateur(utilisateurs, id_utilisateur):
     utilisateurs.supprimerUtilisateur(id_utilisateur)
     Sauvegarde()
 
 
 # Suppression d'une mission
-def SuppressionMission(id_utilisateur, id_mission):
+def SuppressionMission(utilisateurs, id_utilisateur, id_mission):
     utilisateur = utilisateurs.getUtilisateur(id_utilisateur)
     utilisateur.supprimerMission(id_mission)
     Sauvegarde()
 
 
 # Suppression d'une balise
-def SuppressionBalise(id_utilisateur, id_mission, id_balise):
+def SuppressionBalise(utilisateurs, id_utilisateur, id_mission, id_balise):
     utilisateur = utilisateurs.getUtilisateur(id_utilisateur)
     mission = utilisateur.getMission(id_mission)
     mission.supprimerBalise(id_balise)
@@ -249,14 +256,14 @@ def SuppressionBalise(id_utilisateur, id_mission, id_balise):
 
 
 # Exécution d'une mission
-def ExecutionMission(id_utilisateur, id_mission):
+def ExecutionMission(utilisateurs, id_utilisateur, id_mission):
     utilisateur = utilisateurs.getUtilisateur(id_utilisateur)
     mission = utilisateur.getMission(id_mission)
     mission.execution()
 
 
 # Coordonnnnées de la Base
-def CoordonneesBase(id_utilisateur):
+def CoordonneesBase(utilisateurs, id_utilisateur):
     utilisateur = utilisateurs.getUtilisateur(id_utilisateur)
     path = "/Users/alexisbalayre/Desktop/Projet_Drone/ProjetDrone/Simulateur/Firmware"  # A modifier selon la configuration
     f = open("Simulateur/JMAVSim.sh", "w")
@@ -273,7 +280,7 @@ def CoordonneesBase(id_utilisateur):
 
 
 # Retourne nombre balises d'une mission
-def NombreBalises(id_utilisateur, id_mission):
+def NombreBalises(utilisateurs, id_utilisateur, id_mission):
     utilisateur = utilisateurs.getUtilisateur(id_utilisateur)
     mission = utilisateur.getMission(id_mission)
     nombre_balises = mission.afficheNombreBalises()
@@ -281,7 +288,7 @@ def NombreBalises(id_utilisateur, id_mission):
 
 
 # Retourne durée d'une mission
-def DureeMission(id_utilisateur, id_mission):
+def DureeMission(utilisateurs, id_utilisateur, id_mission):
     utilisateur = utilisateurs.getUtilisateur(id_utilisateur)
     mission = utilisateur.getMission(id_mission)
     home = [

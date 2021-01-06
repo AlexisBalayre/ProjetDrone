@@ -16,23 +16,6 @@
             "mail_batterie": 0,
             "mail_photo": 0,
             "missions": {}
-        },
-        "1": {
-            "id_utilisateur": 1,
-            "prenom": "test2",
-            "nom": "test22",
-            "email": "ffffff",
-            "vitesse": "",
-            "latitude_base": "",
-            "longitude_base": "",
-            "mode_camera": 0,
-            "suivie_mail": 0,
-            "mail_coord": 0,
-            "mail_alt": 0,
-            "mail_vitesse": 0,
-            "mail_batterie": 0,
-            "mail_photo": 0,
-            "missions": {}
         }
     }
 }
