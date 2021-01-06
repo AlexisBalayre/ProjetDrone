@@ -853,6 +853,11 @@ class Interface(tk.Tk):
                 i.destroy()
             self.Menu()
             self.CreerUneMission()
+            self.BouttonBalise2()
+            self.BouttonBalise3()
+            self.BouttonBalise4()
+
+
 
     def CreerUneMission(self):
         self.cumission_labelframe = LabelFrame(
@@ -884,6 +889,7 @@ class Interface(tk.Tk):
             font=("Arial", 12),
             width=20,
             height=2,
+            state="disabled"
         )
         self.cumission_boutton_decollage.place(relx=0.1, rely=0.02)
         self.cumission_boutton_balise1 = Button(
@@ -900,6 +906,7 @@ class Interface(tk.Tk):
             font=("Arial", 12),
             width=20,
             height=2,
+            state="disabled"
         )
         self.cumission_boutton_atterissage.place(relx=0.1, rely=0.87)
         self.cumission_label2 = Label(
@@ -915,7 +922,6 @@ class Interface(tk.Tk):
             font=("Arial", 16, "bold"),
             width=10,
             bg="#a4a1a3",
-            command=self.BouttonBalise2,
         )
         self.cumission_boutton_etape.place(relx=0.1, rely=0.89)
 
@@ -1039,16 +1045,6 @@ class Interface(tk.Tk):
             height=2,
         )
         self.boutton_nouvelle_etape_2.place(relx=0.1, rely=0.36)
-
-        self.cumission_boutton_etape_2 = Button(
-            self.cumission_labelframe,
-            text="+",
-            font=("Arial", 16, "bold"),
-            width=10,
-            bg="#a4a1a3",
-            command=self.BouttonBalise3,
-        )
-        self.cumission_boutton_etape_2.place(relx=0.1, rely=0.89)
 
         self.balise2_babel3 = Label(
             self.cumission_labelframe, text="Balise 2", font=("Arial", 12, "bold")
