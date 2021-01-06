@@ -50,23 +50,6 @@
             "mail_batterie": 0,
             "mail_photo": 0,
             "missions": {}
-        },
-        "7": {
-            "id_utilisateur": 7,
-            "prenom": "test6",
-            "nom": "",
-            "email": "",
-            "vitesse": "",
-            "latitude_base": "",
-            "longitude_base": "",
-            "mode_camera": 0,
-            "suivie_mail": 0,
-            "mail_coord": 0,
-            "mail_alt": 0,
-            "mail_vitesse": 0,
-            "mail_batterie": 0,
-            "mail_photo": 0,
-            "missions": {}
         }
     }
 }
