@@ -910,6 +910,7 @@ class Interface(tk.Tk):
             font=("Arial", 12),
             width=20,
             height=2,
+            command=lambda:self.BoutonSelectionne3(self.liste_id_missions[0], 1)
         )
         self.cumission_boutton_balise1.place(relx=0.1, rely=0.19)
         self.cumission_boutton_atterissage = Button(
@@ -1055,6 +1056,7 @@ class Interface(tk.Tk):
             font=("Arial", 12),
             width=20,
             height=2,
+            command=lambda:self.BoutonSelectionne3(self.liste_id_missions[1], 2)
         )
         self.boutton_nouvelle_etape_2.place(relx=0.1, rely=0.36)
 
@@ -1122,6 +1124,7 @@ class Interface(tk.Tk):
             font=("Arial", 12),
             width=20,
             height=2,
+            command=lambda:self.BoutonSelectionne3(self.liste_id_missions[2], 3)
         )
         self.boutton_nouvelle_etape_3.place(relx=0.1, rely=0.53)
 
@@ -1199,6 +1202,7 @@ class Interface(tk.Tk):
             font=("Arial", 12),
             width=20,
             height=2,
+            command=lambda:self.BoutonSelectionne3(self.liste_id_missions[3], 4)
         )
         self.boutton_nouvelle_etape_4.place(relx=0.1, rely=0.70)
         
@@ -1259,6 +1263,16 @@ class Interface(tk.Tk):
             self.balise4_labelframe2, text="Non", font=("Arail", 12)
         )
         self.balise4_checkbutton_photo_non.place(relx=0.75, rely=0.83)
+        
+    # Retourne id de l'utilisateur sélectionné 
+    def BoutonSelectionne3(
+        self,
+        id,
+        id_bouton
+    ):
+        self.cumission_labelframe.configure(text = "Balise : %s" % id_bouton) 
+        self.id_select = id
+        self.id_bouton = id_bouton
 
     def VisualiserLesMissions(self):
         self.vlm_labelframe_utilisateur = LabelFrame(
