@@ -903,6 +903,12 @@ class Interface(tk.Tk):
             height=2,
             state="disabled"
         )
+
+        # Bouton Balise 1 
+        if self.nombre_missions != 0:
+            state1 = 'normal'
+        else: 
+            state1 = 'disabled'
         self.cumission_boutton_decollage.place(relx=0.1, rely=0.02)
         self.cumission_boutton_balise1 = Button(
             self.cumission_labelframe1,
@@ -910,6 +916,7 @@ class Interface(tk.Tk):
             font=("Arial", 12),
             width=20,
             height=2,
+            state=state1,
             command=lambda:self.BoutonSelectionne3(self.liste_id_missions[0], 1)
         )
         self.cumission_boutton_balise1.place(relx=0.1, rely=0.19)
@@ -1050,12 +1057,18 @@ class Interface(tk.Tk):
         self.Etape3_Mission()
 
     def BouttonBalise2(self):
+        # Bouton Balise 2
+        if self.nombre_missions > 1:
+            state2 = 'normal'
+        else: 
+            state2 = 'disabled'
         self.boutton_nouvelle_etape_2 = Button(
             self.cumission_labelframe1,
             text="Balise 2",
             font=("Arial", 12),
             width=20,
             height=2,
+            state = state2,
             command=lambda:self.BoutonSelectionne3(self.liste_id_missions[1], 2)
         )
         self.boutton_nouvelle_etape_2.place(relx=0.1, rely=0.36)
@@ -1118,12 +1131,18 @@ class Interface(tk.Tk):
         self.balise2_checkbutton_photo_non.place(relx=0.75, rely=0.83)
 
     def BouttonBalise3(self):
+        # Bouton Balise 3
+        if self.nombre_missions > 2:
+            state3 = 'normal'
+        else: 
+            state3 = 'disabled'
         self.boutton_nouvelle_etape_3 = Button(
             self.cumission_labelframe1,
             text="Balise 3",
             font=("Arial", 12),
             width=20,
             height=2,
+            state=state3,
             command=lambda:self.BoutonSelectionne3(self.liste_id_missions[2], 3)
         )
         self.boutton_nouvelle_etape_3.place(relx=0.1, rely=0.53)
@@ -1196,12 +1215,18 @@ class Interface(tk.Tk):
         self.balise3_checkbutton_photo_non.place(relx=0.75, rely=0.83)
 
     def BouttonBalise4(self):
+        # Bouton Balise 4
+        if self.nombre_missions == 4:
+            state4 = 'normal'
+        else: 
+            state4 = 'disabled'
         self.boutton_nouvelle_etape_4 = Button(
             self.cumission_labelframe1,
             text="Balise 4",
             font=("Arial", 12),
             width=20,
             height=2,
+            state=state4,
             command=lambda:self.BoutonSelectionne3(self.liste_id_missions[3], 4)
         )
         self.boutton_nouvelle_etape_4.place(relx=0.1, rely=0.70)
