@@ -231,6 +231,8 @@ class Interface(tk.Tk):
             command=self.BouttonAjouterUtilisateur,
         )
         self.param_boutton_utilisateur.place(relx=0.6, rely=0.25)
+        if self.nombre_utilisateurs >= 4:
+            self.param_boutton_utilisateur.destroy() # Retire bouton lorsqu'il y a 4 utilisateurs
 
         # Frame Utilisateur sélectionné 
         self.param_label_frame3 = LabelFrame(
