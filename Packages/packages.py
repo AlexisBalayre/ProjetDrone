@@ -18,7 +18,7 @@ utilisateurs = Utilisateurs()
 
 # Initialisation des données
 def Initialisation():
-    # Chargement des données 
+    # Chargement des données
     f = open("Data/Utilisateurs.json", "r")
     Json_Utilisateur = f.read()
     Dict_Utilisateurs = json.loads(Json_Utilisateur)
@@ -28,10 +28,9 @@ def Initialisation():
         Donnees = 1
     f.close()
 
-
     # Création des objets Utilisateur
     if Donnees == 1:
-        id = 0 # Initialisation de la variable id 
+        id = 0  # Initialisation de la variable id
         for x in Dict_Utilisateurs["utilisateurs"]:
             u = Dict_Utilisateurs["utilisateurs"][x]
             utilisateur = Utilisateur(
@@ -76,11 +75,10 @@ def Initialisation():
                 utilisateur.ajouterMission(mission)
             utilisateurs.ajouterUtilisateur(utilisateur)
             id = x  # Id du dernier objet présent dans le dictionnaire
-        return [utilisateurs, id,  Donnees]
-    
-    else:
-        return[utilisateurs, None, Donnees]
+        return [utilisateurs, id, Donnees]
 
+    else:
+        return [utilisateurs, None, Donnees]
 
 
 # Création d'un utilisateur
@@ -127,7 +125,9 @@ def CreationUtilisateur(
 
 
 # Création d'une mission
-def CreationMission(utilisateurs, id_utilisateur, jour, heure, planification, mode_photo):
+def CreationMission(
+    utilisateurs, id_utilisateur, jour, heure, planification, mode_photo
+):
     utilisateur = utilisateurs.getUtilisateur(id_utilisateur)
     if utilisateur.__dict__["missions"] == {}:
         id_mission = 0
@@ -142,7 +142,15 @@ def CreationMission(utilisateurs, id_utilisateur, jour, heure, planification, mo
 
 # Création d'une balise
 def CreationBalise(
-    utilisateurs, id_utilisateur, id_mission, latitude, longitude, altitude, vitesse, pause, photo
+    utilisateurs,
+    id_utilisateur,
+    id_mission,
+    latitude,
+    longitude,
+    altitude,
+    vitesse,
+    pause,
+    photo,
 ):
     utilisateur = utilisateurs.getUtilisateur(id_utilisateur)
     mission = utilisateur.getMission(id_mission)
@@ -193,13 +201,7 @@ def ModificationUtilisateur(
 
 # Modification d'une mission
 def ModificationMission(
-    utilisateurs,
-    id_utilisateur, 
-    id_mission, 
-    jour, 
-    heure, 
-    planification, 
-    mode_photo
+    utilisateurs, id_utilisateur, id_mission, jour, heure, planification, mode_photo
 ):
     utilisateur = utilisateurs.getUtilisateur(id_utilisateur)
     mission = utilisateur.getMission(id_mission)
@@ -328,4 +330,3 @@ def ReturnAvanceeMission(avanceemission):
 # CoordonneesBase(0)
 # NombreBalises(0, 1)
 # DureeMission(0, 1)
-
