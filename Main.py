@@ -113,7 +113,6 @@ class Interface(tk.Tk):
     def Etape2_parametre(
         self,
     ):  # Methode comprenant les widgets de l'étape 2 du doc spe fonctionelles
-        self.id_select = None
 
         self.param_label_frame = LabelFrame(
             self,
@@ -244,10 +243,6 @@ class Interface(tk.Tk):
             borderwidth=3,
         )
         self.param_label_frame3.place(relx=0.23, rely=0.53)
-
-        if self.id_select != None: 
-            u = utilisateurs.__dict__["utilisateurs"][self.id_select]
-            print(u)
         
         # Bouton Modifier l'utilisateur 
         self.param_boutton_modif_utilisateur = Button(
@@ -281,6 +276,7 @@ class Interface(tk.Tk):
     ):
         self.param_label_frame3.configure(text = "Utilisateur sélectionné : %s" % name) 
         self.id_select = id
+   
 
     def BouttonAjouterUtilisateur(
         self,
@@ -465,24 +461,10 @@ class Interface(tk.Tk):
 
     def ParamModifierUtilisateur(
         self,
-        prenom,
-        nom,
-        email,
-        latitude_base,
-        longitude_base,
-        vitesse,
-        mode_camera,
-        suivie_mail,
-        mail_coord,
-        mail_alt,
-        mail_vitesse,
-        mail_batterie,
-        mail_photo,
-
     ):  # Mehtode comprenant les widgets de l'etape 2 du doc spe fonctionnelles si la personne clique sur "Ajouter un utilisateur"
         self.pau_label_frame = LabelFrame(
             self,
-            text="Utilisateur : %s" % self.prenom,
+            text="Utilisateur : ",
             font=("Arial_black", 12),
             width=870,
             height=600,
@@ -521,13 +503,13 @@ class Interface(tk.Tk):
         self.pau_text_mail.place(relx=0.1, rely=0.75)
 
         self.pau_entry_prenom = Entry(self.pau_label_frame2, width=30)
-        self.pau_entry_prenom.insert(0, self.prenom)
+        self.pau_entry_prenom.insert(0, self.utilisateurs.__dict__["utilisateurs"][self.id_select].__dict__['prenom'])
         self.pau_entry_prenom.place(relx=0.35, rely=0.12)
         self.pau_entry_nom = Entry(self.pau_label_frame2, width=30)
-        self.pau_entry_nom.insert(0, self.nom)
+        self.pau_entry_nom.insert(0, self.utilisateurs.__dict__["utilisateurs"][self.id_select].__dict__['nom'])
         self.pau_entry_nom.place(relx=0.35, rely=0.42)
         self.pau_entry_mail = Entry(self.pau_label_frame2, width=30)
-        self.pau_entry_mail.insert(0, self.mail)
+        self.pau_entry_mail.insert(0, self.utilisateurs.__dict__["utilisateurs"][self.id_select].__dict__['email'])
         self.pau_entry_mail.place(relx=0.35, rely=0.77)
 
         self.pau_text_frame3 = Label(
@@ -611,13 +593,13 @@ class Interface(tk.Tk):
         self.pau_text_modecam.place(relx=0.6, rely=0.35)
 
         self.pau_entry_vitesse = Entry(self.pau_label_frame4, width=30)
-        self.pau_entry_vitesse.insert(0, self.vitesse)
+        self.pau_entry_vitesse.insert(0, self.utilisateurs.__dict__["utilisateurs"][self.id_select].__dict__['vitesse'])
         self.pau_entry_vitesse.place(relx=0.2, rely=0.12)
         self.pau_entry_latitudebase = Entry(self.pau_label_frame4, width=30)
-        self.pau_entry_latitudebase.insert(0, self.latitude)
+        self.pau_entry_latitudebase.insert(0, self.utilisateurs.__dict__["utilisateurs"][self.id_select].__dict__['latitude_base'])
         self.pau_entry_latitudebase.place(relx=0.2, rely=0.42)
         self.pau_entry_longitude = Entry(self.pau_label_frame4, width=30)
-        self.pau_entry_longitude.insert(0, self.longitude)
+        self.pau_entry_longitude.insert(0, self.utilisateurs.__dict__["utilisateurs"][self.id_select].__dict__['longitude_base'])
         self.pau_entry_longitude.place(relx=0.2, rely=0.72)
         self.pau_modecam_photo_check = Checkbutton(
             self.pau_label_frame4, text="Photo", font=("Arail", 14), bg="#a4a1a3"
