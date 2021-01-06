@@ -135,6 +135,9 @@ class Interface(tk.Tk):
         )
         self.param_label_frame2.place(relx=0.05, rely=0.08)
 
+        # Initilisation variable 
+        self.id_select = None
+
         # Récupération des utilisateurs 
         donnees = Initialisation()
         self.Donnees = donnees[2]
@@ -699,6 +702,9 @@ class Interface(tk.Tk):
         for x in self.utilisateurs.__dict__['utilisateurs']:
             self.liste_id.append( self.utilisateurs.__dict__['utilisateurs'][x].__dict__['id_utilisateur'])
         
+        # Initilisation variable 
+        self.id_select = None
+        
         # Création de la fenêtre 
         self.mission_frame_principale = Frame(self, width=870, height=550)
         self.mission_frame_principale.place(relx=0.25, rely=0.25)
@@ -851,7 +857,7 @@ class Interface(tk.Tk):
     def CreerUneMission(self):
         self.cumission_labelframe = LabelFrame(
             self,
-            text="Mission n°",
+            text="Mission n° ",
             font=("Arial_black", 12),
             width=870,
             height=500,
