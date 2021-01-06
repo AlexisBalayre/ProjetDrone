@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 class Balise(object):
     def __init__(
         self, id_balise, latitude, longitude, altitude=0, vitesse=0, pause=0, photo=0

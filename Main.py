@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 from tkinter import *
 import tkinter as tk
 from Packages.packages import *
@@ -697,7 +700,9 @@ class Interface(tk.Tk):
         self.Donnees = donnees[2]
         self.id = donnees[1]
         self.utilisateurs = donnees[0]
+        # Compte le nombre d'instances utilisateur
         self.nombre_utilisateurs = len(self.utilisateurs.__dict__['utilisateurs'])
+        # Récupération des id
         self.liste_id = []
         for x in self.utilisateurs.__dict__['utilisateurs']:
             self.liste_id.append( self.utilisateurs.__dict__['utilisateurs'][x].__dict__['id_utilisateur'])
@@ -860,6 +865,13 @@ class Interface(tk.Tk):
 
 
     def CreerUneMission(self):
+        # Compte le nombre d'instances mission
+        self.nombre_missions = len(self.utilisateurs.__dict__['utilisateurs'][self.id_select].__dict__['missions'])
+        # Récupération des id
+        self.liste_id_missions = []
+        for x in self.utilisateurs.__dict__['utilisateurs'][self.id_select].__dict__['missions']:
+            self.liste_id_missions.append(self.utilisateurs.__dict__['utilisateurs'][self.id_select].__dict__['missions'][x].__dict__['id_mission'])
+
         self.cumission_labelframe = LabelFrame(
             self,
             text="Mission n° ",

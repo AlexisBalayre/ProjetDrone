@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 class AvanceeMission(object):
     def __init__(self, longitude, latitude, altitude=0, vitesse=0, batterie=0):
         self.longitude = longitude

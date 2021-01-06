@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 from Classes.Balise import *
 from Simulateur.ExecutionDrone import *
 import geopy.distance
@@ -22,13 +25,12 @@ class Mission(object):
         del self.balises[id_balise]
 
     def afficheDuree(self, home):
-        nombre_balises = len(self.balises)  # Nombre Balises de la mission
         latitude_base = home[0]  # Latitude de la base
         longitude_base = home[1]  # Longitude de la base
         vitesse_initiale = home[2]  # Vitesse initiale au départ de la base
 
         # Liste vitesses contenant toutes les vitesses de la mission
-        vitesses = []
+        vitesses = [vitesse_initiale]
         for x in self.balises:
             balise = self.balises[x].__dict__
             vitesses.append(balise["vitesse"])
