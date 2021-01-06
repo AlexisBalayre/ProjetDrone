@@ -1040,9 +1040,6 @@ class Interface(tk.Tk):
         )
         self.boutton_nouvelle_etape_2.place(relx=0.1, rely=0.36)
 
-        self.cumission_boutton_etape.destroy()
-        self.cumission_babel3.destroy()
-
         self.cumission_boutton_etape_2 = Button(
             self.cumission_labelframe,
             text="+",
@@ -1120,9 +1117,6 @@ class Interface(tk.Tk):
         )
         self.boutton_nouvelle_etape_3.place(relx=0.1, rely=0.53)
 
-        self.cumission_boutton_etape_2.destroy()
-        self.balise2_babel3.destroy()
-
         self.cumission_boutton_etape_3 = Button(
             self.cumission_labelframe,
             text="+",
@@ -1199,9 +1193,7 @@ class Interface(tk.Tk):
             height=2,
         )
         self.boutton_nouvelle_etape_4.place(relx=0.1, rely=0.70)
-
-        self.cumission_boutton_etape_3.destroy()
-        self.balise3_babel3.destroy()
+        
 
         self.balise4_babel3 = Label(
             self.cumission_labelframe, text="Balise 4", font=("Arial", 12, "bold")
