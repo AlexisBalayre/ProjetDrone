@@ -1107,13 +1107,9 @@ class Interface(tk.Tk): #définition de la classe
         )   #Bouton permettant de rendre les différents boutons des balises actifs (auparavant inactifs)
         self.cumission_boutton_etape.place(relx=0.1, rely=0.89)
 
-
-    def BouttonBalise2(self):
-        # Suppression d'instances
-        self.cumission_boutton_etape.destroy()
-        self.cumission_label2.destroy()
+    def BouttonBalise2(self):        
         # Bouton Balise 2: permet de rajouter une étape à la mission en entrant de nouveaux parametres(longitude, latitude, altitude, vitesse, pause)
-        if self.nombre_balise > 1:
+        if self.nombre_balise >= 1:
             state2 = "normal"   #définit l'état du bouton en actif
         else:
             state2 = "disabled" #définit l'état du bouton en actif
@@ -1200,14 +1196,11 @@ class Interface(tk.Tk): #définition de la classe
             bg="#a4a1a3",
             command = lambda:[self.GetBalise2(), self.BouttonBalise3()]
         )   #Bouton permettant de rendre les différents boutons des balises actifs (auparavant inactifs)
-        self.cumission_boutton_etape.place(relx=0.1, rely=0.89)
+        self.cumission_boutton_etape_bis.place(relx=0.1, rely=0.89)
 
-    def BouttonBalise3(self):
-        # Suppression d'instances
-        self.cumission_boutton_etape_bis.destroy()
-        self.cumission_label2_bis.destroy()
+    def BouttonBalise3(self):        
         # Bouton Balise 3: permet de rajouter une étape à la mission en entrant de nouveaux parametres(longitude, latitude, altitude, vitesse, pause)
-        if self.nombre_balise > 2:
+        if self.nombre_balise >= 2:
             state3 = "normal"
         else:
             state3 = "disabled"
@@ -1304,14 +1297,11 @@ class Interface(tk.Tk): #définition de la classe
             bg="#a4a1a3",
             command = lambda:[self.GetBalise3(), self.BouttonBalise4()]
         )   #Bouton permettant de rendre les différents boutons des balises actifs (auparavant inactifs)
-        self.cumission_boutton_etape.place(relx=0.1, rely=0.89)
+        self.cumission_boutton_etape_bis2.place(relx=0.1, rely=0.89)
 
     def BouttonBalise4(self):
-        # Suppression d'instances
-        self.cumission_boutton_etape_bis2.destroy()
-        self.cumission_label2_bis2.destroy()
         # Bouton Balise 4: permet de rajouter une étape à la mission en entrant de nouveaux parametres(longitude, latitude, altitude, vitesse, pause)
-        if self.nombre_balise == 4:
+        if self.nombre_balise == 3:
             state4 = "normal"
         else:
             state4 = "disabled"
@@ -1390,6 +1380,11 @@ class Interface(tk.Tk): #définition de la classe
         balise1vitesse = self.balise1_entry_vitesse.get()
         balise1pause = self.balise1_entry_pause.get()
         CreationBalise(self.utilisateurs, self.id_select, self.id_mission, balise1latitude, balise1longitude, balise1altitude, balise1vitesse, balise1pause, 0)
+        self.CreerUneMission()
+        self.BouttonBalise4()
+        self.BouttonBalise3()
+        self.BouttonBalise2()
+        self.BouttonBalise1()
 
     def GetBalise2(self):   #Methode qui permet de retourner les valeurs des entry de la balise 2
         balise2latitude = self.balise2_entry_latitude.get()
@@ -1398,6 +1393,11 @@ class Interface(tk.Tk): #définition de la classe
         balise2vitesse = self.balise2_entry_vitesse.get()
         balise2pause = self.balise2_entry_pause.get()
         CreationBalise(self.utilisateurs, self.id_select, self.id_mission, balise2latitude, balise2longitude, balise2altitude, balise2vitesse, balise2pause, 0)
+        self.CreerUneMission()
+        self.BouttonBalise4()
+        self.BouttonBalise3()
+        self.BouttonBalise2()
+        self.BouttonBalise1()
 
     def GetBalise3(self):   #Methode qui permet de retourner les valeurs des entry de la balise 3
         balise3latitude = self.balise3_entry_latitude.get()
@@ -1406,6 +1406,11 @@ class Interface(tk.Tk): #définition de la classe
         balise3vitesse = self.balise3_entry_vitesse.get()
         balise3pause = self.balise3_entry_pause.get()
         CreationBalise(self.utilisateurs, self.id_select, self.id_mission, balise3latitude,  balise3longitude, balise3altitude, balise3vitesse, balise3pause, 0)
+        self.CreerUneMission()
+        self.BouttonBalise4()
+        self.BouttonBalise3()
+        self.BouttonBalise2()
+        self.BouttonBalise1()
 
     def GetBalise4(self):   #Methode qui permet de retourner les valeurs des entry de la balise 4
         balise4latitude = self.balise4_entry_latitude.get()
@@ -1414,6 +1419,11 @@ class Interface(tk.Tk): #définition de la classe
         balise4vitesse = self.balise4_entry_vitesse.get()
         balise4pause = self.balise4_entry_pause.get()
         CreationBalise(self.utilisateurs, self.id_select, self.id_mission, balise4latitude, balise4longitude, balise4altitude, balise4vitesse, balise4pause, 0)
+        self.CreerUneMission()
+        self.BouttonBalise4()
+        self.BouttonBalise3()
+        self.BouttonBalise2()
+        self.BouttonBalise1()
 
     def BouttonEnregistrerInfo2(self):  #Méhtode présente pour supprimer les widgets de la fenetre en cours d'exécution et appeler ceux de Etape3_Mission et appeler la methode GetBalise4 si id_balise_ajoute ==4
         if self.id_balise_ajoute == 4:
@@ -1572,7 +1582,7 @@ class Interface(tk.Tk): #définition de la classe
         self.vlm_boutton_lancermission.place(relx=0.1, rely=0.75)
         self.vlm_labelframe_mission2 = LabelFrame(
             self.vlm_labelframe_utilisateur, width=350, height=200, borderwidth=3
-        )
+        )   #LabelFrame incluant le plannificateur avec le bouton "plannifier la mission"
         self.vlm_labelframe_mission2.place(relx=0.55, rely=0.53)
         self.vlm_label_planif = Label(
             self.vlm_labelframe_mission2,
@@ -1603,20 +1613,20 @@ class Interface(tk.Tk): #définition de la classe
         )
         self.vlm_boutton_planifiermission.place(relx=0.1, rely=0.75)
 
-    def GetVisualiserLesMissions(self):
+    def GetVisualiserLesMissions(self): #Methode qui permet de retouner les valeurs des entry (zones de saisie)
         vlmjour = self.vlm_entry_jour.get()
         vlmheure = self.vlm_entry_heure.get()
 
-    def BouttonLancerMission(self):
+    def BouttonLancerMission(self): #Méthode présente pour supprimer les widgets de la fenetre en cours d'exécution et appeler ceux de ExecutionMission
         for i in self.winfo_children():
             i.destroy()
 
         self.Menu()
         self.ExecutionMission()
 
-    def ExecutionMission(self):
+    def ExecutionMission(self): #Méthode qui permet de visualiser la mission en vidéo en ayant des informations en temps réel sur le vol
 
-        self.execmission_frame_principale = Frame(self, width=870, height=500)
+        self.execmission_frame_principale = Frame(self, width=870, height=500)  #Frame contenant tous les autres widgets et frame de la page ExecutionMission
         self.execmission_frame_principale.place(relx=0.25, rely=0.25)
         self.execmission_labelframe_retourvideo = LabelFrame(
             self.execmission_frame_principale,
@@ -1625,7 +1635,7 @@ class Interface(tk.Tk): #définition de la classe
             width=500,
             height=300,
             borderwidth=3,
-        )
+        )   #LabelFrame contenant le retour vidéo
         self.execmission_labelframe_retourvideo.place(relx=0.05, rely=0.05)
         self.execmission_labelframe_controle_drone = LabelFrame(
             self.execmission_frame_principale,
@@ -1634,7 +1644,7 @@ class Interface(tk.Tk): #définition de la classe
             width=150,
             height=200,
             borderwidth=3,
-        )
+        )   #LabelFrame contenant les controles du drone avec les différents boutons
         self.execmission_labelframe_controle_drone.place(relx=0.75, rely=0.2)
         self.execmission_boutton_retourbase = Button(
             self.execmission_labelframe_controle_drone,
@@ -1666,7 +1676,7 @@ class Interface(tk.Tk): #définition de la classe
             height=120,
             borderwidth=3,
             bg="#a4a1a3",
-        )
+        )   #LabelFrame contenant les informations de vol(latitude, longitude, altitude, vitesse et batterie)
         self.execmission_frame_info_vol.place(relx=0.1, rely=0.725)
         self.execmission_label_info_vol = Label(
             self.execmission_frame_info_vol,
@@ -1713,5 +1723,5 @@ class Interface(tk.Tk): #définition de la classe
 
 
 instance = Interface()
-instance.resizable(width=False, height=False)
+instance.resizable(width=False, height=False)   #Bloque le fait de pouvoir redimmensionner la fenetre
 instance.mainloop()
