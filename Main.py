@@ -6,12 +6,12 @@ import tkinter as tk
 from Packages.packages import *
 
 
-class Interface(tk.Tk):
+class Interface(tk.Tk): #définition de la classe
     def __init__(self):
         tk.Tk.__init__(self)  # constructeur de la classe parente
         self.Menu()  # appel de la methode "BarredeMenu"
         w, h = self.winfo_screenwidth(), self.winfo_screenheight()
-        self.geometry("%dx%d" % (w, h))  # Redimensionne la fenetre
+        self.geometry("%dx%d" % (w, h))  # Redimensionne la fenetre en fonction du nombre de pixel de l'écran
         self.Etape1_Vols()  # appel la première fenetre à s'afficher
 
     def Menu(self):  # Methode de la barre de menu
@@ -70,7 +70,7 @@ class Interface(tk.Tk):
 
     def bouttonparam(
         self,
-    ):  # Methode présente pour supprimer les widgets de Etape1_Vols et afficher ceux de Etape2_parametre
+    ):  # Methode présente pour supprimer les widgets de la fenetre en cours d'exécution et afficher ceux de Etape2_parametre
         for i in self.winfo_children():
             i.destroy()
 
@@ -79,14 +79,16 @@ class Interface(tk.Tk):
 
     def bouttonvol(
         self,
-    ):  # Methode présente pour supprimer les widgets de Etape2_parametre  et afficher ceux de Etape1_Vols
+    ):  # Methode présente pour supprimer les widgets de la fenetre en cours d'exécution et afficher ceux de Etape1_Vols
         for i in self.winfo_children():
             i.destroy()
 
         self.Menu()
         self.Etape1_Vols()
 
-    def bouttonmission(self):
+    def bouttonmission(
+        self,
+    ):  # Methode présente pour supprimer les widgets de la fenetre en cours d'exécution et afficher ceux de Etape3_Vols
         for i in self.winfo_children():
             i.destroy()
 
@@ -122,7 +124,7 @@ class Interface(tk.Tk):
             width=870,
             height=500,
             borderwidth=3,
-        )
+        )   #Label_frame "Réglages" contenant tous les widgets de l'étape 2
         self.param_label_frame.place(relx=0.25, rely=0.25)
 
         self.param_label_frame2 = LabelFrame(
@@ -133,7 +135,7 @@ class Interface(tk.Tk):
             width=340,
             height=200,
             borderwidth=3,
-        )
+        )   #Label_frame contenant les différents utilisateurs
         self.param_label_frame2.place(relx=0.05, rely=0.08)
 
         # Initilisation variable
@@ -249,7 +251,7 @@ class Interface(tk.Tk):
         if self.nombre_utilisateurs >= 4:
             self.param_boutton_utilisateur.destroy()  # Retire bouton lorsqu'il y a 4 utilisateurs
 
-        # Frame Utilisateur sélectionné
+        # Frame Utilisateur sélectionné contenant les boutons modifier et supprimer
         self.param_label_frame3 = LabelFrame(
             self.param_label_frame,
             text="Aucun utilisateur sélectionné",
@@ -284,15 +286,14 @@ class Interface(tk.Tk):
         )
         self.param_boutton_sup_utilisateur.place(relx=0.12, rely=0.56)
 
-    # Retourne id de l'utilisateur sélectionné
-    def BoutonSelectionne(self, name, id, id_bouton):
+    def BoutonSelectionne(self, name, id, id_bouton):   # Retourne id de l'utilisateur sélectionné
         self.param_label_frame3.configure(text="Utilisateur sélectionné : %s" % name)
         self.id_select = id
         self.id_bouton = id_bouton
 
     def BouttonAjouterUtilisateur(
         self,
-    ):  # Methode présente pour supprimer les widgets de Etape2_parametre et afficher ceux de ParamAjouterUtilisateur
+    ):  # Methode présente pour supprimer les widgets de la fenetre en cours d'exécution et appeler ceux pour ajouter un utilisateur
         for i in self.winfo_children():
             i.destroy()
         self.Menu()
@@ -300,7 +301,7 @@ class Interface(tk.Tk):
 
     def BouttonModifierUtilisateur(
         self,
-    ):  # Methode présente pour supprimer les widgets de Etape2_parametre et afficher ceux de ParamAjouterUtilisateur
+    ):  # Methode présente pour supprimer les widgets de la fenetre en cours d'exécution et appeler ceux pour modifer un utilisateur
         if self.id_select != None:
             for i in self.winfo_children():
                 i.destroy()
@@ -338,7 +339,7 @@ class Interface(tk.Tk):
             width=870,
             height=600,
             borderwidth=3,
-        )
+        )   #LabelFrame qui inclu les autres frames de la fenetre avec widg
         self.pau_label_frame.place(relx=0.25, rely=0.2)
 
         self.pau_text_frame2 = Label(
@@ -349,7 +350,7 @@ class Interface(tk.Tk):
         self.pau_text_frame2.place(relx=0.05, rely=0.025)
         self.pau_label_frame2 = LabelFrame(
             self.pau_label_frame, width=350, height=200, bg="#a4a1a3", relief=SUNKEN
-        )
+        )   #LabelFrame qui inclu les différents les widgets du prénom, nom et mail
         self.pau_label_frame2.place(relx=0.05, rely=0.08)
 
         self.pau_text_prenom = Label(
@@ -384,7 +385,7 @@ class Interface(tk.Tk):
         self.pau_text_frame3.place(relx=0.6, rely=0.025)
         self.pau_label_frame3 = LabelFrame(
             self.pau_label_frame, width=300, height=200, bg="#a4a1a3", relief=SUNKEN
-        )
+        )   #LabelFrame qui inclu tous les checkbutton de "option de vol"
         self.pau_label_frame3.place(relx=0.6, rely=0.08)
 
         self.pau_check_suiviedevol = Checkbutton(
@@ -426,7 +427,7 @@ class Interface(tk.Tk):
         self.pau_text_frame4.place(relx=0.1, rely=0.48)
         self.pau_label_frame4 = LabelFrame(
             self.pau_label_frame, width=700, height=200, bg="#a4a1a3", relief=SUNKEN
-        )
+        )   #LabelFrame qui inclu tous les parametres de vol favoris (Vitesse, Latitude base, Longitude base, mode camera)
         self.pau_label_frame4.place(relx=0.1, rely=0.53)
 
         self.pau_text_vitesse = Label(
@@ -481,12 +482,12 @@ class Interface(tk.Tk):
             height=2,
             bg="#ffffff",
             command=lambda: [self.GetInfoUtilisateur(), self.BouttonEnregistrerInfo()],
-        )
+        )   #Bouton qui permet d'executer les commandes GetInfoUtilisateur et BouttonEnregistrerInfo
         self.pau_boutton.place(relx=0.4, rely=0.9)
 
     def ParamModifierUtilisateur(
         self,
-    ):  # Mehtode comprenant les widgets de l'etape 2 du doc spe fonctionnelles si la personne clique sur "Ajouter un utilisateur"
+    ):  # Mehtode permettant de modifier un utilisateur (reprend beaucoup la methode AjouterUtilisateur mais pour modifer et non ajouter)
         self.pau_label_frame = LabelFrame(
             self,
             text="Utilisateur : %s"
@@ -700,10 +701,10 @@ class Interface(tk.Tk):
                 self.GetInfoModifUtilisateur(),
                 self.BouttonEnregistrerInfo(),
             ],
-        )
+        )   #Bouton qui permet d'executer les méthode GetInfoModifUtilisateur et BouttonEnregistrerInfo
         self.pau_boutton.place(relx=0.4, rely=0.9)
 
-    def GetInfoUtilisateur(self):
+    def GetInfoUtilisateur(self):   #Methode qui permet de retourner les infos d'un utilisateur entrer dans les entry de la methode ParamAjouterUtilisateur
         prenom = self.pau_entry_prenom.get()
         nom = self.pau_entry_nom.get()
         mail = self.pau_entry_mail.get()
@@ -730,7 +731,7 @@ class Interface(tk.Tk):
             0,
         )
 
-    def GetInfoModifUtilisateur(self):
+    def GetInfoModifUtilisateur(self):  #Methode qui permet de retourner les infos d'un utilisateur modifier dans les entry de la methode ParamModifierUtilisateur
         prenom = self.pau_entry_prenom.get()
         nom = self.pau_entry_nom.get()
         mail = self.pau_entry_mail.get()
@@ -756,7 +757,7 @@ class Interface(tk.Tk):
             0,
         )
 
-    def BouttonEnregistrerInfo(self):
+    def BouttonEnregistrerInfo(self):   # Methode présente pour supprimer les widgets de la fenetre en cours d'exécution et appeler ceux de l'Etape2_parametre (appeler grace au bouton ajouter et modif utisateur)
         for i in self.winfo_children():
             i.destroy()
         self.Menu()
@@ -798,12 +799,12 @@ class Interface(tk.Tk):
 
         # Bouton utilisateur 1
         if self.nombre_utilisateurs != 0:
-            state1 = "normal"
+            state1 = "normal"   #définit l'état du bouton en actif
             name_1 = self.utilisateurs.__dict__["utilisateurs"][
                 self.liste_id[0]
             ].__dict__["prenom"]
         else:
-            state1 = "disabled"
+            state1 = "disabled" #définit l'état du bouton sur non actif
             name_1 = "Utilisateur 1"
         self.param_boutton_utilisateur1 = Button(
             self.mission_frame1,
@@ -840,12 +841,12 @@ class Interface(tk.Tk):
 
         # Bouton utilisateur 3
         if self.nombre_utilisateurs > 2:
-            state3 = "normal"
+            state3 = "normal"   #définit l'état du bouton en actif
             name_3 = self.utilisateurs.__dict__["utilisateurs"][
                 self.liste_id[2]
             ].__dict__["prenom"]
         else:
-            state3 = "disabled"
+            state3 = "disabled" #définit l'état du bouton sur non actif
             name_3 = "Utilisateur 3"
         self.param_boutton_utilisateur3 = Button(
             self.mission_frame1,
@@ -918,16 +919,17 @@ class Interface(tk.Tk):
         self.id_select = id
         self.id_bouton = id_bouton
 
-    def BouttonVisualiserLesMissions(self):
+    def BouttonVisualiserLesMissions(self): #Méthode présente pour supprimer les widgets de la fenetre en cours d'exécution et appeler ceux de VisualiserLesMission
         if self.id_select != None:
             for i in self.winfo_children():
                 i.destroy()
-
             self.Menu()
             self.VisualiserLesMissions()
 
-    def BouttonCreerUneMission(self):
+    def BouttonCreerUneMission(self):   #Méhtode présente pour supprimer les widgets de la fenetre en cours d'exécution et appeler ceux de CreerUneMission, BouttonBalise1,2,3,4
         if self.id_select != None:
+            # Création d'une instance mission
+            CreationMission(self.utilisateurs, self.id_select, '', '', 0, 0)
             for i in self.winfo_children():
                 i.destroy()
             self.Menu()
@@ -938,13 +940,11 @@ class Interface(tk.Tk):
             self.BouttonBalise1()
 
     def CreerUneMission(self):
-        # Compte le nombre d'instances mission
-        self.nombre_missions = len(
-            self.utilisateurs.__dict__["utilisateurs"][self.id_select].__dict__[
-                "missions"
-            ]
-        )
-        # Récupération des id
+        # Récupération des utilisateurs
+        donnees = Initialisation()
+        self.utilisateurs = donnees[0]
+
+        # Récupération des id missions 
         self.liste_id_missions = []
         for x in self.utilisateurs.__dict__["utilisateurs"][self.id_select].__dict__[
             "missions"
@@ -954,6 +954,16 @@ class Interface(tk.Tk):
                 .__dict__["missions"][x]
                 .__dict__["id_mission"]
             )
+        
+        # Id de la mission
+        self.id_mission = self.liste_id_missions[len(self.liste_id_missions) - 1] 
+
+         # Compte le nombre d'instances balise 
+        self.nombre_balise = len(
+            self.utilisateurs.__dict__["utilisateurs"][self.id_select].__dict__[
+                "missions"
+            ][self.id_mission].__dict__["balises"]
+        )
 
         self.cumission_labelframe = LabelFrame(
             self,
@@ -962,7 +972,7 @@ class Interface(tk.Tk):
             width=870,
             height=500,
             borderwidth=3,
-        )
+        )   #LabelFrame comprenant tous les widgets et Frame de la fenetre
         self.cumission_labelframe.place(relx=0.25, rely=0.25)
         self.cumission_label1 = Label(
             self.cumission_labelframe,
@@ -976,7 +986,7 @@ class Interface(tk.Tk):
             height=370,
             bg="#a4a1a3",
             relief=SUNKEN,
-        )
+        )   #LabelFrame comprenant les différentes balises de la mission avec l'atterissage et le decollage
         self.cumission_labelframe1.place(relx=0.05, rely=0.05)
         self.cumission_boutton_decollage = Button(
             self.cumission_labelframe1,
@@ -1003,14 +1013,14 @@ class Interface(tk.Tk):
             font=("Arial", 12, "bold"),
         )
         self.cumission_label2.place(relx=0.1, rely=0.84)
-
         self.cumission_boutton_etape = Button(
             self.cumission_labelframe,
             text="+",
             font=("Arial", 16, "bold"),
             width=10,
             bg="#a4a1a3",
-        )
+            command = self.AjouterBalise()
+        )   #Bouton permettant de rendre les différents boutons des balises actifs (auparavant inactifs)
         self.cumission_boutton_etape.place(relx=0.1, rely=0.89)
 
         self.cumission_boutton_enregistrer = Button(
@@ -1021,56 +1031,15 @@ class Interface(tk.Tk):
             width=30,
             height=2,
             command=lambda: [
-                self.GetCreerUneMission(),
-                self.GetBalise2(),
-                self.GetBalise3(),
-                self.GetBalise4(),
-                self.BouttonEnregistrerInfo2(),
+                self.GetCreerUneMission,
+                self.BouttonEnregistrerInfo2,
             ],
-        )
+        )   #Bouton permettant d'executer les méthodes GetCreerUnemission et BoutonEnregistrerInfo2
         self.cumission_boutton_enregistrer.place(relx=0.575, rely=0.85)
 
-    def GetBalise1(self):
-        balise1latitude = self.balise1_entry_latitude.get()
-        balise1longitude = self.balise1_entry_longitude.get()
-        balise1altitude = self.balise1_entry_altitude.get()
-        balise1vitesse = self.balise1_entry_vitesse.get()
-        balise1pause = self.balise1_entry_pause.get()
-
-    def GetBalise2(self):
-        balise2latitude = self.balise2_entry_latitude.get()
-        balise2longitude = self.balise2_entry_longitude.get()
-        balise2altitude = self.balise2_entry_altitude.get()
-        balise2vitesse = self.balise2_entry_vitesse.get()
-        balise2pause = self.balise2_entry_pause.get()
-
-    def GetBalise3(self):
-        balise3latitude = self.balise3_entry_latitude.get()
-        balise3longitude = self.balise3_entry_longitude.get()
-        balise3altitude = self.balise3_entry_altitude.get()
-        balise3vitesse = self.balise3_entry_vitesse.get()
-        balise3pause = self.balise3_entry_pause.get()
-
-    def GetBalise4(self):
-        balise4latitude = self.balise4_entry_latitude.get()
-        balise4longitude = self.balise4_entry_longitude.get()
-        balise4altitude = self.balise4_entry_altitude.get()
-        balise4vitesse = self.balise4_entry_vitesse.get()
-        balise4pause = self.balise4_entry_pause.get()
-
-    def BouttonEnregistrerInfo2(self):
-        for i in self.winfo_children():
-            i.destroy()
-
-        self.Menu()
-        self.Etape3_Mission()
 
     def BouttonBalise1(self):
-        # Bouton Balise 1
-        if self.nombre_missions != 0:
-            state1 = "normal"
-        else:
-            state1 = "disabled"
+        # Bouton Balise 1: permet de rajouter une étape à la mission en entrant de nouveaux parametres(longitude, latitude, altitude, vitesse, pause)
         self.cumission_boutton_decollage.place(relx=0.1, rely=0.02)
         self.cumission_boutton_balise1 = Button(
             self.cumission_labelframe1,
@@ -1078,8 +1047,7 @@ class Interface(tk.Tk):
             font=("Arial", 12),
             width=20,
             height=2,
-            state=state1,
-            command=lambda: self.BoutonSelectionne3(self.liste_id_missions[0], 1),
+            command=lambda: self.BoutonSelectionne3(1),
         )
         self.cumission_boutton_balise1.place(relx=0.1, rely=0.19)
 
@@ -1095,13 +1063,13 @@ class Interface(tk.Tk):
             self.balise1_labelframe2, text="Latitude (en °):", font=("Arial", 12)
         )
         self.balise1_label_latitude.place(relx=0.1, rely=0.08)
-        self.balise1_entry_latitude = Entry(self.balise2_labelframe2, width=30)
+        self.balise1_entry_latitude = Entry(self.balise1_labelframe2, width=30)
         self.balise1_entry_latitude.place(relx=0.45, rely=0.09)
         self.balise1_label_longitude = Label(
             self.balise1_labelframe2, text="Longitude (en °):", font=("Arial", 12)
         )
         self.balise1_label_longitude.place(relx=0.1, rely=0.2)
-        self.balise1_entry_longitude = Entry(self.balise2_labelframe2, width=30)
+        self.balise1_entry_longitude = Entry(self.balise1_labelframe2, width=30)
         self.balise1_entry_longitude.place(relx=0.45, rely=0.21)
         self.balise1_label_altitude = Label(
             self.balise1_labelframe2, text="Altitude (en m):", font=("Arial", 12)
@@ -1141,11 +1109,11 @@ class Interface(tk.Tk):
         self.balise1_checkbutton_photo_non.place(relx=0.75, rely=0.83)
 
     def BouttonBalise2(self):
-        # Bouton Balise 2
-        if self.nombre_missions > 1:
-            state2 = "normal"
+        # Bouton Balise 2: permet de rajouter une étape à la mission en entrant de nouveaux parametres(longitude, latitude, altitude, vitesse, pause)
+        if self.nombre_balise > 1:
+            state2 = "normal"   #définit l'état du bouton en actif
         else:
-            state2 = "disabled"
+            state2 = "disabled" #définit l'état du bouton en actif
         self.boutton_nouvelle_etape_2 = Button(
             self.cumission_labelframe1,
             text="Balise 2",
@@ -1153,7 +1121,7 @@ class Interface(tk.Tk):
             width=20,
             height=2,
             state=state2,
-            command=lambda: self.BoutonSelectionne3(self.liste_id_missions[1], 2),
+            command=lambda: self.BoutonSelectionne3(2),
         )
         self.boutton_nouvelle_etape_2.place(relx=0.1, rely=0.36)
 
@@ -1215,8 +1183,8 @@ class Interface(tk.Tk):
         self.balise2_checkbutton_photo_non.place(relx=0.75, rely=0.83)
 
     def BouttonBalise3(self):
-        # Bouton Balise 3
-        if self.nombre_missions > 2:
+        # Bouton Balise 3: permet de rajouter une étape à la mission en entrant de nouveaux parametres(longitude, latitude, altitude, vitesse, pause)
+        if self.nombre_balise > 2:
             state3 = "normal"
         else:
             state3 = "disabled"
@@ -1299,8 +1267,8 @@ class Interface(tk.Tk):
         self.balise3_checkbutton_photo_non.place(relx=0.75, rely=0.83)
 
     def BouttonBalise4(self):
-        # Bouton Balise 4
-        if self.nombre_missions == 4:
+        # Bouton Balise 4: permet de rajouter une étape à la mission en entrant de nouveaux parametres(longitude, latitude, altitude, vitesse, pause)
+        if self.nombre_balise == 4:
             state4 = "normal"
         else:
             state4 = "disabled"
@@ -1371,12 +1339,74 @@ class Interface(tk.Tk):
             self.balise4_labelframe2, text="Non", font=("Arail", 12)
         )
         self.balise4_checkbutton_photo_non.place(relx=0.75, rely=0.83)
+    
+    def GetBalise1(self):   #Methode qui permet de retourner les valeurs des entry de la balise 1 
+        balise1latitude = self.balise1_entry_latitude.get()
+        balise1longitude = self.balise1_entry_longitude.get()
+        balise1altitude = self.balise1_entry_altitude.get()
+        balise1vitesse = self.balise1_entry_vitesse.get()
+        balise1pause = self.balise1_entry_pause.get()
+        CreationBalise(self.utilisateurs, self.id_select, self.id_mission, balise1latitude, balise1longitude, balise1altitude, balise1vitesse, balise1pause, 0)
+
+    def GetBalise2(self):   #Methode qui permet de retourner les valeurs des entry de la balise 2
+        balise2latitude = self.balise2_entry_latitude.get()
+        balise2longitude = self.balise2_entry_longitude.get()
+        balise2altitude = self.balise2_entry_altitude.get()
+        balise2vitesse = self.balise2_entry_vitesse.get()
+        balise2pause = self.balise2_entry_pause.get()
+        CreationBalise(self.utilisateurs, self.id_select, self.id_mission, balise2latitude, balise2longitude, balise2altitude, balise2vitesse, balise2pause, 0)
+
+    def GetBalise3(self):   #Methode qui permet de retourner les valeurs des entry de la balise 3
+        balise3latitude = self.balise3_entry_latitude.get()
+        balise3longitude = self.balise3_entry_longitude.get()
+        balise3altitude = self.balise3_entry_altitude.get()
+        balise3vitesse = self.balise3_entry_vitesse.get()
+        balise3pause = self.balise3_entry_pause.get()
+        CreationBalise(self.utilisateurs, self.id_select, self.id_mission, balise3latitude,  balise3longitude, balise3altitude, balise3vitesse, balise3pause, 0)
+
+    def GetBalise4(self):   #Methode qui permet de retourner les valeurs des entry de la balise 4
+        balise4latitude = self.balise4_entry_latitude.get()
+        balise4longitude = self.balise4_entry_longitude.get()
+        balise4altitude = self.balise4_entry_altitude.get()
+        balise4vitesse = self.balise4_entry_vitesse.get()
+        balise4pause = self.balise4_entry_pause.get()
+        CreationBalise(self.utilisateurs, self.id_select, self.id_missio    , balise4latitude, balise4longitude, balise4altitude, balise4vitesse, balise4pause, 0)
+
+    def BouttonEnregistrerInfo2(self):
+        if self.id_balise_ajoute == 4:
+            self.GetBalise4()
+        self.Menu()
+        for i in self.winfo_children():
+            i.destroy()
+        self.Etape3_Mission()
 
     # Retourne id de l'utilisateur sélectionné
-    def BoutonSelectionne3(self, id, id_bouton):
+    def BoutonSelectionne3(self, id_bouton):
         self.cumission_labelframe.configure(text="Balise : %s" % id_bouton)
-        self.id_select = id
         self.id_bouton = id_bouton
+        if self.id_bouton == 1:
+            self.BouttonBalise1
+        if self.id_bouton == 2:
+            self.BouttonBalise2
+        if self.id_bouton == 3:
+            self.BouttonBalise3
+        if self.id_bouton == 4:
+            self.BouttonBalise4
+   
+    # Ajouter une étape à la mission
+    def AjouterBalise(self):
+        print('vu')
+        if self.nombre_balise == 0 :
+            self.GetBalise1()
+            self.BouttonBalise2()
+        if self.nombre_balise == 1:
+            self.GetBalise2()
+            self.BouttonBalise3()
+        if self.nombre_balise == 2:
+            self.GetBalise3()
+            self.BouttonBalise4()
+        if self.nombre_balise == 3:
+            pass
 
     def VisualiserLesMissions(self):
         self.vlm_labelframe_utilisateur = LabelFrame(
@@ -1409,7 +1439,39 @@ class Interface(tk.Tk):
             width=30,
             height=2,
         )
-        self.vlm_bouton_mission1.place()
+        self.vlm_bouton_mission1.place(relx=0.08, rely=0.1)
+        self.vlm_bouton_mission2 = Button(
+            self.vlm_frame_listemission,
+            text="Mission 2",
+            font=("Arial", 12),
+            width=30,
+            height=2,
+        )
+        self.vlm_bouton_mission2.place(relx=0.08, rely=0.3)
+        self.vlm_bouton_mission3 = Button(
+            self.vlm_frame_listemission,
+            text="Mission 3",
+            font=("Arial", 12),
+            width=30,
+            height=2,
+        )
+        self.vlm_bouton_mission3.place(relx=0.08, rely=0.5)
+        self.vlm_bouton_mission4 = Button(
+            self.vlm_frame_listemission,
+            text="Mission 4",
+            font=("Arial", 12),
+            width=30,
+            height=2,
+        )
+        self.vlm_bouton_mission4.place(relx=0.08, rely=0.7)
+        self.vlm_bouton_mission5 = Button(
+            self.vlm_frame_listemission,
+            text="Mission 5",
+            font=("Arial", 12),
+            width=30,
+            height=2,
+        )
+        self.vlm_bouton_mission5.place(relx=0.08, rely=0.7)
         self.vlm_label_modifmission = Label(
             self.vlm_labelframe_utilisateur,
             text="Modifier la mission",
