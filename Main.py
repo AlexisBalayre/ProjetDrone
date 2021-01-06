@@ -14,13 +14,12 @@ class Interface(tk.Tk):
         self.geometry("%dx%d" % (w, h))  # Redimensionne la fenetre
         self.Etape1_Vols()  # appel la première fenetre à s'afficher
 
-
     def Menu(self):  # Methode de la barre de menu
         self.label_frame1 = LabelFrame(
             self, text="menu", width=200, height=110
         )  # label_frame pour encadrer les bouton menu en haut à gauche
         self.label_frame1.place(relx=0.01, rely=0.02)
-        
+
         self.frame1 = Frame(self.label_frame1)
         self.frame1.place(relx=0, rely=0)
 
@@ -112,7 +111,6 @@ class Interface(tk.Tk):
         )  # Label_frame contenant les missions programmées
         self.vols_label_frame2.place(relx=0.25, rely=0.25)
 
-
     def Etape2_parametre(
         self,
     ):  # Methode comprenant les widgets de l'étape 2 du doc spe fonctionelles
@@ -138,27 +136,30 @@ class Interface(tk.Tk):
         )
         self.param_label_frame2.place(relx=0.05, rely=0.08)
 
-        # Initilisation variable 
+        # Initilisation variable
         self.id_select = None
 
-        # Récupération des utilisateurs 
+        # Récupération des utilisateurs
         donnees = Initialisation()
         self.Donnees = donnees[2]
         self.id = donnees[1]
         self.utilisateurs = donnees[0]
-        self.nombre_utilisateurs = len(self.utilisateurs.__dict__['utilisateurs'])
+        self.nombre_utilisateurs = len(self.utilisateurs.__dict__["utilisateurs"])
         self.liste_id = []
-        for x in self.utilisateurs.__dict__['utilisateurs']:
-            self.liste_id.append( self.utilisateurs.__dict__['utilisateurs'][x].__dict__['id_utilisateur'])
-    
+        for x in self.utilisateurs.__dict__["utilisateurs"]:
+            self.liste_id.append(
+                self.utilisateurs.__dict__["utilisateurs"][x].__dict__["id_utilisateur"]
+            )
 
-        # Bouton utilisateur 1 
+        # Bouton utilisateur 1
         if self.nombre_utilisateurs != 0:
-            state1 = 'normal'
-            name_1 = self.utilisateurs.__dict__['utilisateurs'][self.liste_id[0]].__dict__['prenom']
-        else: 
-            state1 = 'disabled'
-            name_1 = 'Utilisateur 1'
+            state1 = "normal"
+            name_1 = self.utilisateurs.__dict__["utilisateurs"][
+                self.liste_id[0]
+            ].__dict__["prenom"]
+        else:
+            state1 = "disabled"
+            name_1 = "Utilisateur 1"
         self.param_boutton_utilisateur1 = Button(
             self.param_label_frame2,
             text=name_1,
@@ -166,18 +167,20 @@ class Interface(tk.Tk):
             bg="#ffffff",
             width=10,
             height=2,
-            state = state1, 
-            command = lambda:self.BoutonSelectionne(name_1, self.liste_id[0], 0)
+            state=state1,
+            command=lambda: self.BoutonSelectionne(name_1, self.liste_id[0], 0),
         )
         self.param_boutton_utilisateur1.place(relx=0.05, rely=0.13)
 
         # Bouton utilisateur 2
         if self.nombre_utilisateurs > 1:
-            state2 = 'normal'
-            name_2 = self.utilisateurs.__dict__['utilisateurs'][self.liste_id[1]].__dict__['prenom']
-        else: 
-            state2 = 'disabled'
-            name_2 = 'Utilisateur 2'
+            state2 = "normal"
+            name_2 = self.utilisateurs.__dict__["utilisateurs"][
+                self.liste_id[1]
+            ].__dict__["prenom"]
+        else:
+            state2 = "disabled"
+            name_2 = "Utilisateur 2"
         self.param_boutton_utilisateur2 = Button(
             self.param_label_frame2,
             text=name_2,
@@ -185,18 +188,20 @@ class Interface(tk.Tk):
             bg="#ffffff",
             width=10,
             height=2,
-            state = state2,
-            command = lambda:self.BoutonSelectionne(name_2, self.liste_id[1], 1)
+            state=state2,
+            command=lambda: self.BoutonSelectionne(name_2, self.liste_id[1], 1),
         )
         self.param_boutton_utilisateur2.place(relx=0.56, rely=0.13)
 
         # Bouton utilisateur 3
         if self.nombre_utilisateurs > 2:
-            state3 = 'normal'
-            name_3 = self.utilisateurs.__dict__['utilisateurs'][self.liste_id[2]].__dict__['prenom']
-        else: 
-            state3 = 'disabled'
-            name_3 = 'Utilisateur 3'
+            state3 = "normal"
+            name_3 = self.utilisateurs.__dict__["utilisateurs"][
+                self.liste_id[2]
+            ].__dict__["prenom"]
+        else:
+            state3 = "disabled"
+            name_3 = "Utilisateur 3"
         self.param_boutton_utilisateur3 = Button(
             self.param_label_frame2,
             text=name_3,
@@ -204,18 +209,20 @@ class Interface(tk.Tk):
             bg="#ffffff",
             width=10,
             height=2,
-            state = state3,
-            command = lambda:self.BoutonSelectionne(name_3, self.liste_id[2], 2)
+            state=state3,
+            command=lambda: self.BoutonSelectionne(name_3, self.liste_id[2], 2),
         )
         self.param_boutton_utilisateur3.place(relx=0.05, rely=0.57)
 
         # Bouton utilisateur 4
         if self.nombre_utilisateurs > 3:
-            state4 = 'normal'
-            name_4 = self.utilisateurs.__dict__['utilisateurs'][self.liste_id[3]].__dict__['prenom']
-        else: 
-            state4 = 'disabled'
-            name_4 = 'Utilisateur 4'
+            state4 = "normal"
+            name_4 = self.utilisateurs.__dict__["utilisateurs"][
+                self.liste_id[3]
+            ].__dict__["prenom"]
+        else:
+            state4 = "disabled"
+            name_4 = "Utilisateur 4"
         self.param_boutton_utilisateur4 = Button(
             self.param_label_frame2,
             text=name_4,
@@ -223,12 +230,12 @@ class Interface(tk.Tk):
             bg="#ffffff",
             width=10,
             height=2,
-            state = state4,
-            command = lambda:self.BoutonSelectionne(name_4, self.liste_id[3], 3)
+            state=state4,
+            command=lambda: self.BoutonSelectionne(name_4, self.liste_id[3], 3),
         )
         self.param_boutton_utilisateur4.place(relx=0.56, rely=0.57)
 
-        # Bouton ajouter utilisateur 
+        # Bouton ajouter utilisateur
         self.param_boutton_utilisateur = Button(
             self.param_label_frame,
             text="Ajouter un utilisateur",
@@ -240,9 +247,9 @@ class Interface(tk.Tk):
         )
         self.param_boutton_utilisateur.place(relx=0.6, rely=0.25)
         if self.nombre_utilisateurs >= 4:
-            self.param_boutton_utilisateur.destroy() # Retire bouton lorsqu'il y a 4 utilisateurs
+            self.param_boutton_utilisateur.destroy()  # Retire bouton lorsqu'il y a 4 utilisateurs
 
-        # Frame Utilisateur sélectionné 
+        # Frame Utilisateur sélectionné
         self.param_label_frame3 = LabelFrame(
             self.param_label_frame,
             text="Aucun utilisateur sélectionné",
@@ -252,8 +259,8 @@ class Interface(tk.Tk):
             borderwidth=3,
         )
         self.param_label_frame3.place(relx=0.23, rely=0.53)
-        
-        # Bouton Modifier l'utilisateur 
+
+        # Bouton Modifier l'utilisateur
         self.param_boutton_modif_utilisateur = Button(
             self.param_label_frame3,
             text="Modifier l'utilisateur",
@@ -261,11 +268,11 @@ class Interface(tk.Tk):
             bg="#ffffff",
             width=30,
             height=2,
-            command=lambda:self.BouttonModifierUtilisateur()
+            command=lambda: self.BouttonModifierUtilisateur(),
         )
         self.param_boutton_modif_utilisateur.place(relx=0.12, rely=0.12)
 
-         # Bouton Supprimer l'utilisateur 
+        # Bouton Supprimer l'utilisateur
         self.param_boutton_sup_utilisateur = Button(
             self.param_label_frame3,
             text="Supprimer l'utilisateur",
@@ -276,19 +283,12 @@ class Interface(tk.Tk):
             command=self.BouttonSupprimerUtilisateur,
         )
         self.param_boutton_sup_utilisateur.place(relx=0.12, rely=0.56)
-    
 
-    # Retourne id de l'utilisateur sélectionné 
-    def BoutonSelectionne(
-        self,
-        name,
-        id,
-        id_bouton
-    ):
-        self.param_label_frame3.configure(text = "Utilisateur sélectionné : %s" % name) 
+    # Retourne id de l'utilisateur sélectionné
+    def BoutonSelectionne(self, name, id, id_bouton):
+        self.param_label_frame3.configure(text="Utilisateur sélectionné : %s" % name)
         self.id_select = id
         self.id_bouton = id_bouton
-   
 
     def BouttonAjouterUtilisateur(
         self,
@@ -297,7 +297,7 @@ class Interface(tk.Tk):
             i.destroy()
         self.Menu()
         self.ParamAjouterUtilisateur()
-    
+
     def BouttonModifierUtilisateur(
         self,
     ):  # Methode présente pour supprimer les widgets de Etape2_parametre et afficher ceux de ParamAjouterUtilisateur
@@ -306,16 +306,14 @@ class Interface(tk.Tk):
                 i.destroy()
             self.Menu()
             self.ParamModifierUtilisateur()
-    
-    def BouttonSupprimerUtilisateur(
-        self,
-    ):
+
+    def BouttonSupprimerUtilisateur(self,):
         if self.id_select != None:
             self.Menu()
             # Suppression Utilisateur 1
             if self.id_bouton == 0:
                 SuppressionUtilisateur(self.utilisateurs, self.id_select)
-                self.param_boutton_utilisateur1.destroy() 
+                self.param_boutton_utilisateur1.destroy()
             # Suppression Utilisateur 2
             if self.id_bouton == 1:
                 SuppressionUtilisateur(self.utilisateurs, self.id_select)
@@ -485,14 +483,16 @@ class Interface(tk.Tk):
             command=lambda: [self.GetInfoUtilisateur(), self.BouttonEnregistrerInfo()],
         )
         self.pau_boutton.place(relx=0.4, rely=0.9)
-    
 
     def ParamModifierUtilisateur(
         self,
     ):  # Mehtode comprenant les widgets de l'etape 2 du doc spe fonctionnelles si la personne clique sur "Ajouter un utilisateur"
         self.pau_label_frame = LabelFrame(
             self,
-            text="Utilisateur : %s" % self.utilisateurs.__dict__["utilisateurs"][self.id_select].__dict__['prenom'],
+            text="Utilisateur : %s"
+            % self.utilisateurs.__dict__["utilisateurs"][self.id_select].__dict__[
+                "prenom"
+            ],
             font=("Arial_black", 12),
             width=870,
             height=600,
@@ -529,24 +529,38 @@ class Interface(tk.Tk):
             bg="#a4a1a3",
         )
         self.pau_text_mail.place(relx=0.1, rely=0.75)
-        
+
         # Champs de saisi du prénom
         mon_entree1 = StringVar()
-        # Récupération de la valeur par défaut 
-        mon_entree1.set(self.utilisateurs.__dict__["utilisateurs"][self.id_select].__dict__['prenom']) 
-        self.pau_entry_prenom = Entry(self.pau_label_frame2, width=30, textvariable=mon_entree1)
+        # Récupération de la valeur par défaut
+        mon_entree1.set(
+            self.utilisateurs.__dict__["utilisateurs"][self.id_select].__dict__[
+                "prenom"
+            ]
+        )
+        self.pau_entry_prenom = Entry(
+            self.pau_label_frame2, width=30, textvariable=mon_entree1
+        )
         self.pau_entry_prenom.place(relx=0.35, rely=0.12)
         # Champs de saisi du nom
         mon_entree2 = StringVar()
-        # Récupération de la valeur par défaut 
-        mon_entree2.set(self.utilisateurs.__dict__["utilisateurs"][self.id_select].__dict__['nom']) 
-        self.pau_entry_nom = Entry(self.pau_label_frame2, width=30, textvariable=mon_entree2)
+        # Récupération de la valeur par défaut
+        mon_entree2.set(
+            self.utilisateurs.__dict__["utilisateurs"][self.id_select].__dict__["nom"]
+        )
+        self.pau_entry_nom = Entry(
+            self.pau_label_frame2, width=30, textvariable=mon_entree2
+        )
         self.pau_entry_nom.place(relx=0.35, rely=0.42)
-         # Champs de saisi du mail
+        # Champs de saisi du mail
         mon_entree3 = StringVar()
-        # Récupération de la valeur par défaut 
-        mon_entree3.set(self.utilisateurs.__dict__["utilisateurs"][self.id_select].__dict__['email']) 
-        self.pau_entry_mail = Entry(self.pau_label_frame2, width=30, textvariable=mon_entree3)
+        # Récupération de la valeur par défaut
+        mon_entree3.set(
+            self.utilisateurs.__dict__["utilisateurs"][self.id_select].__dict__["email"]
+        )
+        self.pau_entry_mail = Entry(
+            self.pau_label_frame2, width=30, textvariable=mon_entree3
+        )
         self.pau_entry_mail.place(relx=0.35, rely=0.77)
 
         self.pau_text_frame3 = Label(
@@ -628,24 +642,42 @@ class Interface(tk.Tk):
             bg="#a4a1a3",
         )
         self.pau_text_modecam.place(relx=0.6, rely=0.35)
-        
+
         # Champs de saisi de la vitesse
         mon_entree4 = StringVar()
-        # Récupération de la valeur par défaut 
-        mon_entree4.set(self.utilisateurs.__dict__["utilisateurs"][self.id_select].__dict__['vitesse']) 
-        self.pau_entry_vitesse = Entry(self.pau_label_frame4, width=30, textvariable=mon_entree4)
+        # Récupération de la valeur par défaut
+        mon_entree4.set(
+            self.utilisateurs.__dict__["utilisateurs"][self.id_select].__dict__[
+                "vitesse"
+            ]
+        )
+        self.pau_entry_vitesse = Entry(
+            self.pau_label_frame4, width=30, textvariable=mon_entree4
+        )
         self.pau_entry_vitesse.place(relx=0.2, rely=0.12)
         # Champs de saisi de la latitude
         mon_entree5 = StringVar()
-        # Récupération de la valeur par défaut 
-        mon_entree5.set(self.utilisateurs.__dict__["utilisateurs"][self.id_select].__dict__['latitude_base']) 
-        self.pau_entry_latitudebase = Entry(self.pau_label_frame4, width=30, textvariable=mon_entree5)
+        # Récupération de la valeur par défaut
+        mon_entree5.set(
+            self.utilisateurs.__dict__["utilisateurs"][self.id_select].__dict__[
+                "latitude_base"
+            ]
+        )
+        self.pau_entry_latitudebase = Entry(
+            self.pau_label_frame4, width=30, textvariable=mon_entree5
+        )
         self.pau_entry_latitudebase.place(relx=0.2, rely=0.42)
         # Champs de saisi de la longitude
         mon_entree6 = StringVar()
-        # Récupération de la valeur par défaut 
-        mon_entree6.set(self.utilisateurs.__dict__["utilisateurs"][self.id_select].__dict__['longitude_base']) 
-        self.pau_entry_longitude = Entry(self.pau_label_frame4, width=30, textvariable=mon_entree6)
+        # Récupération de la valeur par défaut
+        mon_entree6.set(
+            self.utilisateurs.__dict__["utilisateurs"][self.id_select].__dict__[
+                "longitude_base"
+            ]
+        )
+        self.pau_entry_longitude = Entry(
+            self.pau_label_frame4, width=30, textvariable=mon_entree6
+        )
         self.pau_entry_longitude.place(relx=0.2, rely=0.72)
 
         self.pau_modecam_photo_check = Checkbutton(
@@ -664,7 +696,10 @@ class Interface(tk.Tk):
             width=22,
             height=2,
             bg="#ffffff",
-            command=lambda: [self.GetInfoModifUtilisateur(), self.BouttonEnregistrerInfo()],
+            command=lambda: [
+                self.GetInfoModifUtilisateur(),
+                self.BouttonEnregistrerInfo(),
+            ],
         )
         self.pau_boutton.place(relx=0.4, rely=0.9)
 
@@ -676,7 +711,24 @@ class Interface(tk.Tk):
         paulatitude = self.pau_entry_latitudebase.get()
         paulongitude = self.pau_entry_longitude.get()
         # Création de l'objet utilisateur
-        CreationUtilisateur(self.Donnees, self.id, self.utilisateurs, prenom, nom, mail, paulatitude, paulongitude, pauvitesse, 0, 0, 0, 0, 0, 0, 0) 
+        CreationUtilisateur(
+            self.Donnees,
+            self.id,
+            self.utilisateurs,
+            prenom,
+            nom,
+            mail,
+            paulatitude,
+            paulongitude,
+            pauvitesse,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+        )
 
     def GetInfoModifUtilisateur(self):
         prenom = self.pau_entry_prenom.get()
@@ -686,7 +738,23 @@ class Interface(tk.Tk):
         paulatitude = self.pau_entry_latitudebase.get()
         paulongitude = self.pau_entry_longitude.get()
         # Modification de l'objet utilisateur
-        ModificationUtilisateur(self.utilisateurs, self.id_select, prenom, nom, mail, paulatitude, paulongitude, pauvitesse, 0, 0, 0, 0, 0, 0, 0) 
+        ModificationUtilisateur(
+            self.utilisateurs,
+            self.id_select,
+            prenom,
+            nom,
+            mail,
+            paulatitude,
+            paulongitude,
+            pauvitesse,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+        )
 
     def BouttonEnregistrerInfo(self):
         for i in self.winfo_children():
@@ -695,26 +763,28 @@ class Interface(tk.Tk):
         self.Etape2_parametre()
 
     def Etape3_Mission(self):
-         # Récupération des utilisateurs 
+        # Récupération des utilisateurs
         donnees = Initialisation()
         self.Donnees = donnees[2]
         self.id = donnees[1]
         self.utilisateurs = donnees[0]
         # Compte le nombre d'instances utilisateur
-        self.nombre_utilisateurs = len(self.utilisateurs.__dict__['utilisateurs'])
+        self.nombre_utilisateurs = len(self.utilisateurs.__dict__["utilisateurs"])
         # Récupération des id
         self.liste_id = []
-        for x in self.utilisateurs.__dict__['utilisateurs']:
-            self.liste_id.append( self.utilisateurs.__dict__['utilisateurs'][x].__dict__['id_utilisateur'])
-        
-        # Initilisation variable 
+        for x in self.utilisateurs.__dict__["utilisateurs"]:
+            self.liste_id.append(
+                self.utilisateurs.__dict__["utilisateurs"][x].__dict__["id_utilisateur"]
+            )
+
+        # Initilisation variable
         self.id_select = None
-        
-        # Création de la fenêtre 
+
+        # Création de la fenêtre
         self.mission_frame_principale = Frame(self, width=870, height=550)
         self.mission_frame_principale.place(relx=0.25, rely=0.25)
 
-        # Liste des utilisateurs 
+        # Liste des utilisateurs
         self.mission_listeutilisateur = Label(
             self.mission_frame_principale,
             text="Liste Utilisateurs",
@@ -726,13 +796,15 @@ class Interface(tk.Tk):
         )
         self.mission_frame1.place(relx=0.15, rely=0.06)
 
-        # Bouton utilisateur 1 
+        # Bouton utilisateur 1
         if self.nombre_utilisateurs != 0:
-            state1 = 'normal'
-            name_1 = self.utilisateurs.__dict__['utilisateurs'][self.liste_id[0]].__dict__['prenom']
-        else: 
-            state1 = 'disabled'
-            name_1 = 'Utilisateur 1'
+            state1 = "normal"
+            name_1 = self.utilisateurs.__dict__["utilisateurs"][
+                self.liste_id[0]
+            ].__dict__["prenom"]
+        else:
+            state1 = "disabled"
+            name_1 = "Utilisateur 1"
         self.param_boutton_utilisateur1 = Button(
             self.mission_frame1,
             text=name_1,
@@ -740,18 +812,20 @@ class Interface(tk.Tk):
             bg="#ffffff",
             width=15,
             height=2,
-            state = state1, 
-            command = lambda:self.BoutonSelectionne2(name_1, self.liste_id[0], 0)
+            state=state1,
+            command=lambda: self.BoutonSelectionne2(name_1, self.liste_id[0], 0),
         )
         self.param_boutton_utilisateur1.place(relx=0.08, rely=0.2)
 
         # Bouton utilisateur 2
         if self.nombre_utilisateurs > 1:
-            state2 = 'normal'
-            name_2 = self.utilisateurs.__dict__['utilisateurs'][self.liste_id[1]].__dict__['prenom']
-        else: 
-            state2 = 'disabled'
-            name_2 = 'Utilisateur 2'
+            state2 = "normal"
+            name_2 = self.utilisateurs.__dict__["utilisateurs"][
+                self.liste_id[1]
+            ].__dict__["prenom"]
+        else:
+            state2 = "disabled"
+            name_2 = "Utilisateur 2"
         self.param_boutton_utilisateur2 = Button(
             self.mission_frame1,
             text=name_2,
@@ -759,18 +833,20 @@ class Interface(tk.Tk):
             bg="#ffffff",
             width=15,
             height=2,
-            state = state2,
-            command = lambda:self.BoutonSelectionne2(name_2, self.liste_id[1], 1)
+            state=state2,
+            command=lambda: self.BoutonSelectionne2(name_2, self.liste_id[1], 1),
         )
         self.param_boutton_utilisateur2.place(relx=0.55, rely=0.2)
 
         # Bouton utilisateur 3
         if self.nombre_utilisateurs > 2:
-            state3 = 'normal'
-            name_3 = self.utilisateurs.__dict__['utilisateurs'][self.liste_id[2]].__dict__['prenom']
-        else: 
-            state3 = 'disabled'
-            name_3 = 'Utilisateur 3'
+            state3 = "normal"
+            name_3 = self.utilisateurs.__dict__["utilisateurs"][
+                self.liste_id[2]
+            ].__dict__["prenom"]
+        else:
+            state3 = "disabled"
+            name_3 = "Utilisateur 3"
         self.param_boutton_utilisateur3 = Button(
             self.mission_frame1,
             text=name_3,
@@ -778,18 +854,20 @@ class Interface(tk.Tk):
             bg="#ffffff",
             width=15,
             height=2,
-            state = state3,
-            command = lambda:self.BoutonSelectionne2(name_3, self.liste_id[2], 2)
+            state=state3,
+            command=lambda: self.BoutonSelectionne2(name_3, self.liste_id[2], 2),
         )
         self.param_boutton_utilisateur3.place(relx=0.08, rely=0.6)
 
         # Bouton utilisateur 4
         if self.nombre_utilisateurs > 3:
-            state4 = 'normal'
-            name_4 = self.utilisateurs.__dict__['utilisateurs'][self.liste_id[3]].__dict__['prenom']
-        else: 
-            state4 = 'disabled'
-            name_4 = 'Utilisateur 4'
+            state4 = "normal"
+            name_4 = self.utilisateurs.__dict__["utilisateurs"][
+                self.liste_id[3]
+            ].__dict__["prenom"]
+        else:
+            state4 = "disabled"
+            name_4 = "Utilisateur 4"
         self.param_boutton_utilisateur4 = Button(
             self.mission_frame1,
             text=name_4,
@@ -797,12 +875,12 @@ class Interface(tk.Tk):
             bg="#ffffff",
             width=15,
             height=2,
-            state = state4,
-            command = lambda:self.BoutonSelectionne2(name_4, self.liste_id[3], 3)
+            state=state4,
+            command=lambda: self.BoutonSelectionne2(name_4, self.liste_id[3], 3),
         )
         self.param_boutton_utilisateur4.place(relx=0.55, rely=0.6)
 
-        # Utilisateur sélectionné 
+        # Utilisateur sélectionné
         self.mission_utilisateurselectionne = Label(
             self.mission_frame_principale,
             text="Aucun utilisateur sélectionné",
@@ -831,18 +909,14 @@ class Interface(tk.Tk):
             command=self.BouttonCreerUneMission,
         )
         self.mission_boutton2.place(relx=0.12, rely=0.58)
-    
-    # Retourne id de l'utilisateur sélectionné 
-    def BoutonSelectionne2(
-        self,
-        name,
-        id,
-        id_bouton
-    ):
-        self.mission_utilisateurselectionne.configure(text = "Utilisateur sélectionné : %s" % name) 
+
+    # Retourne id de l'utilisateur sélectionné
+    def BoutonSelectionne2(self, name, id, id_bouton):
+        self.mission_utilisateurselectionne.configure(
+            text="Utilisateur sélectionné : %s" % name
+        )
         self.id_select = id
         self.id_bouton = id_bouton
-
 
     def BouttonVisualiserLesMissions(self):
         if self.id_select != None:
@@ -858,19 +932,28 @@ class Interface(tk.Tk):
                 i.destroy()
             self.Menu()
             self.CreerUneMission()
-            self.BouttonBalise2()
-            self.BouttonBalise3()
             self.BouttonBalise4()
-
-
+            self.BouttonBalise3()
+            self.BouttonBalise2()
+            self.BouttonBalise1()
 
     def CreerUneMission(self):
         # Compte le nombre d'instances mission
-        self.nombre_missions = len(self.utilisateurs.__dict__['utilisateurs'][self.id_select].__dict__['missions'])
+        self.nombre_missions = len(
+            self.utilisateurs.__dict__["utilisateurs"][self.id_select].__dict__[
+                "missions"
+            ]
+        )
         # Récupération des id
         self.liste_id_missions = []
-        for x in self.utilisateurs.__dict__['utilisateurs'][self.id_select].__dict__['missions']:
-            self.liste_id_missions.append(self.utilisateurs.__dict__['utilisateurs'][self.id_select].__dict__['missions'][x].__dict__['id_mission'])
+        for x in self.utilisateurs.__dict__["utilisateurs"][self.id_select].__dict__[
+            "missions"
+        ]:
+            self.liste_id_missions.append(
+                self.utilisateurs.__dict__["utilisateurs"][self.id_select]
+                .__dict__["missions"][x]
+                .__dict__["id_mission"]
+            )
 
         self.cumission_labelframe = LabelFrame(
             self,
@@ -901,34 +984,19 @@ class Interface(tk.Tk):
             font=("Arial", 12),
             width=20,
             height=2,
-            state="disabled"
+            state="disabled",
         )
 
-        # Bouton Balise 1 
-        if self.nombre_missions != 0:
-            state1 = 'normal'
-        else: 
-            state1 = 'disabled'
-        self.cumission_boutton_decollage.place(relx=0.1, rely=0.02)
-        self.cumission_boutton_balise1 = Button(
-            self.cumission_labelframe1,
-            text="Balise 1",
-            font=("Arial", 12),
-            width=20,
-            height=2,
-            state=state1,
-            command=lambda:self.BoutonSelectionne3(self.liste_id_missions[0], 1)
-        )
-        self.cumission_boutton_balise1.place(relx=0.1, rely=0.19)
         self.cumission_boutton_atterissage = Button(
             self.cumission_labelframe1,
             text="Atterissage",
             font=("Arial", 12),
             width=20,
             height=2,
-            state="disabled"
+            state="disabled",
         )
         self.cumission_boutton_atterissage.place(relx=0.1, rely=0.87)
+
         self.cumission_label2 = Label(
             self.cumission_labelframe,
             text="Rajouter une étape",
@@ -944,63 +1012,6 @@ class Interface(tk.Tk):
             bg="#a4a1a3",
         )
         self.cumission_boutton_etape.place(relx=0.1, rely=0.89)
-
-        self.cumission_babel3 = Label(
-            self.cumission_labelframe, text="Balise 1", font=("Arial", 12, "bold")
-        )
-        self.cumission_babel3.place(relx=0.5, rely=0.008)
-        self.cumission_labelframe2 = LabelFrame(
-            self.cumission_labelframe, width=400, height=370, borderwidth=3
-        )
-        self.cumission_labelframe2.place(relx=0.5, rely=0.05)
-        self.cumission_label_latitude = Label(
-            self.cumission_labelframe2, text="Latitude (en °):", font=("Arial", 12)
-        )
-        self.cumission_label_latitude.place(relx=0.1, rely=0.08)
-        self.cumission_entry_latitude = Entry(self.cumission_labelframe2, width=30)
-        self.cumission_entry_latitude.place(relx=0.45, rely=0.09)
-        self.cumission_label_longitude = Label(
-            self.cumission_labelframe2, text="Longitude (en °):", font=("Arial", 12)
-        )
-        self.cumission_label_longitude.place(relx=0.1, rely=0.2)
-        self.cumission_entry_longitude = Entry(self.cumission_labelframe2, width=30)
-        self.cumission_entry_longitude.place(relx=0.45, rely=0.21)
-        self.cumission_label_altitude = Label(
-            self.cumission_labelframe2, text="Altitude (en m):", font=("Arial", 12)
-        )
-        self.cumission_label_altitude.place(relx=0.1, rely=0.33)
-        self.cumission_entry_altitude = Spinbox(
-            self.cumission_labelframe2, from_=0, to=100, justify=CENTER, width=30
-        )
-        self.cumission_entry_altitude.place(relx=0.45, rely=0.34)
-        self.cumission_label_vitesse = Label(
-            self.cumission_labelframe2, text="vitesse(en %):", font=("Arial", 12)
-        )
-        self.cumission_label_vitesse.place(relx=0.1, rely=0.48)
-        self.cumission_entry_vitesse = Spinbox(
-            self.cumission_labelframe2, from_=0, to=100, justify=CENTER, width=30
-        )
-        self.cumission_entry_vitesse.place(relx=0.45, rely=0.49)
-        self.cumission_label_pause = Label(
-            self.cumission_labelframe2, text="pause(en s):", font=("Arial", 12)
-        )
-        self.cumission_label_pause.place(relx=0.1, rely=0.63)
-        self.cumission_entry_pause = Spinbox(
-            self.cumission_labelframe2, from_=0, to=120, justify=CENTER, width=30
-        )
-        self.cumission_entry_pause.place(relx=0.45, rely=0.64)
-        self.cumission_label_photo = Label(
-            self.cumission_labelframe2, text="photo:", font=("Arial", 12)
-        )
-        self.cumission_label_photo.place(relx=0.1, rely=0.79)
-        self.cumission_checkbutton_photo_oui = Checkbutton(
-            self.cumission_labelframe2, text="Oui", font=("Arail", 12)
-        )
-        self.cumission_checkbutton_photo_oui.place(relx=0.75, rely=0.75)
-        self.cumission_checkbutton_photo_non = Checkbutton(
-            self.cumission_labelframe2, text="Non", font=("Arail", 12)
-        )
-        self.cumission_checkbutton_photo_non.place(relx=0.75, rely=0.83)
 
         self.cumission_boutton_enregistrer = Button(
             self.cumission_labelframe,
@@ -1019,14 +1030,12 @@ class Interface(tk.Tk):
         )
         self.cumission_boutton_enregistrer.place(relx=0.575, rely=0.85)
 
-    def GetCreerUneMission(self):
-        balise1latitude = self.cumission_entry_latitude.get()
-        balise1longitude = self.cumission_entry_longitude.get()
-        balise1altitude = self.cumission_entry_altitude.get()
-        balise1vitesse = self.cumission_entry_vitesse.get()
-        balise1pause = self.cumission_entry_pause.get()
-        # Creation de l'objet mission 
-
+    def GetBalise1(self):
+        balise1latitude = self.balise1_entry_latitude.get()
+        balise1longitude = self.balise1_entry_longitude.get()
+        balise1altitude = self.balise1_entry_altitude.get()
+        balise1vitesse = self.balise1_entry_vitesse.get()
+        balise1pause = self.balise1_entry_pause.get()
 
     def GetBalise2(self):
         balise2latitude = self.balise2_entry_latitude.get()
@@ -1056,20 +1065,95 @@ class Interface(tk.Tk):
         self.Menu()
         self.Etape3_Mission()
 
+    def BouttonBalise1(self):
+        # Bouton Balise 1
+        if self.nombre_missions != 0:
+            state1 = "normal"
+        else:
+            state1 = "disabled"
+        self.cumission_boutton_decollage.place(relx=0.1, rely=0.02)
+        self.cumission_boutton_balise1 = Button(
+            self.cumission_labelframe1,
+            text="Balise 1",
+            font=("Arial", 12),
+            width=20,
+            height=2,
+            state=state1,
+            command=lambda: self.BoutonSelectionne3(self.liste_id_missions[0], 1),
+        )
+        self.cumission_boutton_balise1.place(relx=0.1, rely=0.19)
+
+        self.balise1_babel3 = Label(
+            self.cumission_labelframe, text="Balise 1", font=("Arial", 12, "bold")
+        )
+        self.balise1_babel3.place(relx=0.5, rely=0.008)
+        self.balise1_labelframe2 = LabelFrame(
+            self.cumission_labelframe, width=400, height=370, borderwidth=3
+        )
+        self.balise1_labelframe2.place(relx=0.5, rely=0.05)
+        self.balise1_label_latitude = Label(
+            self.balise1_labelframe2, text="Latitude (en °):", font=("Arial", 12)
+        )
+        self.balise1_label_latitude.place(relx=0.1, rely=0.08)
+        self.balise1_entry_latitude = Entry(self.balise2_labelframe2, width=30)
+        self.balise1_entry_latitude.place(relx=0.45, rely=0.09)
+        self.balise1_label_longitude = Label(
+            self.balise1_labelframe2, text="Longitude (en °):", font=("Arial", 12)
+        )
+        self.balise1_label_longitude.place(relx=0.1, rely=0.2)
+        self.balise1_entry_longitude = Entry(self.balise2_labelframe2, width=30)
+        self.balise1_entry_longitude.place(relx=0.45, rely=0.21)
+        self.balise1_label_altitude = Label(
+            self.balise1_labelframe2, text="Altitude (en m):", font=("Arial", 12)
+        )
+        self.balise1_label_altitude.place(relx=0.1, rely=0.33)
+        self.balise1_entry_altitude = Spinbox(
+            self.balise1_labelframe2, from_=0, to=100, justify=CENTER, width=30
+        )
+        self.balise1_entry_altitude.place(relx=0.45, rely=0.34)
+        self.balise1_label_vitesse = Label(
+            self.balise1_labelframe2, text="vitesse(en %):", font=("Arial", 12)
+        )
+        self.balise1_label_vitesse.place(relx=0.1, rely=0.48)
+        self.balise1_entry_vitesse = Spinbox(
+            self.balise1_labelframe2, from_=0, to=100, justify=CENTER, width=30
+        )
+        self.balise1_entry_vitesse.place(relx=0.45, rely=0.49)
+        self.balise1_label_pause = Label(
+            self.balise1_labelframe2, text="pause(en s):", font=("Arial", 12)
+        )
+        self.balise1_label_pause.place(relx=0.1, rely=0.63)
+        self.balise1_entry_pause = Spinbox(
+            self.balise1_labelframe2, from_=0, to=120, justify=CENTER, width=30
+        )
+        self.balise1_entry_pause.place(relx=0.45, rely=0.64)
+        self.balise1_label_photo = Label(
+            self.balise1_labelframe2, text="photo:", font=("Arial", 12)
+        )
+        self.balise1_label_photo.place(relx=0.1, rely=0.79)
+        self.balise1_checkbutton_photo_oui = Checkbutton(
+            self.balise1_labelframe2, text="Oui", font=("Arail", 12)
+        )
+        self.balise1_checkbutton_photo_oui.place(relx=0.75, rely=0.75)
+        self.balise1_checkbutton_photo_non = Checkbutton(
+            self.balise1_labelframe2, text="Non", font=("Arail", 12)
+        )
+        self.balise1_checkbutton_photo_non.place(relx=0.75, rely=0.83)
+
     def BouttonBalise2(self):
         # Bouton Balise 2
         if self.nombre_missions > 1:
-            state2 = 'normal'
-        else: 
-            state2 = 'disabled'
+            state2 = "normal"
+        else:
+            state2 = "disabled"
         self.boutton_nouvelle_etape_2 = Button(
             self.cumission_labelframe1,
             text="Balise 2",
             font=("Arial", 12),
             width=20,
             height=2,
-            state = state2,
-            command=lambda:self.BoutonSelectionne3(self.liste_id_missions[1], 2)
+            state=state2,
+            command=lambda: self.BoutonSelectionne3(self.liste_id_missions[1], 2),
         )
         self.boutton_nouvelle_etape_2.place(relx=0.1, rely=0.36)
 
@@ -1133,9 +1217,9 @@ class Interface(tk.Tk):
     def BouttonBalise3(self):
         # Bouton Balise 3
         if self.nombre_missions > 2:
-            state3 = 'normal'
-        else: 
-            state3 = 'disabled'
+            state3 = "normal"
+        else:
+            state3 = "disabled"
         self.boutton_nouvelle_etape_3 = Button(
             self.cumission_labelframe1,
             text="Balise 3",
@@ -1143,7 +1227,7 @@ class Interface(tk.Tk):
             width=20,
             height=2,
             state=state3,
-            command=lambda:self.BoutonSelectionne3(self.liste_id_missions[2], 3)
+            command=lambda: self.BoutonSelectionne3(self.liste_id_missions[2], 3),
         )
         self.boutton_nouvelle_etape_3.place(relx=0.1, rely=0.53)
 
@@ -1217,9 +1301,9 @@ class Interface(tk.Tk):
     def BouttonBalise4(self):
         # Bouton Balise 4
         if self.nombre_missions == 4:
-            state4 = 'normal'
-        else: 
-            state4 = 'disabled'
+            state4 = "normal"
+        else:
+            state4 = "disabled"
         self.boutton_nouvelle_etape_4 = Button(
             self.cumission_labelframe1,
             text="Balise 4",
@@ -1227,10 +1311,9 @@ class Interface(tk.Tk):
             width=20,
             height=2,
             state=state4,
-            command=lambda:self.BoutonSelectionne3(self.liste_id_missions[3], 4)
+            command=lambda: self.BoutonSelectionne3(self.liste_id_missions[3], 4),
         )
         self.boutton_nouvelle_etape_4.place(relx=0.1, rely=0.70)
-        
 
         self.balise4_babel3 = Label(
             self.cumission_labelframe, text="Balise 4", font=("Arial", 12, "bold")
@@ -1288,14 +1371,10 @@ class Interface(tk.Tk):
             self.balise4_labelframe2, text="Non", font=("Arail", 12)
         )
         self.balise4_checkbutton_photo_non.place(relx=0.75, rely=0.83)
-        
-    # Retourne id de l'utilisateur sélectionné 
-    def BoutonSelectionne3(
-        self,
-        id,
-        id_bouton
-    ):
-        self.cumission_labelframe.configure(text = "Balise : %s" % id_bouton) 
+
+    # Retourne id de l'utilisateur sélectionné
+    def BoutonSelectionne3(self, id, id_bouton):
+        self.cumission_labelframe.configure(text="Balise : %s" % id_bouton)
         self.id_select = id
         self.id_bouton = id_bouton
 
@@ -1323,6 +1402,14 @@ class Interface(tk.Tk):
             relief=SUNKEN,
         )
         self.vlm_frame_listemission.place(relx=0.08, rely=0.08)
+        self.vlm_bouton_mission1 = Button(
+            self.vlm_frame_listemission,
+            text="Mission 1",
+            font=("Arial", 12),
+            width=30,
+            height=2,
+        )
+        self.vlm_bouton_mission1.place()
         self.vlm_label_modifmission = Label(
             self.vlm_labelframe_utilisateur,
             text="Modifier la mission",
