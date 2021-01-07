@@ -7,8 +7,8 @@ from mavsdk.mission import MissionItem, MissionPlan
 from Classes.AvanceeMission import *
 
 
-avancee = AvanceeMission(0, 0, 0, 0, 0)  # Création de l'instance avancee
 
+avancee = AvanceeMission(0, 0, 0, 0, 0)  # Création de l'instance avancee
 
 async def run(balises):
     # Connexion au drone
@@ -51,7 +51,7 @@ async def run(balises):
                 float("nan"),
                 float("nan"),
                 mode,
-                float(balise.__dict__["pause"]),
+                float("nan"),
                 float("nan"),
             )
         )
@@ -104,6 +104,7 @@ async def return_position(drone):
 async def return_vitesse(drone):
     async for vitesse in drone.telemetry.fixedwing_metrics():
         avancee.setVitesse(vitesse.airspeed_m_s)  # Vitesse
+        print(avancee.__dict__)
 
 
 # Fonction arrêt de la mission
@@ -116,7 +117,6 @@ async def observe_is_in_air(drone, running_tasks):
     async for is_in_air in drone.telemetry.in_air():
         if is_in_air:
             was_in_air = is_in_air
-            return avancee
 
         if was_in_air and not is_in_air:
             for task in running_tasks:
@@ -136,7 +136,7 @@ def ExecutionDrone(balises):
         "chmod +x Simulateur/JMAVSim.sh\nopen Simulateur/JMAVSim.sh"
     )  
     # Exécution du shell JMAVSim.sh
-    time.sleep(50)  # Attente de l'ouverture de l'interface
+    time.sleep(60)  # Attente de l'ouverture de l'interface
     # Lancement de la mission
     loop = asyncio.get_event_loop()
     loop.run_until_complete(run(balises))  # Lancement du thread

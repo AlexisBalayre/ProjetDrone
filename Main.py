@@ -1879,6 +1879,7 @@ class Interface(tk.Tk):  # définition de la classe
         self,
     ):  
         self.id = self.id_select_mission
+        CoordonneesBase(self.utilisateurs, self.id_select,)
         ExecutionMission(self.utilisateurs, self.id_select, self.id)
         # Méthode présente pour supprimer les widgets de la fenetre en cours d'exécution et appeler ceux de ExecutionMission
         for i in self.winfo_children():
