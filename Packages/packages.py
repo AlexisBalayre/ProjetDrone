@@ -29,7 +29,7 @@ def Initialisation():
     if Dict_Utilisateurs == {}:
         Donnees = 0 # Fichier vide
     else:
-        Donnees = 1
+        Donnees = 1 # 
     f.close()
 
     # Création des objets Utilisateur

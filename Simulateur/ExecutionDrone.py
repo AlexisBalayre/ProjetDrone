@@ -51,7 +51,7 @@ async def run(balises):
                 float("nan"),
                 float("nan"),
                 mode,
-                float("nan"),
+                float(balise.__dict__["pause"]),
                 float("nan"),
             )
         )
