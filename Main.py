@@ -917,7 +917,7 @@ class Interface(tk.Tk):  # définition de la classe
             font=("Arial", 12, "bold"),
             width=30,
             height=2,
-            command=self.BouttonCreerUneMission
+            command=self.BouttonCreerUneMission,
         )
         self.mission_boutton2.place(relx=0.12, rely=0.58)
 
@@ -1047,7 +1047,7 @@ class Interface(tk.Tk):  # définition de la classe
             bg="#ffffff",
             width=30,
             height=2,
-            command=self.BouttonEnregistrerInfo2
+            command=self.BouttonEnregistrerInfo2,
         )  # Bouton permettant d'executer les méthodes GetCreerUnemission et BoutonEnregistrerInfo2
         self.cumission_boutton_enregistrer.place(relx=0.575, rely=0.85)
 
@@ -1456,7 +1456,7 @@ class Interface(tk.Tk):  # définition de la classe
         )
         self.balise4_checkbutton_photo_non.place(relx=0.75, rely=0.83)
 
-        # Enregistrer les modifications 
+        # Enregistrer les modifications
         self.cumission_boutton_enregistrer_2 = Button(
             self.cumission_labelframe,
             text="Enregistrer les informations test",
@@ -1464,7 +1464,7 @@ class Interface(tk.Tk):  # définition de la classe
             bg="#ffffff",
             width=30,
             height=2,
-            command=lambda:[self.GetBalise4(), self.BouttonEnregistrerInfo2()]
+            command=lambda: [self.GetBalise4(), self.BouttonEnregistrerInfo2()],
         )  # Bouton permettant d'executer les méthodes GetCreerUnemission et BoutonEnregistrerInfo2
         self.cumission_boutton_enregistrer_2.place(relx=0.575, rely=0.85)
 
@@ -1587,9 +1587,7 @@ class Interface(tk.Tk):  # définition de la classe
         if self.id_bouton == 4:
             self.BouttonBalise4
 
-    def VisualiserLesMissions(
-        self,
-    ):  
+    def VisualiserLesMissions(self,):
         # Récupération des utilisateurs
         donnees = Initialisation()
         self.utilisateurs = donnees[0]
@@ -1603,9 +1601,9 @@ class Interface(tk.Tk):  # définition de la classe
                 self.utilisateurs.__dict__["utilisateurs"][self.id_select]
                 .__dict__["missions"][x]
                 .__dict__["id_mission"]
-            ) 
+            )
 
-        # Nombre de mission 
+        # Nombre de mission
         self.nombre_missions = len(self.liste_id_missions)
 
         # Méthode qui permet de visaliser les différentes missions créées par les utilisateurs
@@ -1645,10 +1643,10 @@ class Interface(tk.Tk):  # définition de la classe
             width=15,
             height=2,
             state=state1,
-            command=lambda:self.BoutonSelectionne3(self.liste_id_missions[0], 1)
-        ) 
+            command=lambda: self.BoutonSelectionne3(self.liste_id_missions[0], 1),
+        )
         self.vlm_bouton_mission1.place(relx=0.12, rely=0.02)
-        
+
         # Bouton mission 2
         if self.nombre_missions >= 2:
             state2 = "normal"
@@ -1661,10 +1659,10 @@ class Interface(tk.Tk):  # définition de la classe
             width=15,
             height=2,
             state=state2,
-            command=lambda:self.BoutonSelectionne3(self.liste_id_missions[1], 2)
-        )  
+            command=lambda: self.BoutonSelectionne3(self.liste_id_missions[1], 2),
+        )
         self.vlm_bouton_mission2.place(relx=0.12, rely=0.22)
-        
+
         # Bouton mission 3
         if self.nombre_missions >= 3:
             state3 = "normal"
@@ -1677,8 +1675,8 @@ class Interface(tk.Tk):  # définition de la classe
             width=15,
             height=2,
             state=state3,
-            command=lambda:self.BoutonSelectionne3(self.liste_id_missions[2], 3)
-        )  
+            command=lambda: self.BoutonSelectionne3(self.liste_id_missions[2], 3),
+        )
         self.vlm_bouton_mission3.place(relx=0.12, rely=0.42)
 
         # Bouton mission 4
@@ -1693,10 +1691,10 @@ class Interface(tk.Tk):  # définition de la classe
             width=15,
             height=2,
             state=state4,
-            command=lambda:self.BoutonSelectionne3(self.liste_id_missions[3], 4)
-        ) 
-        self.vlm_bouton_mission4.place(relx=0.12, rely=0.62) 
-        
+            command=lambda: self.BoutonSelectionne3(self.liste_id_missions[3], 4),
+        )
+        self.vlm_bouton_mission4.place(relx=0.12, rely=0.62)
+
         # Bouton mission 5
         if self.nombre_missions >= 5:
             state5 = "normal"
@@ -1709,11 +1707,11 @@ class Interface(tk.Tk):  # définition de la classe
             width=15,
             height=2,
             state=state5,
-            command=lambda:self.BoutonSelectionne3(self.liste_id_missions[4], 5)
-        )  
+            command=lambda: self.BoutonSelectionne3(self.liste_id_missions[4], 5),
+        )
         self.vlm_bouton_mission5.place(relx=0.12, rely=0.82)
-        
-        # Bouton modifier la mission 
+
+        # Bouton modifier la mission
         self.vlm_label_modifmission = Label(
             self.vlm_labelframe_utilisateur,
             text="Modifier la mission",
@@ -1726,8 +1724,8 @@ class Interface(tk.Tk):  # définition de la classe
             font=("Arial", 16, "bold"),
             width=9,
             bg="#a4a1a3",
-        )  
-        
+        )
+
         # Bouton supprimer la mission
         self.vlm_boutton_modifmission.place(relx=0.03, rely=0.88)
         self.vlm_label_suppmission = Label(
@@ -1742,8 +1740,7 @@ class Interface(tk.Tk):  # définition de la classe
             font=("Arial", 16, "bold"),
             width=9,
             bg="#a4a1a3",
-        )  
-        
+        )
 
         self.vlm_boutton_suppmission.place(relx=0.22, rely=0.88)
         self.vlm_label_mission = Label(
@@ -1753,10 +1750,10 @@ class Interface(tk.Tk):  # définition de la classe
         )
         self.vlm_label_mission.place(relx=0.55, rely=0.03)
 
-         # LabelFrame recapitulatif incluant le bouton lancer mission
+        # LabelFrame recapitulatif incluant le bouton lancer mission
         self.vlm_labelframe_mission1 = LabelFrame(
             self.vlm_labelframe_utilisateur, width=350, height=200, borderwidth=3
-        ) 
+        )
         self.vlm_labelframe_mission1.place(relx=0.55, rely=0.08)
         self.vlm_label_recap = Label(
             self.vlm_labelframe_mission1,
@@ -1764,7 +1761,7 @@ class Interface(tk.Tk):  # définition de la classe
             font=("Arial", 12, "bold"),
         )
         self.vlm_label_recap.place(relx=0.35, rely=0.01)
-        
+
         self.pau_check_coordonnees = Label(
             self.vlm_labelframe_mission1, text="Durée : ", font=("Arial", 12)
         )
@@ -1795,7 +1792,7 @@ class Interface(tk.Tk):  # définition de la classe
             command=self.BouttonLancerMission,
         )
         self.vlm_boutton_lancermission.place(relx=0.1, rely=0.75)
-        
+
         self.vlm_labelframe_mission2 = LabelFrame(
             self.vlm_labelframe_utilisateur, width=350, height=200, borderwidth=3
         )  # LabelFrame incluant le plannificateur avec le bouton "plannifier la mission"
@@ -1828,38 +1825,40 @@ class Interface(tk.Tk):  # définition de la classe
             command=self.GetVisualiserLesMissions,
         )
         self.vlm_boutton_planifiermission.place(relx=0.1, rely=0.75)
-    
+
     # Retourne id de la mission sélectionnée
     def BoutonSelectionne3(self, id, id_bouton):
-        # Affichage du numéro de mission 
-        self.vlm_label_mission.configure(
-            text="Mission n°%s" % id_bouton
-        )
+        # Affichage du numéro de mission
+        self.vlm_label_mission.configure(text="Mission n°%s" % id_bouton)
 
         # Récupération des id
         self.id_select_mission = id
         self.id_bouton = id_bouton
 
-        # Affichage de la durée 
-        self.duree = DureeMission(self.utilisateurs, self.id_select, self.id_select_mission)
-        self.pau_check_coordonnees.configure(
-            text="Durée : %s" % self.duree
+        # Affichage de la durée
+        self.duree = DureeMission(
+            self.utilisateurs, self.id_select, self.id_select_mission
         )
+        self.pau_check_coordonnees.configure(text="Durée : %s" % self.duree)
 
-        # Affichage du nombre de balises 
-        self.nombrebalises = NombreBalises(self.utilisateurs, self.id_select, self.id_select_mission)
+        # Affichage du nombre de balises
+        self.nombrebalises = NombreBalises(
+            self.utilisateurs, self.id_select, self.id_select_mission
+        )
         self.vlm_label_nbretape.configure(
             text="Nombre étapes : %s" % self.nombrebalises
         )
 
-        # Affichage du mode photo  
-        self.modephoto = ModePhoto(self.utilisateurs, self.id_select, self.id_select_mission)
-        self.vlm_label_modephoto.configure(
-            text="Mode photo : %s" % self.modephoto 
+        # Affichage du mode photo
+        self.modephoto = ModePhoto(
+            self.utilisateurs, self.id_select, self.id_select_mission
         )
+        self.vlm_label_modephoto.configure(text="Mode photo : %s" % self.modephoto)
 
         # Affichage de la planification
-        self.planification = MissionPlanifiee(self.utilisateurs, self.id_select, self.id_select_mission)
+        self.planification = MissionPlanifiee(
+            self.utilisateurs, self.id_select, self.id_select_mission
+        )
         self.vlm_label_missionplanifiee.configure(
             text="Mission planifiée : %s" % self.planification
         )
@@ -1870,23 +1869,23 @@ class Interface(tk.Tk):  # définition de la classe
         self.id = self.id_select_mission
         vlmjour = self.vlm_entry_jour.get()
         vlmheure = self.vlm_entry_heure.get()
-        # Mise à jour de la mission 
-        ModificationMission(self.utilisateurs, self.id_select, self.id, vlmjour, vlmheure, 1, 0)
+        # Mise à jour de la mission
+        ModificationMission(
+            self.utilisateurs, self.id_select, self.id, vlmjour, vlmheure, 1, 0
+        )
         self.VisualiserLesMissions()
-        
 
-    def BouttonLancerMission(
-        self,
-    ):  
+    def BouttonLancerMission(self,):
         self.id = self.id_select_mission
-        CoordonneesBase(self.utilisateurs, self.id_select,)
+        CoordonneesBase(
+            self.utilisateurs, self.id_select,
+        )
         ExecutionMission(self.utilisateurs, self.id_select, self.id)
         # Méthode présente pour supprimer les widgets de la fenetre en cours d'exécution et appeler ceux de ExecutionMission
         for i in self.winfo_children():
             i.destroy()
         self.Menu()
         self.ExecutionMission()
-
 
     def ExecutionMission(
         self,

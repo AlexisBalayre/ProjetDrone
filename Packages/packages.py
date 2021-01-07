@@ -24,9 +24,10 @@ def Initialisation():
     # Chargement des données
     f = open("Data/Utilisateurs.json", "r")
     Json_Utilisateur = f.read()
+    # Conversion du fichier JSON en dictionnaire
     Dict_Utilisateurs = json.loads(Json_Utilisateur)
     if Dict_Utilisateurs == {}:
-        Donnees = 0  # Fichier vide
+        Donnees = 0 # Fichier vide
     else:
         Donnees = 1
     f.close()

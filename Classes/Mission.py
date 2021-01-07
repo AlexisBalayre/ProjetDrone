@@ -31,7 +31,7 @@ class Mission(object):
 
         # Liste vitesses contenant toutes les vitesses de la mission
         vitesses = [vitesse_initiale]
-        
+
         for x in self.balises:
             balise = self.balises[x].__dict__
             vitesses.append(float(balise["vitesse"]))

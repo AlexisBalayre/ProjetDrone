@@ -7,8 +7,8 @@ from mavsdk.mission import MissionItem, MissionPlan
 from Classes.AvanceeMission import *
 
 
-
 avancee = AvanceeMission(0, 0, 0, 0, 0)  # Création de l'instance avancee
+
 
 async def run(balises):
     # Connexion au drone
@@ -132,9 +132,7 @@ async def observe_is_in_air(drone, running_tasks):
 
 def ExecutionDrone(balises):
     # Lancement de l'interface graphique JVAMSim
-    os.system(
-        "chmod +x Simulateur/JMAVSim.sh\nopen Simulateur/JMAVSim.sh"
-    )  
+    os.system("chmod +x Simulateur/JMAVSim.sh\nopen Simulateur/JMAVSim.sh")
     # Exécution du shell JMAVSim.sh
     time.sleep(60)  # Attente de l'ouverture de l'interface
     # Lancement de la mission
