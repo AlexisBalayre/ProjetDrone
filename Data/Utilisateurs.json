@@ -18,10 +18,10 @@
             "missions": {
                 "1": {
                     "id_mission": 1,
-                    "planification": 0,
+                    "planification": 1,
                     "mode_photo": 0,
-                    "jour": "",
-                    "heure": "",
+                    "jour": "25/02/2020",
+                    "heure": "10:22",
                     "balises": {
                         "0": {
                             "id_balise": 0,

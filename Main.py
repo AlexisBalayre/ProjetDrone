@@ -1603,8 +1603,8 @@ class Interface(tk.Tk):  # définition de la classe
                 self.utilisateurs.__dict__["utilisateurs"][self.id_select]
                 .__dict__["missions"][x]
                 .__dict__["id_mission"]
-            )
-        
+            ) 
+
         # Nombre de mission 
         self.nombre_missions = len(self.liste_id_missions)
 
@@ -1825,7 +1825,7 @@ class Interface(tk.Tk):  # définition de la classe
             bg="#a4a1a3",
             width=30,
             height=1,
-            command=self.GetVisualiserLesMissions(),
+            command=self.GetVisualiserLesMissions,
         )
         self.vlm_boutton_planifiermission.place(relx=0.1, rely=0.75)
     
@@ -1867,21 +1867,25 @@ class Interface(tk.Tk):  # définition de la classe
     def GetVisualiserLesMissions(
         self,
     ):  # Methode qui permet de retouner les valeurs des entry (zones de saisie)
+        self.id = self.id_select_mission
         vlmjour = self.vlm_entry_jour.get()
         vlmheure = self.vlm_entry_heure.get()
         # Mise à jour de la mission 
-        ModificationMission(self.utilisateurs, self.id_select, self.id_select_mission, vlmjour, vlmheure)
+        ModificationMission(self.utilisateurs, self.id_select, self.id, vlmjour, vlmheure, 1, 0)
         self.VisualiserLesMissions()
         
 
     def BouttonLancerMission(
         self,
-    ):  # Méthode présente pour supprimer les widgets de la fenetre en cours d'exécution et appeler ceux de ExecutionMission
+    ):  
+        self.id = self.id_select_mission
+        ExecutionMission(self.utilisateurs, self.id_select, self.id)
+        # Méthode présente pour supprimer les widgets de la fenetre en cours d'exécution et appeler ceux de ExecutionMission
         for i in self.winfo_children():
             i.destroy()
-
         self.Menu()
         self.ExecutionMission()
+
 
     def ExecutionMission(
         self,

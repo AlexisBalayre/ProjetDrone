@@ -204,12 +204,14 @@ def ModificationUtilisateur(
 
 # Modification d'une mission
 def ModificationMission(
-    utilisateurs, id_utilisateur, id_mission, jour, heure
+    utilisateurs, id_utilisateur, id_mission, jour, heure, planification, mode_photo
 ):
     utilisateur = utilisateurs.getUtilisateur(id_utilisateur)
     mission = utilisateur.getMission(id_mission)
     mission.setJour(jour)
     mission.setHeure(heure)
+    mission.setPlanification(planification)
+    mission.setModePhoto(mode_photo)
     Sauvegarde()
 
 
@@ -336,7 +338,7 @@ def ReturnAvanceeMission(avanceemission):
 # CreationBalise(0, 1, 53.78074845187753, 1.8698891842542932, 8, 15, 3, 1)
 
 # ModificationUtilisateur(1, 'Alexis', 'Dupont', 'Tom.dupont@gmail.com', 9.78074845187753, 0.7698891842542932, 16, 0, 1, 1, 1, 0, 0, 0)
-# ModificationMission(0, 1, '15/04/2021', '16h 31min 00sec')
+# ModificationMission(0, 1, '15/04/2021', '16h 31min 00sec', 0, 0)
 # ModificationBalise(0, 1, 2, 58.78074845187753, 2.8698891842542932, 20, 30, 4, 0)
 
 # SuppressionUtilisateur(2)
