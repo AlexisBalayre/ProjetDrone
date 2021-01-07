@@ -1589,7 +1589,26 @@ class Interface(tk.Tk):  # définition de la classe
 
     def VisualiserLesMissions(
         self,
-    ):  # Méthode qui permet de visaliser les différentes missions créées par les utilisateurs
+    ):  
+        # Récupération des utilisateurs
+        donnees = Initialisation()
+        self.utilisateurs = donnees[0]
+
+        # Récupération des id missions
+        self.liste_id_missions = []
+        for x in self.utilisateurs.__dict__["utilisateurs"][self.id_select].__dict__[
+            "missions"
+        ]:
+            self.liste_id_missions.append(
+                self.utilisateurs.__dict__["utilisateurs"][self.id_select]
+                .__dict__["missions"][x]
+                .__dict__["id_mission"]
+            )
+        
+        # Nombre de mission 
+        self.nombre_missions = len(self.liste_id_missions)
+
+        # Méthode qui permet de visaliser les différentes missions créées par les utilisateurs
         self.vlm_labelframe_utilisateur = LabelFrame(
             self,
             text="",
@@ -1619,7 +1638,12 @@ class Interface(tk.Tk):  # définition de la classe
             font=("Arial", 12),
             width=15,
             height=2,
+
         )  # Bouton mission 1
+        if self.nombre_missions >= 1:
+            state1 = "normal"
+        else:
+            state1 = "disabled"
         self.vlm_bouton_mission1.place(relx=0.12, rely=0.02)
         self.vlm_bouton_mission2 = Button(
             self.vlm_frame_listemission,
@@ -1627,7 +1651,14 @@ class Interface(tk.Tk):  # définition de la classe
             font=("Arial", 12),
             width=15,
             height=2,
-        )  # Bouton mission 2
+            state=state1
+        )  
+        
+        # Bouton mission 2
+        if self.nombre_missions >= 2:
+            state2 = "normal"
+        else:
+            state2 = "disabled"
         self.vlm_bouton_mission2.place(relx=0.12, rely=0.22)
         self.vlm_bouton_mission3 = Button(
             self.vlm_frame_listemission,
@@ -1635,7 +1666,14 @@ class Interface(tk.Tk):  # définition de la classe
             font=("Arial", 12),
             width=15,
             height=2,
-        )  # Bouton mission 3
+            state=state2
+        )  
+
+        # Bouton mission 3
+        if self.nombre_missions >= 3:
+            state3 = "normal"
+        else:
+            state3 = "disabled"
         self.vlm_bouton_mission3.place(relx=0.12, rely=0.42)
         self.vlm_bouton_mission4 = Button(
             self.vlm_frame_listemission,
@@ -1643,7 +1681,14 @@ class Interface(tk.Tk):  # définition de la classe
             font=("Arial", 12),
             width=15,
             height=2,
-        )  # Bouton mission 4
+            state=state3
+        )  
+        
+        # Bouton mission 4
+        if self.nombre_missions >= 4:
+            state4 = "normal"
+        else:
+            state4 = "disabled"
         self.vlm_bouton_mission4.place(relx=0.12, rely=0.62)
         self.vlm_bouton_mission5 = Button(
             self.vlm_frame_listemission,
@@ -1651,7 +1696,10 @@ class Interface(tk.Tk):  # définition de la classe
             font=("Arial", 12),
             width=15,
             height=2,
-        )  # Bouton mission 5
+            state=state4
+        )  
+        
+        # Bouton mission 5
         self.vlm_bouton_mission5.place(relx=0.12, rely=0.82)
         self.vlm_label_modifmission = Label(
             self.vlm_labelframe_utilisateur,
