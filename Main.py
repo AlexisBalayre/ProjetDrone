@@ -1644,7 +1644,8 @@ class Interface(tk.Tk):  # définition de la classe
             font=("Arial", 12),
             width=15,
             height=2,
-            state=state1
+            state=state1,
+            command=lambda:BoutonSelectionne3(self.liste_id_missions[0], 1)
         ) 
         self.vlm_bouton_mission1.place(relx=0.12, rely=0.02)
         
@@ -1659,7 +1660,8 @@ class Interface(tk.Tk):  # définition de la classe
             font=("Arial", 12),
             width=15,
             height=2,
-            state=state2
+            state=state2,
+            command=lambda:BoutonSelectionne3(self.liste_id_missions[1], 2)
         )  
         self.vlm_bouton_mission2.place(relx=0.12, rely=0.22)
         
@@ -1674,7 +1676,8 @@ class Interface(tk.Tk):  # définition de la classe
             font=("Arial", 12),
             width=15,
             height=2,
-            state=state3
+            state=state3,
+            command=lambda:BoutonSelectionne3(self.liste_id_missions[2], 3)
         )  
         self.vlm_bouton_mission3.place(relx=0.12, rely=0.42)
 
@@ -1689,7 +1692,8 @@ class Interface(tk.Tk):  # définition de la classe
             font=("Arial", 12),
             width=15,
             height=2,
-            state=state4
+            state=state4,
+            command=lambda:BoutonSelectionne3(self.liste_id_missions[3], 4)
         ) 
         self.vlm_bouton_mission4.place(relx=0.12, rely=0.62) 
         
@@ -1704,7 +1708,8 @@ class Interface(tk.Tk):  # définition de la classe
             font=("Arial", 12),
             width=15,
             height=2,
-            state=state5
+            state=state5,
+            command=lambda:BoutonSelectionne3(self.liste_id_missions[4], 5)
         )  
         self.vlm_bouton_mission5.place(relx=0.12, rely=0.82)
         
@@ -1820,7 +1825,7 @@ class Interface(tk.Tk):  # définition de la classe
     
     # Retourne id de la mission sélectionnée
     def BoutonSelectionne3(self, id, id_bouton):
-        self.mission_utilisateurselectionne.configure(
+        self.vlm_label_mission.configure(
             text="Mission n°%s" % id_bouton
         )
         self.id_select = id
