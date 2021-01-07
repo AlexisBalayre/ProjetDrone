@@ -1743,7 +1743,7 @@ class Interface(tk.Tk):  # définition de la classe
         self.vlm_boutton_suppmission.place(relx=0.22, rely=0.88)
         self.vlm_label_mission = Label(
             self.vlm_labelframe_utilisateur,
-            text="Mission n°",
+            text="Pas de mission sélectionnée",
             font=("Arial", 12, "bold"),
         )
         self.vlm_label_mission.place(relx=0.55, rely=0.03)
@@ -1817,6 +1817,14 @@ class Interface(tk.Tk):  # définition de la classe
             command=self.GetVisualiserLesMissions,
         )
         self.vlm_boutton_planifiermission.place(relx=0.1, rely=0.75)
+    
+    # Retourne id de la mission sélectionnée
+    def BoutonSelectionne3(self, id, id_bouton):
+        self.mission_utilisateurselectionne.configure(
+            text="Mission n°%s" % id_bouton
+        )
+        self.id_select = id
+        self.id_bouton = id_bouton
 
     def GetVisualiserLesMissions(
         self,
