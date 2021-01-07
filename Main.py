@@ -977,7 +977,10 @@ class Interface(tk.Tk): #définition de la classe
             )
         
         # Id de la balise 
-        self.id_balise = self.liste_id_balises[self.nombre_balise - 1]
+        try:
+            self.id_balise = self.liste_id_balises[self.nombre_balise - 1]
+        except:
+            pass
 
         self.cumission_labelframe = LabelFrame(
             self,
@@ -1051,34 +1054,85 @@ class Interface(tk.Tk): #définition de la classe
             self.cumission_labelframe, text="Balise 1", font=("Arial", 12, "bold")
         )
         self.balise1_babel3.place(relx=0.5, rely=0.008)
+
         self.balise1_labelframe2 = LabelFrame(
             self.cumission_labelframe, width=400, height=370, borderwidth=3
         )
         self.balise1_labelframe2.place(relx=0.5, rely=0.05)
+
+        # Champs de saisi latitude
+        mon_entree1 = StringVar()
+        # Récupération de la valeur par défaut
+        try: 
+            mon_entree1.set(
+                self.utilisateurs.__dict__["utilisateurs"][self.id_select].__dict__[
+                    "missions"
+                ][self.id_mission].__dict__["balises"][self.id_balise].__dict__['latitude']
+            )
+        except:
+            mon_entree1.set("")
         self.balise1_label_latitude = Label(
             self.balise1_labelframe2, text="Latitude (en °):", font=("Arial", 12)
         )
         self.balise1_label_latitude.place(relx=0.1, rely=0.08)
-        self.balise1_entry_latitude = Entry(self.balise1_labelframe2, width=30)
+        self.balise1_entry_latitude = Entry(self.balise1_labelframe2, width=30, textvariable=mon_entree1)
         self.balise1_entry_latitude.place(relx=0.45, rely=0.09)
+
+        # Champs de saisi longitude
+        mon_entree2 = StringVar()
+        # Récupération de la valeur par défaut
+        try: 
+            mon_entree2.set(
+                self.utilisateurs.__dict__["utilisateurs"][self.id_select].__dict__[
+                    "missions"
+                ][self.id_mission].__dict__["balises"][self.id_balise].__dict__['longitude']
+            )
+        except:
+            mon_entree2.set("")
         self.balise1_label_longitude = Label(
             self.balise1_labelframe2, text="Longitude (en °):", font=("Arial", 12)
         )
         self.balise1_label_longitude.place(relx=0.1, rely=0.2)
-        self.balise1_entry_longitude = Entry(self.balise1_labelframe2, width=30)
+        self.balise1_entry_longitude = Entry(self.balise1_labelframe2, width=30, textvariable=mon_entree2)
         self.balise1_entry_longitude.place(relx=0.45, rely=0.21)
+
+        # Champs de saisi vitesse
+        mon_entree3 = StringVar()
+        # Récupération de la valeur par défaut
+        try: 
+            mon_entree3.set(
+                self.utilisateurs.__dict__["utilisateurs"][self.id_select].__dict__[
+                    "missions"
+                ][self.id_mission].__dict__["balises"][self.id_balise].__dict__['altitude']
+            )
+        except:
+            mon_entree3.set("")
         self.balise1_label_altitude = Label(
             self.balise1_labelframe2, text="Altitude (en m):", font=("Arial", 12)
         )
         self.balise1_label_altitude.place(relx=0.1, rely=0.33)
+
         self.balise1_entry_altitude = Spinbox(
             self.balise1_labelframe2, from_=0, to=100, justify=CENTER, width=30
         )
         self.balise1_entry_altitude.place(relx=0.45, rely=0.34)
+
+        # Champs de saisi vitesse
+        mon_entree4 = StringVar()
+        # Récupération de la valeur par défaut
+        try: 
+            mon_entree4.set(
+                self.utilisateurs.__dict__["utilisateurs"][self.id_select].__dict__[
+                    "missions"
+                ][self.id_mission].__dict__["balises"][self.id_balise].__dict__['vitesse']
+            )
+        except:
+            mon_entree4.set("")
         self.balise1_label_vitesse = Label(
             self.balise1_labelframe2, text="vitesse(en %):", font=("Arial", 12)
         )
         self.balise1_label_vitesse.place(relx=0.1, rely=0.48)
+        
         self.balise1_entry_vitesse = Spinbox(
             self.balise1_labelframe2, from_=0, to=100, justify=CENTER, width=30
         )
