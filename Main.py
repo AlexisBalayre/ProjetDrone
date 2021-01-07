@@ -1634,72 +1634,77 @@ class Interface(tk.Tk):  # définition de la classe
         self.vlm_frame_listemission.place(relx=0.08, rely=0.08)
 
         # Bouton mission 1
+        if self.nombre_missions >= 1:
+            state1 = "normal"
+        else:
+            state1 = "disabled"
         self.vlm_bouton_mission1 = Button(
             self.vlm_frame_listemission,
             text="Mission 1",
             font=("Arial", 12),
             width=15,
             height=2,
+            state=state1
         ) 
         self.vlm_bouton_mission1.place(relx=0.12, rely=0.02)
         
         # Bouton mission 2
-        if self.nombre_missions >= 1:
-            state1 = "normal"
+        if self.nombre_missions >= 2:
+            state2 = "normal"
         else:
-            state1 = "disabled"
+            state2 = "disabled"
         self.vlm_bouton_mission2 = Button(
             self.vlm_frame_listemission,
             text="Mission 2",
             font=("Arial", 12),
             width=15,
             height=2,
-            state=state1
+            state=state2
         )  
         self.vlm_bouton_mission2.place(relx=0.12, rely=0.22)
         
         # Bouton mission 3
-        if self.nombre_missions >= 2:
-            state2 = "normal"
+        if self.nombre_missions >= 3:
+            state3 = "normal"
         else:
-            state2 = "disabled"
+            state3 = "disabled"
         self.vlm_bouton_mission3 = Button(
             self.vlm_frame_listemission,
             text="Mission 3",
             font=("Arial", 12),
             width=15,
             height=2,
-            state=state2
+            state=state3
         )  
         self.vlm_bouton_mission3.place(relx=0.12, rely=0.42)
 
         # Bouton mission 4
-        if self.nombre_missions >= 3:
-            state3 = "normal"
+        if self.nombre_missions >= 4:
+            state4 = "normal"
         else:
-            state3 = "disabled"
+            state4 = "disabled"
         self.vlm_bouton_mission4 = Button(
             self.vlm_frame_listemission,
             text="Mission 4",
             font=("Arial", 12),
             width=15,
             height=2,
-            state=state3
+            state=state4
         ) 
         self.vlm_bouton_mission4.place(relx=0.12, rely=0.62) 
         
         # Bouton mission 5
-        if self.nombre_missions >= 4:
-            state4 = "normal"
+        if self.nombre_missions >= 5:
+            state5 = "normal"
         else:
-            state4 = "disabled"
+            state5 = "disabled"
         self.vlm_bouton_mission5 = Button(
             self.vlm_frame_listemission,
             text="Mission 5",
             font=("Arial", 12),
             width=15,
             height=2,
-            state=state4
+            state=state5
         )  
         self.vlm_bouton_mission5.place(relx=0.12, rely=0.82)
         
