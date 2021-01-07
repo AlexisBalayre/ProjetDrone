@@ -1854,13 +1854,13 @@ class Interface(tk.Tk):  # définition de la classe
 
         # Affichage du mode photo  
         self.modephoto = ModePhoto(self.utilisateurs, self.id_select, self.id_select_mission)
-        self.vlm_label_nbretape.configure(
+        self.vlm_label_modephoto.configure(
             text="Mode photo : %s" % self.modephoto 
         )
 
         # Affichage de la planification
         self.planification = MissionPlanifiee(self.utilisateurs, self.id_select, self.id_select_mission)
-        self.self.vlm_label_missionplanifiee.configure(
+        self.vlm_label_missionplanifiee.configure(
             text="Mission planifiée : %s" % self.planification
         )
 

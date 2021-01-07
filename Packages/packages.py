@@ -307,7 +307,7 @@ def MissionPlanifiee(utilisateurs, id_utilisateur, id_mission):
     mission = utilisateur.getMission(id_mission)
     mission_planifiee = mission.affichePlanification()
     return mission_planifiee
-
+    
 
 # Retourne durée d'une mission
 def DureeMission(utilisateurs, id_utilisateur, id_mission):
