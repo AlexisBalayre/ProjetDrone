@@ -1764,22 +1764,27 @@ class Interface(tk.Tk):  # définition de la classe
             font=("Arial", 12, "bold"),
         )
         self.vlm_label_recap.place(relx=0.35, rely=0.01)
+        
         self.pau_check_coordonnees = Label(
-            self.vlm_labelframe_mission1, text="Durée:", font=("Arial", 12)
+            self.vlm_labelframe_mission1, text="Durée : ", font=("Arial", 12)
         )
         self.pau_check_coordonnees.place(relx=0.01, rely=0.15)
+
         self.vlm_label_nbretape = Label(
-            self.vlm_labelframe_mission1, text="Nombre étapes:", font=("Arial", 12)
+            self.vlm_labelframe_mission1, text="Nombre étapes :", font=("Arial", 12)
         )
         self.vlm_label_nbretape.place(relx=0.01, rely=0.30)
+
         self.vlm_label_modephoto = Label(
-            self.vlm_labelframe_mission1, text="Mode photo:", font=("Arial", 12)
+            self.vlm_labelframe_mission1, text="Mode photo :", font=("Arial", 12)
         )
         self.vlm_label_modephoto.place(relx=0.01, rely=0.45)
+
         self.vlm_label_missionplanifiee = Label(
-            self.vlm_labelframe_mission1, text="Mission planifiée:", font=("Arial", 12)
+            self.vlm_labelframe_mission1, text="Mission planifiée :", font=("Arial", 12)
         )
         self.vlm_label_missionplanifiee.place(relx=0.01, rely=0.60)
+
         self.vlm_boutton_lancermission = Button(
             self.vlm_labelframe_mission1,
             text="Lancer la mission",
@@ -1790,6 +1795,7 @@ class Interface(tk.Tk):  # définition de la classe
             command=self.BouttonLancerMission,
         )
         self.vlm_boutton_lancermission.place(relx=0.1, rely=0.75)
+        
         self.vlm_labelframe_mission2 = LabelFrame(
             self.vlm_labelframe_utilisateur, width=350, height=200, borderwidth=3
         )  # LabelFrame incluant le plannificateur avec le bouton "plannifier la mission"
@@ -1825,11 +1831,38 @@ class Interface(tk.Tk):  # définition de la classe
     
     # Retourne id de la mission sélectionnée
     def BoutonSelectionne3(self, id, id_bouton):
+        # Affichage du numéro de mission 
         self.vlm_label_mission.configure(
             text="Mission n°%s" % id_bouton
         )
-        self.id_select = id
+
+        # Récupération des id
+        self.id_select_mission = id
         self.id_bouton = id_bouton
+
+        # Affichage de la durée 
+        self.duree = DureeMission(self.utilisateurs, self.id_select, self.id_select_mission)
+        self.pau_check_coordonnees.configure(
+            text="Durée : %s" % self.duree
+        )
+
+        # Affichage du nombre de balises 
+        self.nombrebalises = NombreBalises(self.utilisateurs, self.id_select, self.id_select_mission)
+        self.vlm_label_nbretape.configure(
+            text="Nombre étapes : %s" % self.nombrebalises
+        )
+
+        # Affichage du mode photo  
+        self.modephoto = ModePhoto(self.utilisateurs, self.id_select, self.id_select_mission)
+        self.vlm_label_nbretape.configure(
+            text="Mode photo : %s" % self.modephoto 
+        )
+
+        # Affichage de la planification
+        self.planification = MissionPlanifiee(self.utilisateurs, self.id_select, self.id_select_mission)
+        self.self.vlm_label_missionplanifiee.configure(
+            text="Mission planifiée : %s" % self.planification
+        )
 
     def GetVisualiserLesMissions(
         self,

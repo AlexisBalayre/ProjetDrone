@@ -25,15 +25,16 @@ class Mission(object):
         del self.balises[id_balise]
 
     def afficheDuree(self, home):
-        latitude_base = home[0]  # Latitude de la base
-        longitude_base = home[1]  # Longitude de la base
-        vitesse_initiale = home[2]  # Vitesse initiale au départ de la base
+        latitude_base = float(home[0])  # Latitude de la base
+        longitude_base = float(home[1])  # Longitude de la base
+        vitesse_initiale = float(home[2])  # Vitesse initiale au départ de la base
 
         # Liste vitesses contenant toutes les vitesses de la mission
         vitesses = [vitesse_initiale]
+        
         for x in self.balises:
             balise = self.balises[x].__dict__
-            vitesses.append(balise["vitesse"])
+            vitesses.append(float(balise["vitesse"]))
 
         # Calcul de la vitesse moyenne (m.s)
         vitesse_moyenne = sum(vitesses) / len(vitesses)
@@ -42,7 +43,7 @@ class Mission(object):
         distances_verticales = []
         for x in self.balises:
             balise = self.balises[x].__dict__
-            distances_verticales.append(balise["altitude"])
+            distances_verticales.append(float(balise["altitude"]))
 
         # Calcul de la distance verticale totale distance_vert (m)
         distance_vert = 0
@@ -63,8 +64,8 @@ class Mission(object):
         coord_balises = []
         for x in self.balises:
             coord = (
-                self.balises[x].__dict__["latitude"],
-                self.balises[x].__dict__["longitude"],
+                float(self.balises[x].__dict__["latitude"]),
+                float(self.balises[x].__dict__["longitude"]),
             )
             coord_balises.append(coord)
         # Calcul des distances horizontales (m)
@@ -98,22 +99,22 @@ class Mission(object):
             + distances_verticales[nombre_distances_vert - 1]
         )
 
-        return "Durée : %s s" % duree
+        return duree
 
     def afficheNombreBalises(self):
-        return "Nombre balises : %s" % len(self.balises)
+        return len(self.balises)
 
     def afficheModePhoto(self):
         if self.mode_photo == 0:
-            return "Mode Photo : Désactivé"
+            return "Désactivé"
         else:
-            return "Mode Photo : Activé"
+            return "Activé"
 
     def affichePlanification(self):
         if self.planification == 0:
-            return "Mission Planifiée : NON"
+            return "NON"
         else:
-            return "Mission Planifiée : OUI"
+            return "OUI"
 
     def setJour(self, jour):
         self.jour = jour

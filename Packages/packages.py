@@ -293,6 +293,22 @@ def NombreBalises(utilisateurs, id_utilisateur, id_mission):
     return nombre_balises
 
 
+# Retourne le mode photo d'une mission
+def ModePhoto(utilisateurs, id_utilisateur, id_mission):
+    utilisateur = utilisateurs.getUtilisateur(id_utilisateur)
+    mission = utilisateur.getMission(id_mission)
+    mode_photo = mission.afficheModePhoto()
+    return mode_photo
+
+
+# Retourne si la mission est planifiée ou non
+def MissionPlanifiee(utilisateurs, id_utilisateur, id_mission):
+    utilisateur = utilisateurs.getUtilisateur(id_utilisateur)
+    mission = utilisateur.getMission(id_mission)
+    mission_planifiee = mission.affichePlanification()
+    return mission_planifiee
+
+
 # Retourne durée d'une mission
 def DureeMission(utilisateurs, id_utilisateur, id_mission):
     utilisateur = utilisateurs.getUtilisateur(id_utilisateur)
