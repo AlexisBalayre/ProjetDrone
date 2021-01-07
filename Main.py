@@ -917,7 +917,7 @@ class Interface(tk.Tk):  # définition de la classe
             font=("Arial", 12, "bold"),
             width=30,
             height=2,
-            command=self.BouttonCreerUneMission,
+            command=self.BouttonCreerUneMission
         )
         self.mission_boutton2.place(relx=0.12, rely=0.58)
 
@@ -1001,7 +1001,7 @@ class Interface(tk.Tk):  # définition de la classe
 
         self.cumission_labelframe = LabelFrame(
             self,
-            text="Mission n° ",
+            text="Mission n°%s" % len(self.liste_id_missions),
             font=("Arial_black", 12),
             width=870,
             height=500,
@@ -1048,7 +1048,7 @@ class Interface(tk.Tk):  # définition de la classe
             bg="#ffffff",
             width=30,
             height=2,
-            command=lambda: [self.BouttonEnregistrerInfo2,],
+            command=self.BouttonEnregistrerInfo2
         )  # Bouton permettant d'executer les méthodes GetCreerUnemission et BoutonEnregistrerInfo2
         self.cumission_boutton_enregistrer.place(relx=0.575, rely=0.85)
 
@@ -1109,7 +1109,7 @@ class Interface(tk.Tk):  # définition de la classe
         except:
             mon_entree2.set("")
         self.balise1_label_longitude = Label(
-            self.balise1_labelframe2, text="Longitude (en °):", font=("Arial", 12)
+            self.balise1_labelframe2, text="Longitude (en °) :", font=("Arial", 12)
         )
         self.balise1_label_longitude.place(relx=0.1, rely=0.2)
         self.balise1_entry_longitude = Entry(
@@ -1130,7 +1130,7 @@ class Interface(tk.Tk):  # définition de la classe
         except:
             mon_entree3.set("")
         self.balise1_label_altitude = Label(
-            self.balise1_labelframe2, text="Altitude (en m):", font=("Arial", 12)
+            self.balise1_labelframe2, text="Altitude (en m) :", font=("Arial", 12)
         )
         self.balise1_label_altitude.place(relx=0.1, rely=0.33)
 
@@ -1152,7 +1152,7 @@ class Interface(tk.Tk):  # définition de la classe
         except:
             mon_entree4.set("")
         self.balise1_label_vitesse = Label(
-            self.balise1_labelframe2, text="vitesse(en %):", font=("Arial", 12)
+            self.balise1_labelframe2, text="vitesse(en %) :", font=("Arial", 12)
         )
         self.balise1_label_vitesse.place(relx=0.1, rely=0.48)
 
@@ -1161,7 +1161,7 @@ class Interface(tk.Tk):  # définition de la classe
         )
         self.balise1_entry_vitesse.place(relx=0.45, rely=0.49)
         self.balise1_label_pause = Label(
-            self.balise1_labelframe2, text="pause(en s):", font=("Arial", 12)
+            self.balise1_labelframe2, text="pause(en s) :", font=("Arial", 12)
         )
         self.balise1_label_pause.place(relx=0.1, rely=0.63)
         self.balise1_entry_pause = Spinbox(
@@ -1169,7 +1169,7 @@ class Interface(tk.Tk):  # définition de la classe
         )
         self.balise1_entry_pause.place(relx=0.45, rely=0.64)
         self.balise1_label_photo = Label(
-            self.balise1_labelframe2, text="photo:", font=("Arial", 12)
+            self.balise1_labelframe2, text="photo :", font=("Arial", 12)
         )
         self.balise1_label_photo.place(relx=0.1, rely=0.79)
         self.balise1_checkbutton_photo_oui = Checkbutton(
@@ -1225,19 +1225,19 @@ class Interface(tk.Tk):  # définition de la classe
         )
         self.balise2_labelframe2.place(relx=0.5, rely=0.05)
         self.balise2_label_latitude = Label(
-            self.balise2_labelframe2, text="Latitude (en °):", font=("Arial", 12)
+            self.balise2_labelframe2, text="Latitude (en °) :", font=("Arial", 12)
         )
         self.balise2_label_latitude.place(relx=0.1, rely=0.08)
         self.balise2_entry_latitude = Entry(self.balise2_labelframe2, width=30)
         self.balise2_entry_latitude.place(relx=0.45, rely=0.09)
         self.balise2_label_longitude = Label(
-            self.balise2_labelframe2, text="Longitude (en °):", font=("Arial", 12)
+            self.balise2_labelframe2, text="Longitude (en °) :", font=("Arial", 12)
         )
         self.balise2_label_longitude.place(relx=0.1, rely=0.2)
         self.balise2_entry_longitude = Entry(self.balise2_labelframe2, width=30)
         self.balise2_entry_longitude.place(relx=0.45, rely=0.21)
         self.balise2_label_altitude = Label(
-            self.balise2_labelframe2, text="Altitude (en m):", font=("Arial", 12)
+            self.balise2_labelframe2, text="Altitude (en m) :", font=("Arial", 12)
         )
         self.balise2_label_altitude.place(relx=0.1, rely=0.33)
         self.balise2_entry_altitude = Spinbox(
@@ -1245,7 +1245,7 @@ class Interface(tk.Tk):  # définition de la classe
         )
         self.balise2_entry_altitude.place(relx=0.45, rely=0.34)
         self.balise2_label_vitesse = Label(
-            self.balise2_labelframe2, text="vitesse(en %):", font=("Arial", 12)
+            self.balise2_labelframe2, text="vitesse(en %) :", font=("Arial", 12)
         )
         self.balise2_label_vitesse.place(relx=0.1, rely=0.48)
         self.balise2_entry_vitesse = Spinbox(
@@ -1253,7 +1253,7 @@ class Interface(tk.Tk):  # définition de la classe
         )
         self.balise2_entry_vitesse.place(relx=0.45, rely=0.49)
         self.balise2_label_pause = Label(
-            self.balise2_labelframe2, text="pause(en s):", font=("Arial", 12)
+            self.balise2_labelframe2, text="pause(en s) :", font=("Arial", 12)
         )
         self.balise2_label_pause.place(relx=0.1, rely=0.63)
         self.balise2_entry_pause = Spinbox(
@@ -1261,7 +1261,7 @@ class Interface(tk.Tk):  # définition de la classe
         )
         self.balise2_entry_pause.place(relx=0.45, rely=0.64)
         self.balise2_label_photo = Label(
-            self.balise2_labelframe2, text="photo:", font=("Arial", 12)
+            self.balise2_labelframe2, text="photo :", font=("Arial", 12)
         )
         self.balise2_label_photo.place(relx=0.1, rely=0.79)
         self.balise2_checkbutton_photo_oui = Checkbutton(
@@ -1317,19 +1317,19 @@ class Interface(tk.Tk):  # définition de la classe
         )
         self.balise3_labelframe2.place(relx=0.5, rely=0.05)
         self.balise3_label_latitude = Label(
-            self.balise3_labelframe2, text="Latitude (en °):", font=("Arial", 12)
+            self.balise3_labelframe2, text="Latitude (en °) :", font=("Arial", 12)
         )
         self.balise3_label_latitude.place(relx=0.1, rely=0.08)
         self.balise3_entry_latitude = Entry(self.balise3_labelframe2, width=30)
         self.balise3_entry_latitude.place(relx=0.45, rely=0.09)
         self.balise3_label_longitude = Label(
-            self.balise3_labelframe2, text="Longitude (en °):", font=("Arial", 12)
+            self.balise3_labelframe2, text="Longitude (en °) :", font=("Arial", 12)
         )
         self.balise3_label_longitude.place(relx=0.1, rely=0.2)
         self.balise3_entry_longitude = Entry(self.balise3_labelframe2, width=30)
         self.balise3_entry_longitude.place(relx=0.45, rely=0.21)
         self.balise3_label_altitude = Label(
-            self.balise3_labelframe2, text="Altitude (en m):", font=("Arial", 12)
+            self.balise3_labelframe2, text="Altitude (en m) :", font=("Arial", 12)
         )
         self.balise3_label_altitude.place(relx=0.1, rely=0.33)
         self.balise3_entry_altitude = Spinbox(
@@ -1337,7 +1337,7 @@ class Interface(tk.Tk):  # définition de la classe
         )
         self.balise3_entry_altitude.place(relx=0.45, rely=0.34)
         self.balise3_label_vitesse = Label(
-            self.balise3_labelframe2, text="vitesse(en %):", font=("Arial", 12)
+            self.balise3_labelframe2, text="vitesse(en %) :", font=("Arial", 12)
         )
         self.balise3_label_vitesse.place(relx=0.1, rely=0.48)
         self.balise3_entry_vitesse = Spinbox(
@@ -1345,7 +1345,7 @@ class Interface(tk.Tk):  # définition de la classe
         )
         self.balise3_entry_vitesse.place(relx=0.45, rely=0.49)
         self.balise3_label_pause = Label(
-            self.balise3_labelframe2, text="pause(en s):", font=("Arial", 12)
+            self.balise3_labelframe2, text="pause(en s) :", font=("Arial", 12)
         )
         self.balise3_label_pause.place(relx=0.1, rely=0.63)
         self.balise3_entry_pause = Spinbox(
@@ -1353,7 +1353,7 @@ class Interface(tk.Tk):  # définition de la classe
         )
         self.balise3_entry_pause.place(relx=0.45, rely=0.64)
         self.balise3_label_photo = Label(
-            self.balise3_labelframe2, text="photo:", font=("Arial", 12)
+            self.balise3_labelframe2, text="photo :", font=("Arial", 12)
         )
         self.balise3_label_photo.place(relx=0.1, rely=0.79)
         self.balise3_checkbutton_photo_oui = Checkbutton(
@@ -1409,19 +1409,19 @@ class Interface(tk.Tk):  # définition de la classe
         )
         self.balise4_labelframe2.place(relx=0.5, rely=0.05)
         self.balise4_label_latitude = Label(
-            self.balise4_labelframe2, text="Latitude (en °):", font=("Arial", 12)
+            self.balise4_labelframe2, text="Latitude (en °) :", font=("Arial", 12)
         )
         self.balise4_label_latitude.place(relx=0.1, rely=0.08)
         self.balise4_entry_latitude = Entry(self.balise4_labelframe2, width=30)
         self.balise4_entry_latitude.place(relx=0.45, rely=0.09)
         self.balise4_label_longitude = Label(
-            self.balise4_labelframe2, text="Longitude (en °):", font=("Arial", 12)
+            self.balise4_labelframe2, text="Longitude (en °) :", font=("Arial", 12)
         )
         self.balise4_label_longitude.place(relx=0.1, rely=0.2)
         self.balise4_entry_longitude = Entry(self.balise4_labelframe2, width=30)
         self.balise4_entry_longitude.place(relx=0.45, rely=0.21)
         self.balise4_label_altitude = Label(
-            self.balise4_labelframe2, text="Altitude (en m):", font=("Arial", 12)
+            self.balise4_labelframe2, text="Altitude (en m) :", font=("Arial", 12)
         )
         self.balise4_label_altitude.place(relx=0.1, rely=0.33)
         self.balise4_entry_altitude = Spinbox(
@@ -1429,7 +1429,7 @@ class Interface(tk.Tk):  # définition de la classe
         )
         self.balise4_entry_altitude.place(relx=0.45, rely=0.34)
         self.balise4_label_vitesse = Label(
-            self.balise4_labelframe2, text="vitesse(en %):", font=("Arial", 12)
+            self.balise4_labelframe2, text="vitesse(en %) :", font=("Arial", 12)
         )
         self.balise4_label_vitesse.place(relx=0.1, rely=0.48)
         self.balise4_entry_vitesse = Spinbox(
@@ -1437,7 +1437,7 @@ class Interface(tk.Tk):  # définition de la classe
         )
         self.balise4_entry_vitesse.place(relx=0.45, rely=0.49)
         self.balise4_label_pause = Label(
-            self.balise4_labelframe2, text="pause(en s):", font=("Arial", 12)
+            self.balise4_labelframe2, text="pause(en s) :", font=("Arial", 12)
         )
         self.balise4_label_pause.place(relx=0.1, rely=0.63)
         self.balise4_entry_pause = Spinbox(
@@ -1445,7 +1445,7 @@ class Interface(tk.Tk):  # définition de la classe
         )
         self.balise4_entry_pause.place(relx=0.45, rely=0.64)
         self.balise4_label_photo = Label(
-            self.balise4_labelframe2, text="photo:", font=("Arial", 12)
+            self.balise4_labelframe2, text="photo :", font=("Arial", 12)
         )
         self.balise4_label_photo.place(relx=0.1, rely=0.79)
         self.balise4_checkbutton_photo_oui = Checkbutton(
@@ -1456,6 +1456,18 @@ class Interface(tk.Tk):  # définition de la classe
             self.balise4_labelframe2, text="Non", font=("Arail", 12)
         )
         self.balise4_checkbutton_photo_non.place(relx=0.75, rely=0.83)
+
+        # Enregistrer les modifications 
+        self.cumission_boutton_enregistrer_2 = Button(
+            self.cumission_labelframe,
+            text="Enregistrer les informations test",
+            font=("Arial", 12),
+            bg="#ffffff",
+            width=30,
+            height=2,
+            command=lambda:[self.GetBalise4(), self.BouttonEnregistrerInfo2()]
+        )  # Bouton permettant d'executer les méthodes GetCreerUnemission et BoutonEnregistrerInfo2
+        self.cumission_boutton_enregistrer_2.place(relx=0.575, rely=0.85)
 
     def GetBalise1(
         self,
@@ -1560,11 +1572,7 @@ class Interface(tk.Tk):  # définition de la classe
     def BouttonEnregistrerInfo2(
         self,
     ):  # Méhtode présente pour supprimer les widgets de la fenetre en cours d'exécution et appeler ceux de Etape3_Mission et appeler la methode GetBalise4 si id_balise_ajoute ==4
-        if self.id_balise_ajoute == 4:
-            self.GetBalise4()
         self.Menu()
-        for i in self.winfo_children():
-            i.destroy()
         self.Etape3_Mission()
 
     # Retourne id de l'utilisateur sélectionné
