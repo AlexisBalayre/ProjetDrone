@@ -48,24 +48,6 @@
                             "vitesse": "0",
                             "pause": "0",
                             "photo": 0
-                        },
-                        "2": {
-                            "id_balise": 2,
-                            "latitude": "",
-                            "longitude": "",
-                            "altitude": "0",
-                            "vitesse": "0",
-                            "pause": "0",
-                            "photo": 0
-                        },
-                        "3": {
-                            "id_balise": 3,
-                            "latitude": "",
-                            "longitude": "",
-                            "altitude": "0",
-                            "vitesse": "0",
-                            "pause": "0",
-                            "photo": 0
                         }
                     }
                 }

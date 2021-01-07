@@ -1632,19 +1632,22 @@ class Interface(tk.Tk):  # définition de la classe
             relief=SUNKEN,
         )  # Frame qui contient tous les boutons des différentes missions (jusqu'à 5)
         self.vlm_frame_listemission.place(relx=0.08, rely=0.08)
+
+        # Bouton mission 1
         self.vlm_bouton_mission1 = Button(
             self.vlm_frame_listemission,
             text="Mission 1",
             font=("Arial", 12),
             width=15,
             height=2,
-
-        )  # Bouton mission 1
+        ) 
+        self.vlm_bouton_mission1.place(relx=0.12, rely=0.02)
+        
+        # Bouton mission 2
         if self.nombre_missions >= 1:
             state1 = "normal"
         else:
             state1 = "disabled"
-        self.vlm_bouton_mission1.place(relx=0.12, rely=0.02)
         self.vlm_bouton_mission2 = Button(
             self.vlm_frame_listemission,
             text="Mission 2",
@@ -1653,13 +1656,13 @@ class Interface(tk.Tk):  # définition de la classe
             height=2,
             state=state1
         )  
+        self.vlm_bouton_mission2.place(relx=0.12, rely=0.22)
         
-        # Bouton mission 2
+        # Bouton mission 3
         if self.nombre_missions >= 2:
             state2 = "normal"
         else:
             state2 = "disabled"
-        self.vlm_bouton_mission2.place(relx=0.12, rely=0.22)
         self.vlm_bouton_mission3 = Button(
             self.vlm_frame_listemission,
             text="Mission 3",
@@ -1668,13 +1671,13 @@ class Interface(tk.Tk):  # définition de la classe
             height=2,
             state=state2
         )  
+        self.vlm_bouton_mission3.place(relx=0.12, rely=0.42)
 
-        # Bouton mission 3
+        # Bouton mission 4
         if self.nombre_missions >= 3:
             state3 = "normal"
         else:
             state3 = "disabled"
-        self.vlm_bouton_mission3.place(relx=0.12, rely=0.42)
         self.vlm_bouton_mission4 = Button(
             self.vlm_frame_listemission,
             text="Mission 4",
@@ -1682,14 +1685,14 @@ class Interface(tk.Tk):  # définition de la classe
             width=15,
             height=2,
             state=state3
-        )  
+        ) 
+        self.vlm_bouton_mission4.place(relx=0.12, rely=0.62) 
         
-        # Bouton mission 4
+        # Bouton mission 5
         if self.nombre_missions >= 4:
             state4 = "normal"
         else:
             state4 = "disabled"
-        self.vlm_bouton_mission4.place(relx=0.12, rely=0.62)
         self.vlm_bouton_mission5 = Button(
             self.vlm_frame_listemission,
             text="Mission 5",
@@ -1698,9 +1701,9 @@ class Interface(tk.Tk):  # définition de la classe
             height=2,
             state=state4
         )  
-        
-        # Bouton mission 5
         self.vlm_bouton_mission5.place(relx=0.12, rely=0.82)
+        
+        # Bouton modifier la mission 
         self.vlm_label_modifmission = Label(
             self.vlm_labelframe_utilisateur,
             text="Modifier la mission",
@@ -1713,7 +1716,9 @@ class Interface(tk.Tk):  # définition de la classe
             font=("Arial", 16, "bold"),
             width=9,
             bg="#a4a1a3",
-        )  # Bouton modifier la mission
+        )  
+        
+        # Bouton supprimer la mission
         self.vlm_boutton_modifmission.place(relx=0.03, rely=0.88)
         self.vlm_label_suppmission = Label(
             self.vlm_labelframe_utilisateur,
@@ -1727,7 +1732,9 @@ class Interface(tk.Tk):  # définition de la classe
             font=("Arial", 16, "bold"),
             width=9,
             bg="#a4a1a3",
-        )  # Bouton supprimer la mission
+        )  
+        
+
         self.vlm_boutton_suppmission.place(relx=0.22, rely=0.88)
         self.vlm_label_mission = Label(
             self.vlm_labelframe_utilisateur,
@@ -1735,9 +1742,11 @@ class Interface(tk.Tk):  # définition de la classe
             font=("Arial", 12, "bold"),
         )
         self.vlm_label_mission.place(relx=0.55, rely=0.03)
+
+         # LabelFrame recapitulatif incluant le bouton lancer mission
         self.vlm_labelframe_mission1 = LabelFrame(
             self.vlm_labelframe_utilisateur, width=350, height=200, borderwidth=3
-        )  # LabelFrame recapitulatif incluant le bouton lancer mission
+        ) 
         self.vlm_labelframe_mission1.place(relx=0.55, rely=0.08)
         self.vlm_label_recap = Label(
             self.vlm_labelframe_mission1,
