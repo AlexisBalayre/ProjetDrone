@@ -1825,7 +1825,7 @@ class Interface(tk.Tk):  # définition de la classe
             bg="#a4a1a3",
             width=30,
             height=1,
-            command=self.GetVisualiserLesMissions,
+            command=self.GetVisualiserLesMissions(),
         )
         self.vlm_boutton_planifiermission.place(relx=0.1, rely=0.75)
     
@@ -1869,6 +1869,10 @@ class Interface(tk.Tk):  # définition de la classe
     ):  # Methode qui permet de retouner les valeurs des entry (zones de saisie)
         vlmjour = self.vlm_entry_jour.get()
         vlmheure = self.vlm_entry_heure.get()
+        # Mise à jour de la mission 
+        ModificationMission(self.utilisateurs, self.id_select, self.id_select_mission, vlmjour, vlmheure)
+        self.VisualiserLesMissions()
+        
 
     def BouttonLancerMission(
         self,
