@@ -1,3 +1,75 @@
 {
-    "utilisateurs": {}
+    "utilisateurs": {
+        "1": {
+            "id_utilisateur": 1,
+            "prenom": "Alexis",
+            "nom": "Balayre",
+            "email": "",
+            "vitesse": "",
+            "latitude_base": "",
+            "longitude_base": "",
+            "mode_camera": 0,
+            "suivie_mail": 0,
+            "mail_coord": 0,
+            "mail_alt": 0,
+            "mail_vitesse": 0,
+            "mail_batterie": 0,
+            "mail_photo": 0,
+            "missions": {
+                "0": {
+                    "id_mission": 0,
+                    "planification": 0,
+                    "mode_photo": 0,
+                    "jour": "",
+                    "heure": "",
+                    "balises": {}
+                },
+                "1": {
+                    "id_mission": 1,
+                    "planification": 0,
+                    "mode_photo": 0,
+                    "jour": "",
+                    "heure": "",
+                    "balises": {
+                        "0": {
+                            "id_balise": 0,
+                            "latitude": "",
+                            "longitude": "",
+                            "altitude": "0",
+                            "vitesse": "0",
+                            "pause": "0",
+                            "photo": 0
+                        },
+                        "1": {
+                            "id_balise": 1,
+                            "latitude": "",
+                            "longitude": "",
+                            "altitude": "0",
+                            "vitesse": "0",
+                            "pause": "0",
+                            "photo": 0
+                        },
+                        "2": {
+                            "id_balise": 2,
+                            "latitude": "",
+                            "longitude": "",
+                            "altitude": "0",
+                            "vitesse": "0",
+                            "pause": "0",
+                            "photo": 0
+                        },
+                        "3": {
+                            "id_balise": 3,
+                            "latitude": "",
+                            "longitude": "",
+                            "altitude": "0",
+                            "vitesse": "0",
+                            "pause": "0",
+                            "photo": 0
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

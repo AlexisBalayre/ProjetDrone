@@ -946,7 +946,6 @@ class Interface(tk.Tk):  # définition de la classe
             CreationMission(self.utilisateurs, self.id_select, "", "", 0, 0)
             for i in self.winfo_children():
                 i.destroy()
-            self.Menu()
             self.CreerUneMission()
             self.BouttonBalise4()
             self.BouttonBalise3()
